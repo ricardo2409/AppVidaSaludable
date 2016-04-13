@@ -7,23 +7,40 @@
 //
 
 import UIKit
+import AlarmKit
+import SCLAlertView
 
 class TableViewControllerActividades: UITableViewController {
     
     // REUSE IDENTIFIER: "idCelda"
     
-    var datos = ["a", "b", "c"]
+    var arregloActividades : [Actividad] = []
     
     // MARK: - Funciones
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        llenaArreglo()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+    }
+    
+    func llenaArreglo(){
+        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: ["Lunes", "Martes"])
+        self.arregloActividades.append(actividad)
+        
+        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: ["Martes", "Jueves", "Sábado"])
+        self.arregloActividades.append(actividad2)
+        
+        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: ["Lunes", "Martes", "Miércoles"])
+        self.arregloActividades.append(actividad3)
+        
+        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: ["Viernes"])
+        arregloActividades.append(actividad4)
+        
         
     }
 
@@ -41,14 +58,29 @@ class TableViewControllerActividades: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return datos.count
+        return arregloActividades.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        var nombreImagen: String!
         let cell = tableView.dequeueReusableCellWithIdentifier("idCelda", forIndexPath: indexPath)
 
-        cell.textLabel!.text = datos[indexPath.row]
-        // Configure the cell...
+        cell.textLabel!.text = arregloActividades[indexPath.row].nombre
+        cell.detailTextLabel?.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
+        
+        if arregloActividades[indexPath.row].categoria == "Hidratación"{
+            nombreImagen = "vaso"
+        }
+        if arregloActividades[indexPath.row].categoria == "Alimentación"{
+            nombreImagen = "manzanaTrans"
+        }
+        if arregloActividades[indexPath.row].categoria == "Actividad Física"{
+            nombreImagen = "ejercicio"
+        }
+        if arregloActividades[indexPath.row].categoria == "Actividad Social"{
+            nombreImagen = "amigos2"
+        }
+        cell.imageView?.image = UIImage(named: nombreImagen)
 
         return cell
     }
@@ -66,7 +98,7 @@ class TableViewControllerActividades: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            datos.removeAtIndex(indexPath.row)
+//            datos.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
