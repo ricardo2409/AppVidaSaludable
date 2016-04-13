@@ -32,7 +32,7 @@ class ViewControllerAgregar: UIViewController,UIPickerViewDataSource, UIPickerVi
         arreglo = [arreglo1, arreglo2]
         self.pvPickerHora.delegate = self
         self.pvPickerHora.dataSource = self
-
+        
         // Do any additional setup after loading the view.
     }
 

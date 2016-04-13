@@ -20,6 +20,7 @@
 		CE30B7A91CBD907100B7A14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7A81CBD907100B7A14E /* Assets.xcassets */; };
 		CE30B7AC1CBD907100B7A14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7AA1CBD907100B7A14E /* LaunchScreen.storyboard */; };
 		CE30B7B41CBDD20700B7A14E /* Actividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B31CBDD20700B7A14E /* Actividad.swift */; };
+		CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CE30B7AB1CBD907100B7A14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE30B7AD1CBD907100B7A14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE30B7B31CBDD20700B7A14E /* Actividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actividad.swift; sourceTree = "<group>"; };
+		CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerAgregar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				CE30B79F1CBD907100B7A14E /* AppDelegate.swift */,
 				CE30B7A51CBD907100B7A14E /* Main.storyboard */,
+				CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */,
 				1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */,
 				1C24962F1CBDAA8C00CCE121 /* ViewControllerEditar.swift */,
 				1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */,
@@ -237,6 +240,7 @@
 				1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */,
 				1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */,
 				1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */,
+				CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */,
 				1CADCDE41CBD9FEE00092481 /* TableViewControllerActividades.swift in Sources */,
 				1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */,
 				1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */,
