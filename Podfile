@@ -6,5 +6,6 @@ use_frameworks!
 target 'AppVidaSaludable' do
     pod 'AlarmKit'
     pod 'SCLAlertView'
+    
 end
 
