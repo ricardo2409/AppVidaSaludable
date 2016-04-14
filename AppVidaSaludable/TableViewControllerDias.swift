@@ -10,7 +10,10 @@ import UIKit
 
 class TableViewControllerDias: UITableViewController {
 
+    var arregloDias: [NSIndexPath]!
+
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.tableView.allowsMultipleSelection = true
         // Uncomment the following line to preserve selection between presentations
@@ -39,6 +42,8 @@ class TableViewControllerDias: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
+//        arregloDias.append(indexPath)
+//        print(arregloDias)
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
