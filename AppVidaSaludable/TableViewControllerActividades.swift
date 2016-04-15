@@ -15,6 +15,11 @@ class TableViewControllerActividades: UITableViewController {
     // REUSE IDENTIFIER: "idCelda"
     
     var arregloActividades : [Actividad] = []
+    var nuevaActividad : Actividad!
+    // MARK: - Outlets
+
+    @IBOutlet weak var botonAgregar: UIBarButtonItem!
+    
     
     // MARK: - Funciones
 
@@ -26,6 +31,11 @@ class TableViewControllerActividades: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
+        tableView.reloadData()
+    }
+    //Checa si hay una actividad nueva y agrégala al arregloActividades
+    override func viewDidAppear(animated: Bool) {
+
     }
     
     func llenaArreglo(){
@@ -41,6 +51,23 @@ class TableViewControllerActividades: UITableViewController {
         let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: ["Viernes"])
         arregloActividades.append(actividad4)
         
+        
+    }
+    @IBAction func unwindAgregar(sender: UIStoryboardSegue){
+            print("Estoy en unwindAgregar")
+        if nuevaActividad != nil{
+            print("Esto tiene actividadAUsar en el unwindAgregar antes de meterse al arreglo")
+            print(nuevaActividad.nombre)
+            print(nuevaActividad.categoria)
+            print(nuevaActividad.hora)
+            print(nuevaActividad.frecuencia)
+
+        
+            arregloActividades.append(nuevaActividad)
+            self.tableView.reloadData()
+        }else{
+            print("es nil")
+        }
         
     }
 
@@ -121,14 +148,18 @@ class TableViewControllerActividades: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        if (sender as! UIBarButtonItem == botonAgregar){
+            let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
+            viewAgregar.arregloActividadesAgregar = self.arregloActividades
+        }
     }
-    */
+    
 
 }

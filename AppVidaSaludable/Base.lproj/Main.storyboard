@@ -175,7 +175,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="gO3-4X-ZpZ" kind="show" id="EE6-4W-tZJ"/>
+                                            <segue destination="gO3-4X-ZpZ" kind="show" identifier="tableDias" id="EE6-4W-tZJ"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="100" id="b41-Yv-Rmo">
@@ -219,15 +219,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Agregar" id="wTx-E7-i0O">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="P1r-XZ-2No"/>
-                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="A0P-UX-B1y"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="P1r-XZ-2No">
+                            <connections>
+                                <segue destination="Dgv-Rz-qgE" kind="unwind" unwindAction="unwindAgregar:" id="Ogb-Hi-exL"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Guardar" id="A0P-UX-B1y">
+                            <connections>
+                                <segue destination="Dgv-Rz-qgE" kind="unwind" unwindAction="unwindAgregar:" id="lSv-vi-Qf7"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="botonCancel" destination="P1r-XZ-2No" id="Gmy-de-Y88"/>
+                        <outlet property="botonGuardar" destination="A0P-UX-B1y" id="Dhy-r1-cP4"/>
+                        <outlet property="lbFrecuencia" destination="YS3-Iq-Cki" id="Rbv-K0-P1f"/>
                         <outlet property="pickerViewCategoria" destination="9kx-Fj-hlT" id="2VX-5P-DtQ"/>
                         <outlet property="pickerViewHora" destination="xs0-a1-LWd" id="IGh-c0-Wx6"/>
+                        <outlet property="tfNombre" destination="bnC-xJ-WNj" id="fo8-Kh-GL4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcF-Ww-cNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Dgv-Rz-qgE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2690" y="-383"/>
         </scene>
@@ -239,6 +252,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Ldb-CB-BTR">
+                            <rect key="frame" x="0.0" y="372" width="600" height="178"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-yV-bI7">
+                                    <rect key="frame" x="82" y="74" width="61" height="30"/>
+                                    <state key="normal" title="Cancelar"/>
+                                    <connections>
+                                        <segue destination="IEY-WQ-k9y" kind="unwind" unwindAction="unwindDias:" id="Ar9-QG-BK7"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgJ-IG-F87">
+                                    <rect key="frame" x="436" y="74" width="30" height="30"/>
+                                    <state key="normal" title="Ok"/>
+                                    <connections>
+                                        <segue destination="IEY-WQ-k9y" kind="unwind" unwindAction="unwindDias:" id="Y8z-W0-yqB"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="BgJ-IG-F87" secondAttribute="trailing" constant="134" id="eCC-bf-zwa"/>
+                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="leading" secondItem="Ldb-CB-BTR" secondAttribute="leading" constant="82" id="kfj-G5-L5i"/>
+                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="centerY" secondItem="Ldb-CB-BTR" secondAttribute="centerY" id="rgD-Lb-pGb"/>
+                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="baseline" secondItem="BgJ-IG-F87" secondAttribute="baseline" id="ypk-nI-w8t"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="7el-lS-GNd">
                                 <cells>
@@ -369,8 +409,13 @@
                             <outlet property="delegate" destination="gO3-4X-ZpZ" id="UUd-dm-rEd"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="botonCancelar" destination="Mwn-yV-bI7" id="fV0-IR-HMl"/>
+                        <outlet property="botonOk" destination="BgJ-IG-F87" id="MLc-hd-OqC"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbB-LI-3ZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="IEY-WQ-k9y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3384" y="-383"/>
         </scene>
@@ -442,6 +487,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="botonAgregar" destination="Ocd-Hc-hEp" id="pLF-Mo-vRd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5NG-5e-kX9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
