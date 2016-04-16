@@ -9,7 +9,24 @@
 import UIKit
 
 class TableViewControllerConfig: UITableViewController {
+    
+    // MARK: - Outlets
+    
+    @IBOutlet weak var tfNomResponsable: UITextField!
+    @IBOutlet weak var tfCorreoResponsable: UITextField!
+    @IBOutlet weak var tfNomMedico: UITextField!
+    @IBOutlet weak var tfCorreoMedico: UITextField!
+    
+    // MARK: - Variables & Constants
+    var nomResponsable : String?
+    var correoResponsable : String?
+    var nomMedico : String?
+    var correoMedico : String?
+    var cantidadFallos : Int!
+    var frecReportes : Int!
 
+    // MARK: - Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -18,6 +35,30 @@ class TableViewControllerConfig: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        // Para probar, hard coded valores.
+        if nomResponsable == nil {
+            nomResponsable = "Detail"
+        }
+        if correoResponsable == nil {
+            correoResponsable = "Detail"
+        }
+        if nomMedico == nil {
+            nomMedico = "Detail"
+        }
+        if correoMedico == nil {
+            correoMedico = "Detail"
+        }
+        
+        // Muestra valores en tfs.
+        tfNomResponsable.text = nomResponsable
+        tfCorreoResponsable.text = correoResponsable
+        tfNomMedico.text = nomMedico
+        tfCorreoMedico.text = correoMedico
+        
+        // Notificación para revisar cambios en los datos
+        tfNomResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioNomResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +66,14 @@ class TableViewControllerConfig: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func cambioNomResponsable(textField: UITextField) {
+        if textField.text != nomResponsable {
+            nomResponsable = textField.text
+        }
+    }
+    
+    
+    
     // MARK: - Table view data source
     /*
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
