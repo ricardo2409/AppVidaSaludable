@@ -39,6 +39,9 @@ class TableViewControllerActividades: UITableViewController {
     }
     
     func llenaArreglo(){
+        
+        //Pedir a base de datos las actividades guardadas! 
+        
         let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: ["Lunes", "Martes"])
         self.arregloActividades.append(actividad)
         
@@ -95,18 +98,26 @@ class TableViewControllerActividades: UITableViewController {
         cell.textLabel!.text = arregloActividades[indexPath.row].nombre
         cell.detailTextLabel?.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
         
-        if arregloActividades[indexPath.row].categoria == "Hidratación"{
+        
+        switch (arregloActividades[indexPath.row].categoria)
+        {
+        case "Hidratación":
             nombreImagen = "vaso"
-        }
-        if arregloActividades[indexPath.row].categoria == "Alimentación"{
+            break
+        case "Alimentación":
             nombreImagen = "manzanaTrans"
-        }
-        if arregloActividades[indexPath.row].categoria == "Actividad Física"{
+            break
+        case "Actividad Física":
             nombreImagen = "ejercicio"
-        }
-        if arregloActividades[indexPath.row].categoria == "Actividad Social"{
+            break
+        case "Actividad Social":
             nombreImagen = "amigos2"
+            break
+        default:
+            break
+
         }
+
         cell.imageView?.image = UIImage(named: nombreImagen)
 
         return cell
