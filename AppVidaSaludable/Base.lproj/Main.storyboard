@@ -79,7 +79,7 @@
                         <sections>
                             <tableViewSection headerTitle="Datos de Actividad" id="f3M-Wj-eGp">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="110" id="QTr-HD-bJE">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="110" id="QTr-HD-bJE">
                                         <rect key="frame" x="0.0" y="92" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTr-HD-bJE" id="b7j-fo-9TL">
@@ -110,8 +110,12 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5QY-k5-r22" appends="YES" id="wYL-Ng-ibg"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="99" id="nmY-jh-XiA">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="99" id="nmY-jh-XiA">
                                         <rect key="frame" x="0.0" y="202" width="600" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nmY-jh-XiA" id="3TD-c6-Ezc">
@@ -140,8 +144,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="9kx-Fj-hlT" secondAttribute="trailing" id="zCo-2T-8c4"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5QY-k5-r22" appends="YES" id="TTi-QE-rGZ"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="101" id="wOo-GZ-buM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="101" id="wOo-GZ-buM">
                                         <rect key="frame" x="0.0" y="301" width="600" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wOo-GZ-buM" id="IfC-Qg-GXZ">
@@ -174,11 +182,13 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="YS3-Iq-Cki" secondAttribute="trailing" constant="-8" id="rp8-JE-6re"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
                                         <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5QY-k5-r22" appends="YES" id="O0T-fw-CEZ"/>
                                             <segue destination="gO3-4X-ZpZ" kind="show" identifier="tableDias" id="EE6-4W-tZJ"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="100" id="b41-Yv-Rmo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="100" id="b41-Yv-Rmo">
                                         <rect key="frame" x="0.0" y="402" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b41-Yv-Rmo" id="k0o-tE-fC7">
@@ -209,6 +219,10 @@
                                                 <constraint firstItem="xs0-a1-LWd" firstAttribute="top" secondItem="k0o-tE-fC7" secondAttribute="topMargin" constant="10" id="pnN-6s-KHN"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5QY-k5-r22" appends="YES" id="tS6-qj-Dc8"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -240,6 +254,12 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZcF-Ww-cNK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="5QY-k5-r22">
+                    <connections>
+                        <action selector="quitaTeclado:" destination="2PD-QN-hiy" id="4cp-NX-66Z"/>
+                        <outlet property="delegate" destination="3TD-c6-Ezc" id="N6r-5d-4So"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <exit id="Dgv-Rz-qgE" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2690" y="-383"/>

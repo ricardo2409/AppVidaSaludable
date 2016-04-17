@@ -99,6 +99,13 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         }
         
     }
+    @IBAction func quitaTeclado(sender: AnyObject) {
+        self.view.endEditing(true)
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.tableView.endEditing(true)
+    }
     
     @IBAction func unwindDias(sender: UIStoryboardSegue){
         

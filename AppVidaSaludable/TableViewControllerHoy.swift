@@ -100,25 +100,6 @@ class TableViewControllerHoy: UITableViewController {
 //        UIApplication.sharedApplication().scheduleLocalNotification(notification)
         
         
-//        for i in 0...arregloActividadesHoy.count - 1 {
-//            self.alarm = AlarmKit.Alarm(hour:arregloActividadesHoy[i].hora, minute:arregloActividadesHoy[i].minutos, {
-//                debugPrint("Alarm triggered!")
-//                let alertView = SCLAlertView()
-//                alertView.showCloseButton = false
-//                
-//                alertView.addButton("Ya lo hice"){
-//                    //Hacer algo con este valor
-//                    print("Ya lo hice")
-//                    
-//                }
-//                alertView.addButton("No lo he hecho") {
-//                    //Hacer algo con este valor
-//                    print("No lo he hecho")
-//                }
-//                alertView.showSuccess(self.arregloActividadesHoy[i].nombre, subTitle: self.arregloActividadesHoy[i].categoria)
-//            })
-//
-//        }
         despliegaAlarma()
 
     }
