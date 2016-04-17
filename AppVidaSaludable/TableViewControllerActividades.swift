@@ -26,6 +26,7 @@ class TableViewControllerActividades: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         llenaArreglo()
+        print("viewDidLoadActividades")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -56,6 +57,9 @@ class TableViewControllerActividades: UITableViewController {
         
         let actividad5 = Actividad(nom: "Cena", cat: "Alimentación", h: 7, m: 3, frec: ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"])
         self.arregloActividades.append(actividad5)
+        
+        let actividad6 = Actividad(nom: "Salir a caminar", cat: "Actividad Física", h: 5, m: 9, frec: ["Saturday","Sunday"])
+        self.arregloActividades.append(actividad6)
         
         
     }

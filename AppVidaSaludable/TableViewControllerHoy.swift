@@ -15,15 +15,18 @@ class TableViewControllerHoy: UITableViewController {
     // REUSE IDENTIFIER: "idCelda"
     var arregloActividades: [Actividad] = []
     var arregloActividadesHoy: [Actividad] = []
+    var alarm: AlarmKit.Alarm!
+
     // MARK: - Funciones
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Hoy"
         let barViewControllers = self.tabBarController?.viewControllers
         let navigation = barViewControllers![1] as! UINavigationController
         let tvca = navigation.topViewController as! TableViewControllerActividades
         arregloActividades = tvca.arregloActividades
-        print("Viewdidload")
+        print("Viewdidloadhoy")
         print(arregloActividades)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -76,8 +79,74 @@ class TableViewControllerHoy: UITableViewController {
         }
         tableView.reloadData()
 
+        //Sort por hora y minutos
+        arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
+        print("arreglo sorteado por hora y minutos")
+        for i in 0...arregloActividadesHoy.count - 1 {
+            print(arregloActividadesHoy[i].nombre)
+        }
+        print(arregloActividadesHoy)
+        
+        
         //Poner alarmas aquí
         
+//        let notification = UILocalNotification()
+//        notification.alertBody = "Your Daily Motivation is Awaits"
+//        // You should set also the notification time zone otherwise the fire date is interpreted as an absolute GMT time
+//        notification.timeZone = NSTimeZone.localTimeZone()
+//        // you can simplify setting your fire date using dateByAddingTimeInterval
+//        notification.fireDate = NSDate().dateByAddingTimeInterval(1800)
+//        // set the notification property before scheduleLocalNotification
+//        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+        
+        
+//        for i in 0...arregloActividadesHoy.count - 1 {
+//            self.alarm = AlarmKit.Alarm(hour:arregloActividadesHoy[i].hora, minute:arregloActividadesHoy[i].minutos, {
+//                debugPrint("Alarm triggered!")
+//                let alertView = SCLAlertView()
+//                alertView.showCloseButton = false
+//                
+//                alertView.addButton("Ya lo hice"){
+//                    //Hacer algo con este valor
+//                    print("Ya lo hice")
+//                    
+//                }
+//                alertView.addButton("No lo he hecho") {
+//                    //Hacer algo con este valor
+//                    print("No lo he hecho")
+//                }
+//                alertView.showSuccess(self.arregloActividadesHoy[i].nombre, subTitle: self.arregloActividadesHoy[i].categoria)
+//            })
+//
+//        }
+        despliegaAlarma()
+
+    }
+    
+    func despliegaAlarma(){
+        for i in 0...arregloActividadesHoy.count - 1 {
+            self.alarm = AlarmKit.Alarm(hour:arregloActividadesHoy[i].hora, minute:arregloActividadesHoy[i].minutos, {
+                debugPrint("Alarm triggered!")
+                let alertView = SCLAlertView()
+                alertView.showCloseButton = false
+                
+                alertView.addButton("Ya lo hice"){
+                    //Hacer algo con este valor
+                    print("Ya lo hice")
+                    //Actividad se borra de la tabla
+                    self.arregloActividadesHoy.removeAtIndex(i)
+                    self.tableView.reloadData()
+                    
+                }
+                alertView.addButton("No lo he hecho") {
+                    //Hacer algo con este valor
+                    //Reprogramar la alarma
+                    print("No lo he hecho")
+                }
+                alertView.showSuccess(self.arregloActividadesHoy[i].nombre, subTitle: self.arregloActividadesHoy[i].categoria)
+            })
+            
+        }
 
     }
 
