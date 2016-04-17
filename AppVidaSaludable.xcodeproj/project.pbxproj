@@ -22,6 +22,7 @@
 		CE30B7B41CBDD20700B7A14E /* Actividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B31CBDD20700B7A14E /* Actividad.swift */; };
 		CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */; };
 		CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */; };
+		CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CE30B7B31CBDD20700B7A14E /* Actividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actividad.swift; sourceTree = "<group>"; };
 		CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerAgregar.swift; sourceTree = "<group>"; };
 		CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerDias.swift; sourceTree = "<group>"; };
+		CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadesCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			children = (
 				CE30B79F1CBD907100B7A14E /* AppDelegate.swift */,
 				CE30B7A51CBD907100B7A14E /* Main.storyboard */,
+				CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */,
 				CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */,
 				CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */,
 				1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */,
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE30B7B41CBDD20700B7A14E /* Actividad.swift in Sources */,
+				CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */,
 				CE30B7A01CBD907100B7A14E /* AppDelegate.swift in Sources */,
 				1C2496301CBDAA8C00CCE121 /* ViewControllerEditar.swift in Sources */,
 				1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */,

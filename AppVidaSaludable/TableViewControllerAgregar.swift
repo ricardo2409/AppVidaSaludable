@@ -112,12 +112,14 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     @IBAction func unwindDias(sender: UIStoryboardSegue){
         
       // aquí le quité el LET y funcionó
-        actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
-        print("Esto tiene actividadNueva")
-        print(actividadNueva.nombre)
-        print(actividadNueva.categoria)
-        print(actividadNueva.hora)
-        print(actividadNueva.frecuencia)
+//        actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
+//        print("Esto tiene actividadNueva")
+//        print(actividadNueva.nombre)
+//        print(actividadNueva.categoria)
+//        print(actividadNueva.hora)
+//        print(actividadNueva.frecuencia)
+//        actividadNueva.hora = self.hora
+//        actividadNueva.minutos = self.minutos
        
     }
     
@@ -151,13 +153,17 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         if pickerView == pickerViewHora {
             if component == 0{
                 self.hora = Int(arreglo[component][row] as! String)
+                print("hora es:" + String(self.hora))
             }else{
                 self.minutos = Int(arreglo[component][row] as! String)
+                print("minutos es:" + String(self.minutos))
             }
         }else{
             self.categoria = arregloCategorias[row]
         }
     }
+    
+    
 
     // MARK: - Table view data source
 
@@ -171,50 +177,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         return 4
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+   
 
     
     // MARK: - Navigation
@@ -226,17 +189,19 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         if segue.identifier != "tableDias"{
             if (sender as! UIBarButtonItem == botonGuardar){
             let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
-                print("Esto es lo que se manda de  actividadNueva")
+             
+//                actividadNueva.nombre = self.tfNombre.text!
+//                actividadNueva.categoria = self.categoria
+//                actividadNueva.frecuencia = self.frecuencia
+//                actividadNueva.hora = self.hora
+//                actividadNueva.minutos = self.minutos
+                 actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
                 
+                viewAgregar.nuevaActividad = actividadNueva
                 
-                print(self.actividadNueva.nombre)
-                print(self.actividadNueva.categoria)
-                print(self.actividadNueva.hora)
-                print(self.actividadNueva.frecuencia)
-            viewAgregar.nuevaActividad = actividadNueva
             }else{
                 //Cancelar
-                let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+              
                 
                 
             }

@@ -42,16 +42,16 @@ class TableViewControllerActividades: UITableViewController {
         
         //Pedir a base de datos las actividades guardadas! 
         
-        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: ["Lunes", "Martes"])
+        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: [".Monday", ".Tuesday"])
         self.arregloActividades.append(actividad)
         
-        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: ["Martes", "Jueves", "Sábado"])
+        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: [".Tuesday", ".Thursday", ".Saturday"])
         self.arregloActividades.append(actividad2)
         
-        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: ["Lunes", "Martes", "Miércoles"])
+        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: [".Monday", ".Tuesday", ".Wednesday"])
         self.arregloActividades.append(actividad3)
         
-        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: ["Viernes"])
+        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: [".Friday"])
         arregloActividades.append(actividad4)
         
         
@@ -93,10 +93,12 @@ class TableViewControllerActividades: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var nombreImagen: String!
-        let cell = tableView.dequeueReusableCellWithIdentifier("idCelda", forIndexPath: indexPath)
+        
+    let cell = tableView.dequeueReusableCellWithIdentifier("idCelda", forIndexPath: indexPath) as! ActividadesCell
 
-        cell.textLabel!.text = arregloActividades[indexPath.row].nombre
-        cell.detailTextLabel?.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
+        cell.lblDias.text! = ""
+        cell.lblNombre.text = arregloActividades[indexPath.row].nombre
+        cell.lblHora.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
         
         
         switch (arregloActividades[indexPath.row].categoria)
@@ -118,8 +120,37 @@ class TableViewControllerActividades: UITableViewController {
 
         }
 
-        cell.imageView?.image = UIImage(named: nombreImagen)
-
+        cell.imView?.image = UIImage(named: nombreImagen)
+        
+        for i in 0...arregloActividades[indexPath.row].frecuencia.count - 1 {
+        switch (arregloActividades[indexPath.row].frecuencia[i])
+        {
+        case ".Monday":
+            cell.lblDias.text! += "Lu "
+            break
+        case ".Tuesday":
+            cell.lblDias.text! += "Ma "
+            break
+        case ".Wednesday":
+            cell.lblDias.text! += "Mi "
+            break
+        case ".Thursday":
+            cell.lblDias.text! += "Ju "
+            break
+        case ".Friday":
+            cell.lblDias.text! += "Vi "
+            break
+        case ".Saturday":
+            cell.lblDias.text! += "Sa "
+            break
+        case ".Sunday":
+            cell.lblDias.text! += "Do"
+            break
+        default:
+            break
+            
+        }
+        }
         return cell
     }
 
