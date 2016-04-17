@@ -51,8 +51,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-//        print("Arreglodias en viewDidLoad")
-//        print(arregloDias)
+
         
         print("ArregloActividadesAgregar en viewDidLoad")
         for i in 0...arregloActividadesAgregar.count-1{
@@ -60,23 +59,16 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         }
         
     }
-    override func viewDidAppear(animated: Bool) {
-//        print("Arreglodias en viewDidAppear")
-//        print(arregloDias)
-        
-        print("ArregloActividadesAgregar en viewDidAppear")
-        print(arregloActividadesAgregar)
-        lbFrecuencia.text = ""
-        agregaDiasEnLabel()
-        
-    }
+   
    
     
     func agregaDiasEnLabel(){
         if arregloDias.count == 0{
             lbFrecuencia.text = ""
         }else {
+            lbFrecuencia.text = ""
             for i in 0...arregloDias.count - 1{
+                print(arregloDias[i])
                 switch (arregloDias[i]) {
                 case 0:
                     lbFrecuencia.text! += "Lu"
@@ -100,7 +92,6 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                     lbFrecuencia.text! += " Do"
                     break
                 default:
-                    lbFrecuencia.text! += ""
                     break
                     
                 }
@@ -111,16 +102,9 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     
     @IBAction func unwindDias(sender: UIStoryboardSegue){
         
-      // aquí le quité el LET y funcionó
-//        actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
-//        print("Esto tiene actividadNueva")
-//        print(actividadNueva.nombre)
-//        print(actividadNueva.categoria)
-//        print(actividadNueva.hora)
-//        print(actividadNueva.frecuencia)
-//        actividadNueva.hora = self.hora
-//        actividadNueva.minutos = self.minutos
-       
+        print("Esto es lo que recibo del ok")
+        print(arregloDias)
+        agregaDiasEnLabel()
     }
     
 
@@ -190,11 +174,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
             if (sender as! UIBarButtonItem == botonGuardar){
             let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
              
-//                actividadNueva.nombre = self.tfNombre.text!
-//                actividadNueva.categoria = self.categoria
-//                actividadNueva.frecuencia = self.frecuencia
-//                actividadNueva.hora = self.hora
-//                actividadNueva.minutos = self.minutos
+
                  actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
                 
                 viewAgregar.nuevaActividad = actividadNueva

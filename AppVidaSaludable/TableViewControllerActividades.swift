@@ -42,17 +42,20 @@ class TableViewControllerActividades: UITableViewController {
         
         //Pedir a base de datos las actividades guardadas! 
         
-        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: [".Monday", ".Tuesday"])
+        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: ["Monday", "Tuesday"])
         self.arregloActividades.append(actividad)
         
-        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: [".Tuesday", ".Thursday", ".Saturday"])
+        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: ["Tuesday", "Thursday", "Saturday"])
         self.arregloActividades.append(actividad2)
         
-        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: [".Monday", ".Tuesday", ".Wednesday"])
+        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: ["Monday", "Tuesday", "Wednesday"])
         self.arregloActividades.append(actividad3)
         
-        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: [".Friday"])
-        arregloActividades.append(actividad4)
+        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: ["Friday", "Sunday"])
+        self.arregloActividades.append(actividad4)
+        
+        let actividad5 = Actividad(nom: "Cena", cat: "Alimentación", h: 7, m: 3, frec: ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"])
+        self.arregloActividades.append(actividad5)
         
         
     }
@@ -98,7 +101,13 @@ class TableViewControllerActividades: UITableViewController {
 
         cell.lblDias.text! = ""
         cell.lblNombre.text = arregloActividades[indexPath.row].nombre
+        
+        if arregloActividades[indexPath.row].minutos < 10{
+            print("menor de 10")
+            cell.lblHora.text! = String(arregloActividades[indexPath.row].hora) + ":0" + String(arregloActividades[indexPath.row].minutos)
+        }else{
         cell.lblHora.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
+        }
         
         
         switch (arregloActividades[indexPath.row].categoria)
@@ -125,31 +134,34 @@ class TableViewControllerActividades: UITableViewController {
         for i in 0...arregloActividades[indexPath.row].frecuencia.count - 1 {
         switch (arregloActividades[indexPath.row].frecuencia[i])
         {
-        case ".Monday":
+        case "Monday":
             cell.lblDias.text! += "Lu "
             break
-        case ".Tuesday":
+        case "Tuesday":
             cell.lblDias.text! += "Ma "
             break
-        case ".Wednesday":
+        case "Wednesday":
             cell.lblDias.text! += "Mi "
             break
-        case ".Thursday":
+        case "Thursday":
             cell.lblDias.text! += "Ju "
             break
-        case ".Friday":
+        case "Friday":
             cell.lblDias.text! += "Vi "
             break
-        case ".Saturday":
+        case "Saturday":
             cell.lblDias.text! += "Sa "
             break
-        case ".Sunday":
+        case "Sunday":
             cell.lblDias.text! += "Do"
             break
         default:
             break
             
         }
+            if cell.lblDias.text! == "Lu Ma Mi Ju Vi Sa Do"{
+                cell.lblDias.text! = "Todos los días"
+            }
         }
         return cell
     }

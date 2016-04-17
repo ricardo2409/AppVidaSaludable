@@ -7,21 +7,78 @@
 //
 
 import UIKit
+import AlarmKit
+import SCLAlertView
 
 class TableViewControllerHoy: UITableViewController {
     
     // REUSE IDENTIFIER: "idCelda"
-    
+    var arregloActividades: [Actividad] = []
+    var arregloActividadesHoy: [Actividad] = []
     // MARK: - Funciones
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let barViewControllers = self.tabBarController?.viewControllers
+        let navigation = barViewControllers![1] as! UINavigationController
+        let tvca = navigation.topViewController as! TableViewControllerActividades
+        arregloActividades = tvca.arregloActividades
+        print("Viewdidload")
+        print(arregloActividades)
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        
+        let fecha: NSDate = NSDate()
+        let formato: NSDateFormatter = NSDateFormatter()
+        formato.dateFormat = "EEEE"
+        let dia: String = formato.stringFromDate(fecha)
+        print(dia)
+        
+        //        for i in 0...arregloActividadesHoy.count - 1
+        //        {
+       
+       
+      
+        }
+    
+    override func viewDidAppear(animated: Bool) {
+        print("Viewdidappear")
+        
+        let fecha: NSDate = NSDate()
+        let formato: NSDateFormatter = NSDateFormatter()
+        formato.dateFormat = "EEEE"
+        let dia: String = formato.stringFromDate(fecha)
+        print(dia)
+        
+        let barViewControllers = self.tabBarController?.viewControllers
+        let navigation = barViewControllers![1] as! UINavigationController
+        let tvca = navigation.topViewController as! TableViewControllerActividades
+        arregloActividades = tvca.arregloActividades
+        print(arregloActividades)
+        
+        //Borra lo que ya tenía antes
+        arregloActividadesHoy = []
+        print("Las actividades de hoy")
+        for i in 0...arregloActividades.count - 1 {
+            for j in 0...arregloActividades[i].frecuencia.count - 1{
+                if arregloActividades[i].frecuencia[j] == dia{
+                    arregloActividadesHoy.append(arregloActividades[i])
+                    print(arregloActividades[i].nombre)
+
+                    
+                }
+            }
+        }
+        tableView.reloadData()
+
+        //Poner alarmas aquí
+        
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,23 +90,54 @@ class TableViewControllerHoy: UITableViewController {
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+       
+        return arregloActividadesHoy.count
+        
     }
 
-    /*
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+        var nombreImagen: String!
+        let cell = tableView.dequeueReusableCellWithIdentifier("idCelda", forIndexPath: indexPath)
 
         // Configure the cell...
-
+        cell.textLabel?.text = arregloActividadesHoy[indexPath.row].nombre
+        if arregloActividadesHoy[indexPath.row].minutos < 10{
+            print("menor de 10")
+            cell.detailTextLabel!.text! = String(arregloActividadesHoy[indexPath.row].hora) + ":0" + String(arregloActividadesHoy[indexPath.row].minutos)
+        }else{
+            cell.detailTextLabel!.text = String(arregloActividadesHoy[indexPath.row].hora) + ":" + String(arregloActividadesHoy[indexPath.row].minutos)
+        }
+        
+        switch (arregloActividadesHoy[indexPath.row].categoria)
+        {
+        case "Hidratación":
+            nombreImagen = "vaso"
+            break
+        case "Alimentación":
+            nombreImagen = "manzanaTrans"
+            break
+        case "Actividad Física":
+            nombreImagen = "ejercicio"
+            break
+        case "Actividad Social":
+            nombreImagen = "amigos2"
+            break
+        default:
+            break
+            
+        }
+        
+        cell.imageView!.image = UIImage(named: nombreImagen)
+        
         return cell
     }
-    */
+ 
 
     /*
     // Override to support conditional editing of the table view.

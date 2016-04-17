@@ -123,30 +123,30 @@ class TableViewControllerDias: UITableViewController {
         for i in 0...arregloDias.count - 1{
             switch (arregloDias[i]) {
             case 0:
-                arregloFrecuencias.append(".Monday")
+                arregloFrecuencias.append("Monday")
                 break
             case 1:
-                arregloFrecuencias.append(".Tuesday")
+                arregloFrecuencias.append("Tuesday")
                 
                 break
             case 2:
-                arregloFrecuencias.append(".Wednesday")
+                arregloFrecuencias.append("Wednesday")
                 
                 break
             case 3:
-                arregloFrecuencias.append(".Thursday")
+                arregloFrecuencias.append("Thursday")
                 
                 break
             case 4:
-                arregloFrecuencias.append(".Friday")
+                arregloFrecuencias.append("Friday")
                 
                 break
             case 5:
-                arregloFrecuencias.append(".Saturday")
+                arregloFrecuencias.append("Saturday")
                 
                 break
             case 6:
-                arregloFrecuencias.append(".Sunday")
+                arregloFrecuencias.append("Sunday")
                 
                 break
             default:

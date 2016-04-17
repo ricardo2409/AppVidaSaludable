@@ -35,6 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        
+        //Empieza en la segunda tab mientras se crea la base de datos y se carga la información desde ahí
+        let tabBarController = self.window?.rootViewController as! UITabBarController
+        tabBarController.selectedIndex = 1
     }
 
     func applicationWillTerminate(application: UIApplication) {
