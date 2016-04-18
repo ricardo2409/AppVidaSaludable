@@ -16,6 +16,7 @@ class TableViewControllerActividades: UITableViewController {
     
     var arregloActividades : [Actividad] = []
     var nuevaActividad : Actividad!
+    var control: Bool = false
     // MARK: - Outlets
 
     @IBOutlet weak var botonAgregar: UIBarButtonItem!
@@ -65,18 +66,20 @@ class TableViewControllerActividades: UITableViewController {
     }
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){
             print("Estoy en unwindAgregar")
-        if nuevaActividad != nil{
-            print("Esto tiene actividadAUsar en el unwindAgregar antes de meterse al arreglo")
-            print(nuevaActividad.nombre)
-            print(nuevaActividad.categoria)
-            print(nuevaActividad.hora)
-            print(nuevaActividad.frecuencia)
+        if control{
+            if nuevaActividad != nil{
+                print("Esto tiene actividadAUsar en el unwindAgregar antes de meterse al arreglo")
+                print(nuevaActividad.nombre)
+                print(nuevaActividad.categoria)
+                print(nuevaActividad.hora)
+                print(nuevaActividad.frecuencia)
 
         
-            arregloActividades.append(nuevaActividad)
-            self.tableView.reloadData()
-        }else{
-            print("es nil")
+                arregloActividades.append(nuevaActividad)
+                self.tableView.reloadData()
+            }else{
+                print("es nil")
+            }
         }
         
     }

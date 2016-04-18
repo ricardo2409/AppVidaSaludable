@@ -179,17 +179,19 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         // Pass the selected object to the new view controller.
         if segue.identifier != "tableDias"{
             if (sender as! UIBarButtonItem == botonGuardar){
-            let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+                let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
              
 
                  actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
-                
+                viewAgregar.control = true
                 viewAgregar.nuevaActividad = actividadNueva
                 
             }else{
                 //Cancelar
               
-                
+                let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+                viewAgregar.control = false
+
                 
             }
             
