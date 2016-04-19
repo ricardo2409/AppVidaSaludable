@@ -17,6 +17,7 @@ class TableViewControllerHoy: UITableViewController {
     var arregloActividadesHoy: [Actividad] = []
     var alarm: AlarmKit.Alarm!
 
+    @IBOutlet weak var navigationbar: UINavigationBar!
     // MARK: - Funciones
 
     override func viewDidLoad() {
@@ -45,9 +46,29 @@ class TableViewControllerHoy: UITableViewController {
         //        for i in 0...arregloActividadesHoy.count - 1
         //        {
        
-       
+       diaEnTitulo(dia)
       
         }
+    func diaEnTitulo(dia : String){
+        switch dia {
+        case "Monday":
+            self.navigationbar.topItem?.title = "Lunes"
+        case "Tuesday":
+            self.navigationbar.topItem?.title = "Martes"
+        case "Wednesday":
+            self.navigationbar.topItem?.title = "Miércoles"
+        case "Thursday":
+            self.navigationbar.topItem?.title = "Jueves"
+        case "Friday":
+            self.navigationbar.topItem?.title = "Viernes"
+        case "Saturday":
+            self.navigationbar.topItem?.title = "Sábado"
+        case "Sunday":
+            self.navigationbar.topItem?.title = "Domingo"
+        default:
+            break
+        }
+    }
     
     override func viewDidAppear(animated: Bool) {
         print("Viewdidappear")

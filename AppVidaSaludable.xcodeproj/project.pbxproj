@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */; };
-		1C2496301CBDAA8C00CCE121 /* ViewControllerEditar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24962F1CBDAA8C00CCE121 /* ViewControllerEditar.swift */; };
 		1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */; };
 		1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */; };
 		1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */; };
@@ -28,7 +27,6 @@
 /* Begin PBXFileReference section */
 		133E2D7781BE4AE5FE701607 /* Pods-AppVidaSaludable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVidaSaludable.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppVidaSaludable/Pods-AppVidaSaludable.release.xcconfig"; sourceTree = "<group>"; };
 		1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAgregar.swift; sourceTree = "<group>"; };
-		1C24962F1CBDAA8C00CCE121 /* ViewControllerEditar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerEditar.swift; sourceTree = "<group>"; };
 		1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerConfig.swift; sourceTree = "<group>"; };
 		1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInicio.swift; sourceTree = "<group>"; };
 		1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerRoot.swift; sourceTree = "<group>"; };
@@ -96,7 +94,6 @@
 				CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */,
 				CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */,
 				1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */,
-				1C24962F1CBDAA8C00CCE121 /* ViewControllerEditar.swift */,
 				1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */,
 				1CADCDE31CBD9FEE00092481 /* TableViewControllerActividades.swift */,
 				CE30B7B31CBDD20700B7A14E /* Actividad.swift */,
@@ -243,7 +240,6 @@
 				CE30B7B41CBDD20700B7A14E /* Actividad.swift in Sources */,
 				CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */,
 				CE30B7A01CBD907100B7A14E /* AppDelegate.swift in Sources */,
-				1C2496301CBDAA8C00CCE121 /* ViewControllerEditar.swift in Sources */,
 				1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */,
 				1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */,
 				1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */,

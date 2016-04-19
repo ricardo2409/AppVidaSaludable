@@ -14,9 +14,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="oZJ-90-6cH">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Title" id="o1p-fT-9s8"/>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="idCelda" textLabel="wRO-G0-UH5" detailTextLabel="BMz-Vi-U2e" rowHeight="109" style="IBUITableViewCellStyleSubtitle" id="whc-gh-Dtd">
-                                <rect key="frame" x="0.0" y="28" width="600" height="109"/>
+                                <rect key="frame" x="0.0" y="72" width="600" height="109"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="whc-gh-Dtd" id="omU-4r-VfB">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="108"/>
@@ -46,6 +53,9 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Hoy" image="calendar" selectedImage="calendar" id="pey-gE-5Df"/>
+                    <connections>
+                        <outlet property="navigationbar" destination="oZJ-90-6cH" id="PlN-Xd-7Nm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5I4-Ph-Y88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
