@@ -16,39 +16,10 @@ class TableViewControllerHoy: UITableViewController {
     var arregloActividades: [Actividad] = []
     var arregloActividadesHoy: [Actividad] = []
     var alarm: AlarmKit.Alarm!
-
+    var diaDeHoy : String!
     @IBOutlet weak var navigationbar: UINavigationBar!
     // MARK: - Funciones
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.title = "Hoy"
-        let barViewControllers = self.tabBarController?.viewControllers
-        let navigation = barViewControllers![1] as! UINavigationController
-        let tvca = navigation.topViewController as! TableViewControllerActividades
-        arregloActividades = tvca.arregloActividades
-        print("Viewdidloadhoy")
-        print(arregloActividades)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
-        
-        let fecha: NSDate = NSDate()
-        let formato: NSDateFormatter = NSDateFormatter()
-        formato.dateFormat = "EEEE"
-        let dia: String = formato.stringFromDate(fecha)
-        print(dia)
-        
-        //        for i in 0...arregloActividadesHoy.count - 1
-        //        {
-       
-       diaEnTitulo(dia)
-      
-        }
+    
     func diaEnTitulo(dia : String){
         switch dia {
         case "Monday":
@@ -69,37 +40,89 @@ class TableViewControllerHoy: UITableViewController {
             break
         }
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        print("Viewdidappear")
-        
+    func getDiaDeHoy(){
         let fecha: NSDate = NSDate()
         let formato: NSDateFormatter = NSDateFormatter()
         formato.dateFormat = "EEEE"
-        let dia: String = formato.stringFromDate(fecha)
-        print(dia)
-        
+        diaDeHoy = formato.stringFromDate(fecha)
+        print(diaDeHoy)
+    }
+    func getArregloActividades(){
         let barViewControllers = self.tabBarController?.viewControllers
         let navigation = barViewControllers![1] as! UINavigationController
         let tvca = navigation.topViewController as! TableViewControllerActividades
         arregloActividades = tvca.arregloActividades
         print(arregloActividades)
-        
+    }
+    func getArreloActividadesHoy(){
         //Borra lo que ya tenía antes
         arregloActividadesHoy = []
         print("Las actividades de hoy")
         for i in 0...arregloActividades.count - 1 {
             for j in 0...arregloActividades[i].frecuencia.count - 1{
-                if arregloActividades[i].frecuencia[j] == dia{
+                if arregloActividades[i].frecuencia[j] == diaDeHoy{
                     arregloActividadesHoy.append(arregloActividades[i])
                     print(arregloActividades[i].nombre)
-
+                    
                     
                 }
             }
         }
-        tableView.reloadData()
-
+    }
+    func getMonth() -> Int{
+        let fecha: NSDate = NSDate()
+        let formato7: NSDateFormatter = NSDateFormatter()
+        formato7.dateFormat = "MM"
+        let month: String = formato7.stringFromDate(fecha)
+        print("este es el mes")
+        print(month)
+        return Int(month)!
+    }
+    func getYear() -> Int{
+        let fecha: NSDate = NSDate()
+        let formato5: NSDateFormatter = NSDateFormatter()
+        formato5.dateFormat = "yyyy"
+        let year: String = formato5.stringFromDate(fecha)
+        print("Este es el año")
+        print(year)
+        return Int(year)!
+    }
+    func getDay() -> Int{
+        let fecha: NSDate = NSDate()
+        let formato6: NSDateFormatter = NSDateFormatter()
+        formato6.dateFormat = "dd"
+        let day: String = formato6.stringFromDate(fecha)
+        print(day)
+        return Int(day)!
+        
+    }
+    func creaNotificaciones(){
+        for i in 0...arregloActividadesHoy.count - 1{
+            
+            var dateComp: NSDateComponents = NSDateComponents()
+            
+            dateComp.year = getYear()
+            dateComp.month = getMonth()
+            dateComp.day = getDay()
+            dateComp.hour = arregloActividadesHoy[i].hora
+            dateComp.minute = arregloActividadesHoy[i].minutos
+            
+            
+            dateComp.timeZone = NSTimeZone.systemTimeZone()
+            
+            let calendar : NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+            let date : NSDate = calendar.dateFromComponents(dateComp)!
+            let notification : UILocalNotification = UILocalNotification()
+            notification.category = "First_Cat"
+            notification.alertBody = arregloActividadesHoy[i].nombre
+            notification.fireDate = date
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            
+            
+            
+        }
+    }
+    func sortArregloActividadesHoy(){
         //Sort por hora y minutos
         arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
         print("arreglo sorteado por hora y minutos")
@@ -107,51 +130,67 @@ class TableViewControllerHoy: UITableViewController {
             print(arregloActividadesHoy[i].nombre)
         }
         print(arregloActividadesHoy)
-        
-        
-        //Poner alarmas aquí
-        
-//        let notification = UILocalNotification()
-//        notification.alertBody = "Your Daily Motivation is Awaits"
-//        // You should set also the notification time zone otherwise the fire date is interpreted as an absolute GMT time
-//        notification.timeZone = NSTimeZone.localTimeZone()
-//        // you can simplify setting your fire date using dateByAddingTimeInterval
-//        notification.fireDate = NSDate().dateByAddingTimeInterval(1800)
-//        // set the notification property before scheduleLocalNotification
-//        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-        
-        
-        despliegaAlarma()
-
     }
     
-    func despliegaAlarma(){
-        for i in 0...arregloActividadesHoy.count - 1 {
-            self.alarm = AlarmKit.Alarm(hour:arregloActividadesHoy[i].hora, minute:arregloActividadesHoy[i].minutos, {
-                debugPrint("Alarm triggered!")
-                let alertView = SCLAlertView()
-                alertView.showCloseButton = false
-                
-                alertView.addButton("Ya lo hice"){
-                    //Hacer algo con este valor
-                    print("Ya lo hice")
-                    //Actividad se borra de la tabla
-                    self.arregloActividadesHoy.removeAtIndex(i)
-                    self.tableView.reloadData()
-                    
-                }
-                alertView.addButton("No lo he hecho") {
-                    //Hacer algo con este valor
-                    //Reprogramar la alarma
-                    print("No lo he hecho")
-                }
-                alertView.showSuccess(self.arregloActividadesHoy[i].nombre, subTitle: self.arregloActividadesHoy[i].categoria)
-            })
-            
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Hoy"
+        getArregloActividades()
+        print("Viewdidloadhoy")
+        print(arregloActividades)
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
 
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
+        
+        let fecha: NSDate = NSDate()
+        let formato: NSDateFormatter = NSDateFormatter()
+        formato.dateFormat = "EEEE"
+        let dia: String = formato.stringFromDate(fecha)
+        print(dia)
+        
+      
+       
+        diaEnTitulo(dia)
+      
     }
+    
+    
 
+    
+    override func viewDidAppear(animated: Bool) {
+        print("Viewdidappear")
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.uno(_:)), name: "actionOnePressed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.dos(_:)), name: "actionTwoPressed", object: nil)
+        
+        getDiaDeHoy()
+        getArregloActividades()
+        getArreloActividadesHoy()
+        tableView.reloadData()
+        sortArregloActividadesHoy()
+        //Crear notificaciones aquí
+        creaNotificaciones()
+        
+    }
+    func uno(notification : NSNotification){
+        print("action uno")
+        //Borrar actividad
+        //No me regresa a la app
+        
+    }
+    
+    func dos(notification : NSNotification){
+        print("action dos")
+        //Snooze de 10 min
+        //Máximo 3 snoozes
+        //Me regresa a la app
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -179,7 +218,6 @@ class TableViewControllerHoy: UITableViewController {
         // Configure the cell...
         cell.textLabel?.text = arregloActividadesHoy[indexPath.row].nombre
         if arregloActividadesHoy[indexPath.row].minutos < 10{
-            print("menor de 10")
             cell.detailTextLabel!.text! = String(arregloActividadesHoy[indexPath.row].hora) + ":0" + String(arregloActividadesHoy[indexPath.row].minutos)
         }else{
             cell.detailTextLabel!.text = String(arregloActividadesHoy[indexPath.row].hora) + ":" + String(arregloActividadesHoy[indexPath.row].minutos)

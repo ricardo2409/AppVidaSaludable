@@ -22,6 +22,7 @@
 		CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */; };
 		CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */; };
 		CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */; };
+		CED6F5B11CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerAgregar.swift; sourceTree = "<group>"; };
 		CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerDias.swift; sourceTree = "<group>"; };
 		CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadesCell.swift; sourceTree = "<group>"; };
+		CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewControllerEditarActividad.swift; path = ../TableViewControllerEditarActividad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				CE30B79F1CBD907100B7A14E /* AppDelegate.swift */,
+				CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */,
 				CE30B7A51CBD907100B7A14E /* Main.storyboard */,
 				CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */,
 				CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */,
@@ -237,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CED6F5B11CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift in Sources */,
 				CE30B7B41CBDD20700B7A14E /* Actividad.swift in Sources */,
 				CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */,
 				CE30B7A01CBD907100B7A14E /* AppDelegate.swift in Sources */,

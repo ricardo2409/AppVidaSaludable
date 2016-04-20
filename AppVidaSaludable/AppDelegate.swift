@@ -16,13 +16,63 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let notiftypes:UIUserNotificationType = UIUserNotificationType.Alert.union(UIUserNotificationType.Badge).union(UIUserNotificationType.Sound)
+        let firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        firstAction.identifier = "First_Action"
+        firstAction.title = "Sí"
+        firstAction.activationMode = UIUserNotificationActivationMode.Background
+        firstAction.destructive = true
+        firstAction.authenticationRequired = false
         
-        let notifSettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: notiftypes, categories: nil)
         
-        UIApplication.sharedApplication().registerUserNotificationSettings(notifSettings)
+        let secondAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        secondAction.identifier = "Second_Action"
+        secondAction.title = "No"
+        secondAction.activationMode = UIUserNotificationActivationMode.Foreground
+        secondAction.destructive = false
+        secondAction.authenticationRequired = false
+        
+        let thirdAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        thirdAction.identifier = "Third_Action"
+        thirdAction.title = "Third Action"
+        thirdAction.activationMode = UIUserNotificationActivationMode.Background
+        thirdAction.destructive = false
+        thirdAction.authenticationRequired = false
+        
+        //categories
+        
+        let firstCategory : UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        firstCategory.identifier = "First_Cat"
+        let defaultActions:NSArray = [firstAction, secondAction, thirdAction]
+        let minimalActions:NSArray = [firstAction, secondAction]
+        
+        firstCategory.setActions((defaultActions as! [UIUserNotificationAction]), forContext: UIUserNotificationActionContext.Default)
+        firstCategory.setActions((minimalActions as! [UIUserNotificationAction]), forContext: UIUserNotificationActionContext.Minimal)
+        
+        //NSSet of all cats
+        
+        let categories: NSSet = NSSet(object: firstCategory)
+        
+        
+        let types: UIUserNotificationType = UIUserNotificationType.Alert.union(UIUserNotificationType.Badge).union(UIUserNotificationType.Sound)
+        let mySettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
+        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
+
         
         return true
+    }
+    
+    func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        if identifier == "First_Action"{
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil)
+            
+        }else if identifier == "Second_Action"{
+            
+            NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
+            
+            
+        }
+        completionHandler()
     }
 
     func applicationWillResignActive(application: UIApplication) {

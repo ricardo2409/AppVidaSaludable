@@ -13,10 +13,12 @@ import SCLAlertView
 class TableViewControllerActividades: UITableViewController {
     
     // REUSE IDENTIFIER: "idCelda"
+    @IBOutlet weak var tableview: UITableView!
     
     var arregloActividades : [Actividad] = []
     var nuevaActividad : Actividad!
     var control: Bool = false
+    var actividadAMandar: Actividad!
     // MARK: - Outlets
 
     @IBOutlet weak var botonAgregar: UIBarButtonItem!
@@ -26,6 +28,8 @@ class TableViewControllerActividades: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tableview.allowsSelectionDuringEditing = true
         llenaArreglo()
         print("viewDidLoadActividades")
         // Uncomment the following line to preserve selection between presentations
@@ -177,7 +181,7 @@ class TableViewControllerActividades: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-//        prepareForSegue(<#T##segue: UIStoryboardSegue##UIStoryboardSegue#>, sender: <#T##AnyObject?#>)
+       
         return true
     }
     
@@ -199,21 +203,15 @@ class TableViewControllerActividades: UITableViewController {
         }    
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Estoy en el didSelectRowAtIndexPath")
+        actividadAMandar = arregloActividades[indexPath.row]
+        print("esto es actividad a mandar: ")
+        print(actividadAMandar)
+        
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+   
 
     
     // MARK: - Navigation
@@ -222,9 +220,17 @@ class TableViewControllerActividades: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if (sender as! UIBarButtonItem == botonAgregar){
+        if (sender as? UIBarButtonItem == botonAgregar){
             let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
             viewAgregar.arregloActividadesAgregar = self.arregloActividades
+        }else{
+            let viewEditar: TableViewControllerEditarActividad = segue.destinationViewController as! TableViewControllerEditarActividad
+            let indexpath = tableview.indexPathForSelectedRow
+            print(indexpath!.row)
+            actividadAMandar = arregloActividades[indexpath!.row]
+            viewEditar.activididadRecibida = self.actividadAMandar
+            print("Esto es lo que mandé cuando selecciono la cell")
+            print(self.actividadAMandar.nombre)
         }
     }
     

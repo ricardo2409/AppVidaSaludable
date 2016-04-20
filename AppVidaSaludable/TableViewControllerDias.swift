@@ -117,11 +117,7 @@ class TableViewControllerDias: UITableViewController {
         //Sort arregloDias para que no importe el orden en el que se seleccionen los días
         
         arregloDias.sortInPlace()
-       
-        
-        
-        
-        for i in 0...arregloDias.count - 1{
+       for i in 0...arregloDias.count - 1{
             switch (arregloDias[i]) {
             case 0:
                 arregloFrecuencias.append("Monday")
@@ -155,10 +151,6 @@ class TableViewControllerDias: UITableViewController {
                 
             }
         }
-
-        
-        
-        
         if (sender as! UIButton == botonOk){
             let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
             viewAgregar.arregloDias = self.arregloDias
