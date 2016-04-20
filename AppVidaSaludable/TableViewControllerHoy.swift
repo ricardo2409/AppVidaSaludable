@@ -92,11 +92,13 @@ class TableViewControllerHoy: UITableViewController {
         let formato6: NSDateFormatter = NSDateFormatter()
         formato6.dateFormat = "dd"
         let day: String = formato6.stringFromDate(fecha)
+        print("Este es el dia")
         print(day)
         return Int(day)!
         
     }
     func creaNotificaciones(){
+        
         for i in 0...arregloActividadesHoy.count - 1{
             
             var dateComp: NSDateComponents = NSDateComponents()
@@ -106,17 +108,21 @@ class TableViewControllerHoy: UITableViewController {
             dateComp.day = getDay()
             dateComp.hour = arregloActividadesHoy[i].hora
             dateComp.minute = arregloActividadesHoy[i].minutos
-            
-            
             dateComp.timeZone = NSTimeZone.systemTimeZone()
             
             let calendar : NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
             let date : NSDate = calendar.dateFromComponents(dateComp)!
             let notification : UILocalNotification = UILocalNotification()
             notification.category = "First_Cat"
+            notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertBody = arregloActividadesHoy[i].nombre
             notification.fireDate = date
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            print("Esta es la notificacion que creé ")
+            print(arregloActividadesHoy[i].nombre)
+            print(arregloActividadesHoy[i].hora)
+            print(arregloActividadesHoy[i].minutos)
+
             
             
             
