@@ -9,6 +9,7 @@
 import UIKit
 import AlarmKit
 import SCLAlertView
+import RealmSwift
 
 class TableViewControllerActividades: UITableViewController {
     
@@ -46,32 +47,23 @@ class TableViewControllerActividades: UITableViewController {
         //Pedir a base de datos las actividades guardadas! 
         
         
-        let Acts = String(uiRealm.objects(Actividades).filter("Categoria = 'Actividad Social'"))
+        var Acts:Results<Actividades>?
+        Acts = uiRealm.objects(Actividades)
+        let cont = (Acts?.count)
         
         
-        print(Acts)
+        for i in 0...cont! - 1
+        {
+            let Nombre = String(Acts![i].Nombre)
+            let Categoria = String(Acts![i].Categoria)
+            let Frecuencia = [""]
+            let Hora = Int(Acts![i].Hora)
+            let Min = Int(Acts![i].Minutos)
+            let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: Frecuencia)
+            self.arregloActividades.append(actividad)
+        }
         
-        
-        
-        
-        let actividad = Actividad(nom: Acts, cat: "Hidratación", h: 7, m: 25, frec: ["Monday", "Tuesday"])
-        self.arregloActividades.append(actividad)
-        
-        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: ["Tuesday", "Thursday", "Saturday"])
-        self.arregloActividades.append(actividad2)
-        
-        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: ["Monday", "Tuesday", "Wednesday"])
-        self.arregloActividades.append(actividad3)
-        
-        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: ["Friday", "Sunday"])
-        self.arregloActividades.append(actividad4)
-        
-        let actividad5 = Actividad(nom: "Cena", cat: "Alimentación", h: 7, m: 3, frec: ["Monday", "Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"])
-        self.arregloActividades.append(actividad5)
-        
-        let actividad6 = Actividad(nom: "Salir a caminar", cat: "Actividad Física", h: 5, m: 9, frec: ["Saturday","Sunday"])
-        self.arregloActividades.append(actividad6)
-        
+ 
         
     }
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){
