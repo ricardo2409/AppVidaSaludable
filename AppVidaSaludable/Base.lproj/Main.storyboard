@@ -416,9 +416,6 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="QtG-QW-8gb" secondAttribute="trailing" constant="41" id="XI5-QT-rR1"/>
                                         </constraints>
-                                        <connections>
-                                            <segue destination="gO3-4X-ZpZ" kind="show" identifier="tableDiasEditar" id="lGb-K0-SVh"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="126" id="tF5-8g-6Mc">
                                         <rect key="frame" x="0.0" y="415" width="600" height="126"/>
@@ -692,7 +689,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PbB-LI-3ZQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="IEY-WQ-k9y" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3380" y="-47"/>
+            <point key="canvasLocation" x="3482" y="-383"/>
         </scene>
         <!--Actividades-->
         <scene sceneID="SRF-B3-5Pe">
@@ -1295,7 +1292,4 @@
         <image name="calendar" width="30" height="30"/>
         <image name="list" width="30" height="30"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="lGb-K0-SVh"/>
-    </inferredMetricsTieBreakers>
 </document>
