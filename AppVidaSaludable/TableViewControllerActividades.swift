@@ -39,11 +39,22 @@ class TableViewControllerActividades: UITableViewController {
 
     }
     
+    
+    
     func llenaArreglo(){
         
         //Pedir a base de datos las actividades guardadas! 
         
-        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: ["Monday", "Tuesday"])
+        
+        let Acts = String(uiRealm.objects(Actividades).filter("Categoria = 'Actividad Social'"))
+        
+        
+        print(Acts)
+        
+        
+        
+        
+        let actividad = Actividad(nom: Acts, cat: "Hidratación", h: 7, m: 25, frec: ["Monday", "Tuesday"])
         self.arregloActividades.append(actividad)
         
         let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: ["Tuesday", "Thursday", "Saturday"])

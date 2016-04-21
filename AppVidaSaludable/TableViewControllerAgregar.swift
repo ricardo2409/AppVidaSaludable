@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -32,6 +33,9 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     var frecuencia: [String]!
     var arregloActividadesAgregar : [Actividad]!
     var actividadNueva: Actividad!
+    
+    let Act = Actividades()
+    
     // MARK: - Funciones
     
     override func viewDidLoad() {
@@ -57,6 +61,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         for i in 0...arregloActividadesAgregar.count-1{
             print(arregloActividadesAgregar[i].nombre)
         }
+        
+        print(Realm.Configuration.defaultConfiguration.path!)
         
     }
    
@@ -181,10 +187,25 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
             if (sender as! UIBarButtonItem == botonGuardar){
             let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
              
+                
+                Act.Nombre = tfNombre.text!
+                Act.Categoria = categoria
+                Act.Frecuencia = lbFrecuencia.text!
+                Act.Hora = hora
+                Act.Minutos = minutos
 
-                 actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
+                actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: ["Lu"])
                 
                 viewAgregar.nuevaActividad = actividadNueva
+                
+                
+                
+                
+                
+                try! uiRealm.write{
+                    uiRealm.add(Act)
+                }
+
                 
             }else{
                 //Cancelar
