@@ -28,14 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondAction.identifier = "Second_Action"
         secondAction.title = "No"
         secondAction.activationMode = UIUserNotificationActivationMode.Foreground
-        secondAction.destructive = false
+        secondAction.destructive = true
         secondAction.authenticationRequired = false
         
         let thirdAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         thirdAction.identifier = "Third_Action"
         thirdAction.title = "Third Action"
         thirdAction.activationMode = UIUserNotificationActivationMode.Background
-        thirdAction.destructive = false
+        thirdAction.destructive = true
         thirdAction.authenticationRequired = false
         
         //categories

@@ -48,6 +48,7 @@ class TableViewControllerDias: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         arregloDias.append(indexPath.row)
@@ -56,8 +57,19 @@ class TableViewControllerDias: UITableViewController {
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.None
-        arregloDias.removeAtIndex(indexPath.row)
+        
+        
+        arregloDias.removeAtIndex(buscaValor(arregloDias, valor: indexPath.row))
         print(arregloDias)
+    }
+    
+    func buscaValor(arreglo : [Int], valor : Int) -> Int{
+        for i in 0...arreglo.count - 1 {
+            if arreglo[i] == valor{
+                return i
+            }
+        }
+        return 0
     }
 
     /*
