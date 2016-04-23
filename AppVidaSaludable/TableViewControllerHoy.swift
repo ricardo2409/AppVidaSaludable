@@ -45,6 +45,24 @@ class TableViewControllerHoy: UITableViewController {
         let formato: NSDateFormatter = NSDateFormatter()
         formato.dateFormat = "EEEE"
         diaDeHoy = formato.stringFromDate(fecha)
+        switch diaDeHoy {
+        case "Monday":
+            diaDeHoy = "Lunes"
+        case "Tuesday":
+            diaDeHoy = "Martes"
+        case "Wednesday":
+            diaDeHoy = "Miércoles"
+        case "Thursday":
+            diaDeHoy = "Jueves"
+        case "Friday":
+            diaDeHoy = "Viernes"
+        case "Saturday":
+            diaDeHoy = "Sábado"
+        case "Sunday":
+            diaDeHoy = "Domingo"
+        default:
+            break
+        }
         print(diaDeHoy)
     }
     func getArregloActividades(){
