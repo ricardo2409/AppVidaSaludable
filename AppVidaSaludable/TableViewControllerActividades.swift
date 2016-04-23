@@ -51,18 +51,22 @@ class TableViewControllerActividades: UITableViewController {
         Acts = uiRealm.objects(Actividades)
         let cont = (Acts?.count)
         
-        
-        for i in 0...cont! - 1
+        if(cont > 0)
         {
-            let Nombre = String(Acts![i].Nombre)
-            let Categoria = String(Acts![i].Categoria)
-            let Frecuencia = [""]
-            let Hora = Int(Acts![i].Hora)
-            let Min = Int(Acts![i].Minutos)
-            let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: Frecuencia)
-            self.arregloActividades.append(actividad)
+            for i in 0...cont! - 1
+            {
+                let Nombre = String(Acts![i].Nombre)
+                let Categoria = String(Acts![i].Categoria)
+                let Frecuencia = [Acts![i].Frecuencia]
+                let Hora = Int(Acts![i].Hora)
+                let Min = Int(Acts![i].Minutos)
+                let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: Frecuencia)
+                self.arregloActividades.append(actividad)
+            }
         }
         
+        let Frecuencia = [Acts![1].Frecuencia]
+        print([Frecuencia])
  
         
     }

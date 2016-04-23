@@ -57,10 +57,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
         
-        print("ArregloActividadesAgregar en viewDidLoad")
-        for i in 0...arregloActividadesAgregar.count-1{
-            print(arregloActividadesAgregar[i].nombre)
-        }
+        
         
         print(Realm.Configuration.defaultConfiguration.path!)
         
@@ -194,14 +191,9 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                 Act.Hora = hora
                 Act.Minutos = minutos
 
-                actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: ["Lu"])
-                
+                actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: [Act.Frecuencia])
                 viewAgregar.nuevaActividad = actividadNueva
-                
-                
-                
-                
-                
+ 
                 try! uiRealm.write{
                     uiRealm.add(Act)
                 }
