@@ -46,7 +46,6 @@ class TableViewControllerActividades: UITableViewController {
     }
     
     
-    
     func llenaArreglo(){
         
         //Pedir a base de datos las actividades guardadas! 
@@ -69,9 +68,6 @@ class TableViewControllerActividades: UITableViewController {
                 self.arregloActividades.append(actividad)
             }
         }
-        
-        let Frecuencia = [Acts![1].Frecuencia]
-        print([Frecuencia])
  
         
     }

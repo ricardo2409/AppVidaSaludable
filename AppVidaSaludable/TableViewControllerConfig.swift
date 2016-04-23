@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -31,6 +32,10 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     var arrFallos : NSArray = ["1", "2", "3", "4", "5"]
     var arrReportes : NSArray = ["Semanal", "Quincenal", "Mensual", "Bimestral"]
     
+    var usuario : Results<Personas>?
+
+    
+    
     // MARK: - Functions
     
     override func viewDidLoad() {
@@ -42,19 +47,13 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        // Para probar, hard coded valores.
-        if nomResponsable == nil {
-            nomResponsable = "Detail"
-        }
-        if correoResponsable == nil {
-            correoResponsable = "Detail"
-        }
-        if nomMedico == nil {
-            nomMedico = "Detail"
-        }
-        if correoMedico == nil {
-            correoMedico = "Detail"
-        }
+        // Carga los valores de la base de datos y los pone en el placeholder.
+        usuario = uiRealm.objects(Personas)
+        
+        nomResponsable = usuario![0].Responsable_nom
+        correoResponsable = usuario![0].Responsable_correo
+        nomMedico = usuario![0].Doctor_nom
+        correoMedico = usuario![0].Doctor_correo
         
         // Muestra valores en tfs.
         tfNomResponsable.text = nomResponsable
@@ -72,6 +71,10 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         self.pickerViewReportes.delegate = self
         
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        print(nomResponsable)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,8 +84,16 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     func cambioNomResponsable(textField: UITextField) {
         if textField.text != nomResponsable {
             nomResponsable = textField.text
+            
+            // Cambiar base de datos.
+            
+            
+            try! uiRealm.write {
+                usuario![0].Responsable_nom = nomResponsable!
+            }
         }
     }
+    
     
     // MARK: - Picker View Data Source
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
@@ -99,12 +110,12 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         
     }
     
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String! {
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == pickerViewReportes {
-            return arrReportes[row] as! String
+            return arrReportes[row] as? String
         }
         else if pickerView == pickerViewFallos {
-            return arrFallos[row] as! String
+            return arrFallos[row] as? String
         }
         return nil
     }
@@ -125,8 +136,8 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
             }
             
         }
-        else{
-            self.cantidadFallos = arrFallos[row] as! Int
+        else {
+            self.cantidadFallos = Int(arrFallos[row] as! String)
         }
     }
     
