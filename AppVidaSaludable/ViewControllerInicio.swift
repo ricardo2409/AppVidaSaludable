@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RealmSwift
+
 
 class ViewControllerInicio: UIViewController {
 
@@ -21,6 +23,8 @@ class ViewControllerInicio: UIViewController {
     @IBOutlet weak var tfCorreoDoctor: UITextField!
     
     @IBOutlet weak var tfNomUsuario: UITextField!
+    
+    let datosPersonas = Personas()
     
     // MARK: - Funciones
 
@@ -39,6 +43,19 @@ class ViewControllerInicio: UIViewController {
         // Función que hace:
         //  - Revisa que todos los campos estén llenos con información correcta.
         //  - Guarda la información en la base de datos.
+        
+        datosPersonas.Responsable_nom = tfNomResponsable.text!
+        datosPersonas.Responsable_correo = tfCorreoResponsable.text!
+        datosPersonas.Doctor_nom = tfNomDoctor.text!
+        datosPersonas.Doctor_correo = tfCorreoDoctor.text!
+        datosPersonas.Usuario_nom = tfNomUsuario.text!
+        
+        
+        try! uiRealm.write{
+            uiRealm.add(datosPersonas)
+        }
+
+        
         
         // Cambia los User Defaults para que no se vuelva a mostrar.
         // *** Si quieres que salga otra vez para testing: 1. Tirar la aplicación del simulador.
