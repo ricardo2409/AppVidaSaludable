@@ -86,8 +86,8 @@ class TableViewControllerActividades: UITableViewController {
         let actividad6 = Actividad(nom: "Salir a caminar", cat: "Actividad Física", h: 5, m: 9, frec: ["Sábado","Domingo"])
         self.arregloActividades.append(actividad6)
         
-        let Frecuencia = [Acts![1].Frecuencia]
-        print([Frecuencia]) 
+        //let Frecuencia = [Acts![1].Frecuencia]
+        //print([Frecuencia])
         
     }
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){

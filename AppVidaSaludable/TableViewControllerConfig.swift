@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -33,7 +33,6 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     var arrReportes : NSArray = ["Semanal", "Quincenal", "Mensual", "Bimestral"]
     
     var usuario : Results<Personas>?
-
     
     
     // MARK: - Functions
@@ -47,6 +46,14 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        // Tap geture recognizer
+        /*UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(hideKeyboard)];
+        self.tableView addGestureRecognizer:gestureRecognizer;
+        */
+        //let tapGestureRecognizer : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(TableViewControllerConfig.quitaTeclado))
+        
+        
+        
         // Carga los valores de la base de datos y los pone en el placeholder.
         usuario = uiRealm.objects(Personas)
         
@@ -57,12 +64,19 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         
         // Muestra valores en tfs.
         tfNomResponsable.text = nomResponsable
+        tfNomResponsable.delegate = self
         tfCorreoResponsable.text = correoResponsable
+        tfCorreoResponsable.delegate = self
         tfNomMedico.text = nomMedico
+        tfNomMedico.delegate = self
         tfCorreoMedico.text = correoMedico
+        tfCorreoResponsable.delegate = self
         
         // Notificación para revisar cambios en los datos
         tfNomResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioNomResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        tfCorreoResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        tfNomMedico.addTarget(self, action: #selector(TableViewControllerConfig.cambioNomMedico(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        tfCorreoResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         
         // Pickers
         self.pickerViewFallos.delegate = self
@@ -71,29 +85,74 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         self.pickerViewReportes.delegate = self
         
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        print(nomResponsable)
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    // Función que actualiza el nombre del responsable en la base de datos, cuando este cambia en el
+    //  text field.
     func cambioNomResponsable(textField: UITextField) {
         if textField.text != nomResponsable {
+            // Actualiza la variable
             nomResponsable = textField.text
             
             // Cambiar base de datos.
-            
-            
             try! uiRealm.write {
                 usuario![0].Responsable_nom = nomResponsable!
             }
         }
     }
+ 
+    // Función que actualiza el correo del responsable en la base de datos, cuando este cambia en el
+    //  text field.
+    func cambioCorreoResponsable(textField: UITextField) {
+        if textField.text != correoResponsable {
+            // Actualiza la variable
+            correoResponsable = textField.text
+            
+            // Cambiar base de datos.
+            try! uiRealm.write {
+                usuario![0].Responsable_correo = correoResponsable!
+            }
+        }
+    }
     
+    // Función que actualiza el nombre del médico en la base de datos, cuando este cambia en el
+    //  text field.
+    func cambioNomMedico(textField: UITextField) {
+        if textField.text != nomMedico {
+            // Actualiza la variable
+            nomMedico = textField.text
+            
+            // Cambiar base de datos.
+            try! uiRealm.write {
+                usuario![0].Doctor_nom = nomMedico!
+            }
+        }
+    }
+    
+    // Función que actualiza el correo del médico en la base de datos, cuando este cambia en el
+    //  text field.
+    func cambioCorreoMedico(textField: UITextField) {
+        if textField.text != correoMedico {
+            // Actualiza la variable
+            correoMedico = textField.text
+            
+            // Cambiar base de datos.
+            try! uiRealm.write {
+                usuario![0].Doctor_correo = correoMedico!
+            }
+        }
+    }
+    
+    // MARK: - TextFieldDelegate
+    // Función que hace que desaparezca el teclado y termine de editar el textfield al darle enter.
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     // MARK: - Picker View Data Source
     func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
