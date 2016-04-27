@@ -31,7 +31,14 @@ class ViewControllerInicio: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Define el color del border de los text fields
+        let borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+        tfNomResponsable.layer.borderColor = borderColor.CGColor;
+        tfCorreoResponsable.layer.borderColor = borderColor.CGColor;
+        tfNomDoctor.layer.borderColor = borderColor.CGColor;
+        tfCorreoDoctor.layer.borderColor = borderColor.CGColor;
+        tfNomUsuario.layer.borderColor = borderColor.CGColor;
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,27 +51,94 @@ class ViewControllerInicio: UIViewController {
         //  - Revisa que todos los campos estén llenos con información correcta.
         //  - Guarda la información en la base de datos.
         
-        datosPersonas.Responsable_nom = tfNomResponsable.text!
-        datosPersonas.Responsable_correo = tfCorreoResponsable.text!
-        datosPersonas.Doctor_nom = tfNomDoctor.text!
-        datosPersonas.Doctor_correo = tfCorreoDoctor.text!
-        datosPersonas.Usuario_nom = tfNomUsuario.text!
-        
-        
-        try! uiRealm.write{
-            uiRealm.add(datosPersonas)
+        // Valida campos
+        var bInformacionCorrecta = true
+        if !tfNomResponsable.hasText() {
+            bInformacionCorrecta = false
+            tfNomResponsable.layer.borderWidth = 1.0
+            tfNomResponsable.layer.borderColor = UIColor.redColor().CGColor
+            tfNomResponsable.layer.cornerRadius = 5.0;
+            tfNomResponsable.clipsToBounds = true
         }
-
+        else {
+            let borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+            tfNomResponsable.layer.borderColor = borderColor.CGColor;
+        }
         
+        if !validateEmail(tfCorreoResponsable.text!) {
+            bInformacionCorrecta = false
+            tfCorreoResponsable.layer.borderWidth = 1.0
+            tfCorreoResponsable.layer.borderColor = UIColor.redColor().CGColor
+            tfCorreoResponsable.layer.cornerRadius = 5.0;
+            tfCorreoResponsable.clipsToBounds = true
+        }
+        else {
+            let borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+            tfCorreoResponsable.layer.borderColor = borderColor.CGColor;
+        }
         
-        // Cambia los User Defaults para que no se vuelva a mostrar.
-        // *** Si quieres que salga otra vez para testing: 1. Tirar la aplicación del simulador.
-        // *** Si quieres que salga SIEMPRE, cambiar el valor debajo a false.
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "InfoUsuario")
-        dismissViewControllerAnimated(true, completion: nil)
+        if !tfNomDoctor.hasText() {
+            bInformacionCorrecta = false
+            tfNomDoctor.layer.borderWidth = 1.0
+            tfNomDoctor.layer.borderColor = UIColor.redColor().CGColor
+            tfNomDoctor.layer.cornerRadius = 5.0;
+            tfNomDoctor.clipsToBounds = true
+        }
+        else {
+            let borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+            tfNomDoctor.layer.borderColor = borderColor.CGColor;
+        }
+        
+        if !validateEmail(tfCorreoDoctor.text!) {
+            bInformacionCorrecta = false
+            tfCorreoDoctor.layer.borderWidth = 1.0
+            tfCorreoDoctor.layer.borderColor = UIColor.redColor().CGColor
+            tfCorreoDoctor.layer.cornerRadius = 5.0;
+            tfCorreoDoctor.clipsToBounds = true
+        }
+        else {
+            let borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+            tfCorreoDoctor.layer.borderColor = borderColor.CGColor;
+        }
+        
+        if !tfNomUsuario.hasText() {
+            bInformacionCorrecta = false
+            tfNomUsuario.layer.borderWidth = 1.0
+            tfNomUsuario.layer.borderColor = UIColor.redColor().CGColor
+            tfNomUsuario.layer.cornerRadius = 5.0;
+            tfNomUsuario.clipsToBounds = true
+        }
+        else {
+            let borderColor = UIColor(red: 204.0/255.0, green: 204.0/255.0, blue: 204.0/255.0, alpha: 1.0)
+            tfNomUsuario.layer.borderColor = borderColor.CGColor;
+        }
+        
+        // Si pasó todas las validaciones, guarda la información en la base de datos.
+        if bInformacionCorrecta {
+            datosPersonas.Responsable_nom = tfNomResponsable.text!
+            datosPersonas.Responsable_correo = tfCorreoResponsable.text!
+            datosPersonas.Doctor_nom = tfNomDoctor.text!
+            datosPersonas.Doctor_correo = tfCorreoDoctor.text!
+            datosPersonas.Usuario_nom = tfNomUsuario.text!
+            
+            try! uiRealm.write{
+                uiRealm.add(datosPersonas)
+            }
+            
+            // Cambia los User Defaults para que no se vuelva a mostrar.
+            // *** Si quieres que salga otra vez para testing: 1. Tirar la aplicación del simulador.
+            // *** Si quieres que salga SIEMPRE, cambiar el valor debajo a false.
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "InfoUsuario")
+            dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
-    
+    // Función que valida que un email tenga formato correcto.
+    func validateEmail(enteredEmail:String) -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluateWithObject(enteredEmail)
+    }
 
     /*
     // MARK: - Navigation
