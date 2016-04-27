@@ -91,16 +91,34 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         // Dispose of any resources that can be recreated.
     }
 
+    // Función que valida que un email tenga formato correcto.
+    func validateEmail(enteredEmail:String) -> Bool {
+        let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
+        return emailPredicate.evaluateWithObject(enteredEmail)
+    }
+    
     // Función que actualiza el nombre del responsable en la base de datos, cuando este cambia en el
     //  text field.
     func cambioNomResponsable(textField: UITextField) {
         if textField.text != nomResponsable {
-            // Actualiza la variable
-            nomResponsable = textField.text
-            
-            // Cambiar base de datos.
-            try! uiRealm.write {
-                usuario![0].Responsable_nom = nomResponsable!
+            // Valida que no se encuentre vacío.
+            if !textField.hasText() {
+                textField.layer.borderWidth = 1.0
+                textField.layer.borderColor = UIColor.redColor().CGColor
+                textField.layer.cornerRadius = 5.0;
+                textField.clipsToBounds = true
+            }
+            else {
+                textField.borderStyle = .None
+                textField.layer.borderWidth = 0
+                // Actualiza la variable
+                nomResponsable = textField.text
+                
+                // Cambiar base de datos.
+                try! uiRealm.write {
+                    usuario![0].Responsable_nom = nomResponsable!
+                }
             }
         }
     }
@@ -109,12 +127,23 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     //  text field.
     func cambioCorreoResponsable(textField: UITextField) {
         if textField.text != correoResponsable {
-            // Actualiza la variable
-            correoResponsable = textField.text
-            
-            // Cambiar base de datos.
-            try! uiRealm.write {
-                usuario![0].Responsable_correo = correoResponsable!
+            // Valida el nuevo correo
+            if !validateEmail(textField.text!) {
+                textField.layer.borderWidth = 1.0
+                textField.layer.borderColor = UIColor.redColor().CGColor
+                textField.layer.cornerRadius = 5.0;
+                textField.clipsToBounds = true
+            }
+            else {
+                textField.borderStyle = .None
+                textField.layer.borderWidth = 0
+                // Actualiza la variable
+                correoResponsable = textField.text
+                
+                // Cambiar base de datos.
+                try! uiRealm.write {
+                    usuario![0].Responsable_correo = correoResponsable!
+                }
             }
         }
     }
@@ -123,13 +152,24 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     //  text field.
     func cambioNomMedico(textField: UITextField) {
         if textField.text != nomMedico {
-            // Actualiza la variable
-            nomMedico = textField.text
-            
-            // Cambiar base de datos.
-            try! uiRealm.write {
-                usuario![0].Doctor_nom = nomMedico!
+            // Valida que no esté vacío.
+            if !textField.hasText() {
+                textField.layer.borderWidth = 1.0
+                textField.layer.borderColor = UIColor.redColor().CGColor
+                textField.layer.cornerRadius = 5.0;
+                textField.clipsToBounds = true
             }
+            else {
+                textField.borderStyle = .None
+                textField.layer.borderWidth = 0
+                // Actualiza la variable
+                nomMedico = textField.text
+                
+                // Cambiar base de datos.
+                try! uiRealm.write {
+                    usuario![0].Doctor_nom = nomMedico!
+                }
+            } 
         }
     }
     
@@ -137,12 +177,23 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     //  text field.
     func cambioCorreoMedico(textField: UITextField) {
         if textField.text != correoMedico {
-            // Actualiza la variable
-            correoMedico = textField.text
-            
-            // Cambiar base de datos.
-            try! uiRealm.write {
-                usuario![0].Doctor_correo = correoMedico!
+            // Valida el nuevo correo
+            if !validateEmail(textField.text!) {
+                textField.layer.borderWidth = 1.0
+                textField.layer.borderColor = UIColor.redColor().CGColor
+                textField.layer.cornerRadius = 5.0;
+                textField.clipsToBounds = true
+            }
+            else {
+                textField.borderStyle = .None
+                textField.layer.borderWidth = 0
+                // Actualiza la variable
+                correoMedico = textField.text
+                
+                // Cambiar base de datos.
+                try! uiRealm.write {
+                    usuario![0].Doctor_correo = correoMedico!
+                }
             }
         }
     }
