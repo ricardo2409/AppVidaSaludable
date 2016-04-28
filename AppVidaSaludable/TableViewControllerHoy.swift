@@ -9,6 +9,7 @@
 import UIKit
 import AlarmKit
 import SCLAlertView
+import RealmSwift
 
 class TableViewControllerHoy: UITableViewController {
     
@@ -17,6 +18,9 @@ class TableViewControllerHoy: UITableViewController {
     var arregloActividadesHoy: [Actividad] = []
     var alarm: AlarmKit.Alarm!
     var diaDeHoy : String!
+    var nuevaActividad : Actividad!
+    let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+    
     @IBOutlet weak var navigationbar: UINavigationBar!
     // MARK: - Funciones
     
@@ -47,46 +51,25 @@ class TableViewControllerHoy: UITableViewController {
         diaDeHoy = formato.stringFromDate(fecha)
         switch diaDeHoy {
         case "Monday":
-            diaDeHoy = "Lunes"
+            diaDeHoy = "Lu"
         case "Tuesday":
-            diaDeHoy = "Martes"
+            diaDeHoy = " Ma"
         case "Wednesday":
-            diaDeHoy = "Miércoles"
+            diaDeHoy = " Mi"
         case "Thursday":
-            diaDeHoy = "Jueves"
+            diaDeHoy = " Ju"
         case "Friday":
-            diaDeHoy = "Viernes"
+            diaDeHoy = " Vi"
         case "Saturday":
-            diaDeHoy = "Sábado"
+            diaDeHoy = " Sa"
         case "Sunday":
-            diaDeHoy = "Domingo"
+            diaDeHoy = " Do"
         default:
             break
         }
         print(diaDeHoy)
     }
-    func getArregloActividades(){
-        let barViewControllers = self.tabBarController?.viewControllers
-        let navigation = barViewControllers![1] as! UINavigationController
-        let tvca = navigation.topViewController as! TableViewControllerActividades
-        arregloActividades = tvca.arregloActividades
-        print(arregloActividades)
-    }
-    func getArreloActividadesHoy(){
-        //Borra lo que ya tenía antes
-        arregloActividadesHoy = []
-        print("Las actividades de hoy")
-        for i in 0...arregloActividades.count - 1 {
-            for j in 0...arregloActividades[i].frecuencia.count - 1{
-                if arregloActividades[i].frecuencia[j] == diaDeHoy{
-                    arregloActividadesHoy.append(arregloActividades[i])
-                    print(arregloActividades[i].nombre)
-                    
-                    
-                }
-            }
-        }
-    }
+   
     func getMonth() -> Int{
         let fecha: NSDate = NSDate()
         let formato7: NSDateFormatter = NSDateFormatter()
@@ -146,20 +129,14 @@ class TableViewControllerHoy: UITableViewController {
             
         }
     }
-    func sortArregloActividadesHoy(){
-        //Sort por hora y minutos
-        arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
-        print("arreglo sorteado por hora y minutos")
-        for i in 0...arregloActividadesHoy.count - 1 {
-            print(arregloActividadesHoy[i].nombre)
-        }
-        print(arregloActividadesHoy)
-    }
+    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hoy"
-        getArregloActividades()
+        //getArregloActividades()
+        llenaArreglo()
         print("Viewdidloadhoy")
         print(arregloActividades)
         // Uncomment the following line to preserve selection between presentations
@@ -183,6 +160,51 @@ class TableViewControllerHoy: UITableViewController {
     }
     
     
+    func llenaArreglo(){
+        
+        //Pedir a base de datos las actividades guardadas!
+        
+        getDiaDeHoy()
+        
+        var Acts:Results<Actividades>?
+        Acts = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@", diaDeHoy, hora).sorted("Hora")
+        let cont = (Acts?.count)
+        
+        if(cont > 0)
+        {
+            for i in 0...cont! - 1
+            {
+                let Nombre = String(Acts![i].Nombre)
+                let Categoria = String(Acts![i].Categoria)
+                let Frecuencia = Acts![i].Frecuencia
+                let Hora = Int(Acts![i].Hora)
+                let Min = Int(Acts![i].Minutos)
+                let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: [Frecuencia])
+                self.arregloActividadesHoy.append(actividad)
+            }
+        }
+        
+        
+    }
+    
+    
+    
+    
+    func sortArregloActividadesHoy(){
+        //Sort por hora y minutos
+        //arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
+        print("arreglo sorteado por hora y minutos")
+        for i in 0...arregloActividadesHoy.count - 1 {
+            print(arregloActividadesHoy[i].nombre)
+        }
+        print(arregloActividadesHoy)
+    }
+    
+    
+    
+    
+    
+    
 
     
     override func viewDidAppear(animated: Bool) {
@@ -192,8 +214,8 @@ class TableViewControllerHoy: UITableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.dos(_:)), name: "actionTwoPressed", object: nil)
         
         getDiaDeHoy()
-        getArregloActividades()
-        getArreloActividadesHoy()
+       // getArregloActividades()
+        //getArreloActividadesHoy()
         tableView.reloadData()
         sortArregloActividadesHoy()
         //Crear notificaciones aquí

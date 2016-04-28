@@ -61,33 +61,15 @@ class TableViewControllerActividades: UITableViewController {
             {
                 let Nombre = String(Acts![i].Nombre)
                 let Categoria = String(Acts![i].Categoria)
-                let Frecuencia = [Acts![i].Frecuencia]
+                let Frecuencia = Acts![i].Frecuencia
                 let Hora = Int(Acts![i].Hora)
                 let Min = Int(Acts![i].Minutos)
-                let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: Frecuencia)
+                let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: [Frecuencia])
                 self.arregloActividades.append(actividad)
+                
             }
         }
-        let actividad = Actividad(nom: "Tomar agua", cat: "Hidratación", h: 7, m: 25, frec: ["Lunes", "Martes"])
-        self.arregloActividades.append(actividad)
-        
-        let actividad2 = Actividad(nom: "Comer carne", cat: "Alimentación", h: 9, m: 50, frec: ["Martes", "Jueves", "Sábado"])
-        self.arregloActividades.append(actividad2)
-        
-        let actividad3 = Actividad(nom: "Caminar en Parque", cat: "Actividad Física", h: 11, m: 30, frec: ["Lunes", "Martes", "Miércoles"])
-        self.arregloActividades.append(actividad3)
-        
-        let actividad4 = Actividad(nom: "Ir al cine con familia", cat: "Actividad Social", h: 6, m: 10, frec: ["Viernes", "Domingo"])
-        self.arregloActividades.append(actividad4)
-        
-        let actividad5 = Actividad(nom: "Cena", cat: "Alimentación", h: 7, m: 3, frec: ["Lunes", "Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"])
-        self.arregloActividades.append(actividad5)
-        
-        let actividad6 = Actividad(nom: "Salir a caminar", cat: "Actividad Física", h: 5, m: 9, frec: ["Sábado","Domingo"])
-        self.arregloActividades.append(actividad6)
-        
-        //let Frecuencia = [Acts![1].Frecuencia]
-        //print([Frecuencia])
+       
         
     }
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){
@@ -164,38 +146,13 @@ class TableViewControllerActividades: UITableViewController {
 
         cell.imView?.image = UIImage(named: nombreImagen)
         
-        for i in 0...arregloActividades[indexPath.row].frecuencia.count - 1 {
-        switch (arregloActividades[indexPath.row].frecuencia[i])
-        {
-        case "Lunes":
-            cell.lblDias.text! += "Lu "
-            break
-        case "Martes":
-            cell.lblDias.text! += "Ma "
-            break
-        case "Miércoles":
-            cell.lblDias.text! += "Mi "
-            break
-        case "Jueves":
-            cell.lblDias.text! += "Ju "
-            break
-        case "Viernes":
-            cell.lblDias.text! += "Vi "
-            break
-        case "Sábado":
-            cell.lblDias.text! += "Sa "
-            break
-        case "Domingo":
-            cell.lblDias.text! += "Do"
-            break
-        default:
-            break
+      
+            cell.lblDias.text! = (arregloActividades[indexPath.row].frecuencia).joinWithSeparator("")
             
-        }
             if cell.lblDias.text! == "Lu Ma Mi Ju Vi Sa Do"{
                 cell.lblDias.text! = "Diario"
             }
-        }
+        
         return cell
     }
 
