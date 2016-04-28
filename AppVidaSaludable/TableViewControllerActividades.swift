@@ -118,7 +118,7 @@ class TableViewControllerActividades: UITableViewController {
         cell.lblNombre.text = arregloActividades[indexPath.row].nombre
         
         if arregloActividades[indexPath.row].minutos < 10{
-            print("menor de 10")
+            
             cell.lblHora.text! = String(arregloActividades[indexPath.row].hora) + ":0" + String(arregloActividades[indexPath.row].minutos)
         }else{
         cell.lblHora.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)

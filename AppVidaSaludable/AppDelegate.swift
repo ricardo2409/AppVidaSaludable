@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondAction.identifier = "Second_Action"
         secondAction.title = "No"
         secondAction.activationMode = UIUserNotificationActivationMode.Foreground
-        secondAction.destructive = true
+        secondAction.destructive = false
         secondAction.authenticationRequired = false
         
         let thirdAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         completionHandler()
     }
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
 //        var topController : UIViewController = (application.keyWindow?.rootViewController)!

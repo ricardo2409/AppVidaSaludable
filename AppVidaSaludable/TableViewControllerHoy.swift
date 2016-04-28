@@ -20,6 +20,8 @@ class TableViewControllerHoy: UITableViewController {
     var diaDeHoy : String!
     var nuevaActividad : Actividad!
     let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+    let min = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+
     
     @IBOutlet weak var navigationbar: UINavigationBar!
     // MARK: - Funciones
@@ -100,6 +102,13 @@ class TableViewControllerHoy: UITableViewController {
     }
     func creaNotificaciones(){
         
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
+        print("Cantidad de notificaciones:")
+        print(notifyArray!.count)
+        
+        if arregloActividadesHoy.count > 0{
         for i in 0...arregloActividadesHoy.count - 1{
             
             var dateComp: NSDateComponents = NSDateComponents()
@@ -124,10 +133,14 @@ class TableViewControllerHoy: UITableViewController {
             print(arregloActividadesHoy[i].hora)
             print(arregloActividadesHoy[i].minutos)
 
-            
-            
-            
+            }
+        }else{
+            print("Está vacío")
         }
+        
+        notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
+        print("Cantidad de notificaciones creadas:")
+        print(notifyArray!.count)
     }
     
 
@@ -166,10 +179,13 @@ class TableViewControllerHoy: UITableViewController {
         
         getDiaDeHoy()
         
+        var ActividadesHoy:Results<Actividades>?
         var Acts:Results<Actividades>?
-        Acts = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@", diaDeHoy, hora).sorted("Hora")
-        let cont = (Acts?.count)
-        
+        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@ AND Minutos >= %@", diaDeHoy, hora, min)
+        Acts = ActividadesHoy!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
+        let cont = (ActividadesHoy?.count)
+        arregloActividadesHoy = []
+
         if(cont > 0)
         {
             for i in 0...cont! - 1
@@ -182,48 +198,33 @@ class TableViewControllerHoy: UITableViewController {
                 let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: [Frecuencia])
                 self.arregloActividadesHoy.append(actividad)
             }
+        }else{
+            print("está vacio")
         }
         
         
     }
     
-    
-    
-    
-    func sortArregloActividadesHoy(){
-        //Sort por hora y minutos
-        //arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
-        print("arreglo sorteado por hora y minutos")
-        for i in 0...arregloActividadesHoy.count - 1 {
-            print(arregloActividadesHoy[i].nombre)
-        }
-        print(arregloActividadesHoy)
-    }
-    
-    
-    
-    
-    
-    
-
-    
-    override func viewDidAppear(animated: Bool) {
+  override func viewDidAppear(animated: Bool) {
         print("Viewdidappear")
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.uno(_:)), name: "actionOnePressed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.dos(_:)), name: "actionTwoPressed", object: nil)
-        
+        llenaArreglo()
+
         getDiaDeHoy()
        // getArregloActividades()
-        //getArreloActividadesHoy()
+        //getArregloActividadesHoy()
         tableView.reloadData()
-        sortArregloActividadesHoy()
+//        sortArregloActividadesHoy()
         //Crear notificaciones aquí
         creaNotificaciones()
         
     }
     func uno(notification : NSNotification){
         print("action uno")
+        
+        //Sí
         //Borrar actividad
         //No me regresa a la app
         
@@ -231,9 +232,10 @@ class TableViewControllerHoy: UITableViewController {
     
     func dos(notification : NSNotification){
         print("action dos")
+        //No
         //Snooze de 10 min
         //Máximo 3 snoozes
-        //Me regresa a la app
+        //No me regresa a la app
     }
     
     
