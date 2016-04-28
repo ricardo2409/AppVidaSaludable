@@ -9,6 +9,7 @@
 import UIKit
 import AlarmKit
 import SCLAlertView
+import RealmSwift
 
 class TableViewControllerHoy: UITableViewController {
     
@@ -71,6 +72,7 @@ class TableViewControllerHoy: UITableViewController {
         let tvca = navigation.topViewController as! TableViewControllerActividades
         arregloActividades = tvca.arregloActividades
         print(arregloActividades)
+        
     }
     func getArreloActividadesHoy(){
         //Borra lo que ya tenía antes
@@ -146,9 +148,42 @@ class TableViewControllerHoy: UITableViewController {
             
         }
     }
+    
+    
+    
+    func llenaArreglo(){
+        
+        //Pedir a base de datos las actividades guardadas!
+        
+        
+        var Acts:Results<Actividades>?
+        Acts = uiRealm.objects(Actividades)
+        let cont = (Acts?.count)
+        
+        if(cont > 0)
+        {
+            for i in 0...cont! - 1
+            {
+                let Nombre = String(Acts![i].Nombre)
+                let Categoria = String(Acts![i].Categoria)
+                let Frecuencia = Acts![i].Frecuencia
+                let Hora = Int(Acts![i].Hora)
+                let Min = Int(Acts![i].Minutos)
+                let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: [Frecuencia])
+                self.arregloActividadesHoy.append(actividad)
+                
+            }
+        }
+        
+        
+    }
+    
+
+    
+    
     func sortArregloActividadesHoy(){
         //Sort por hora y minutos
-        arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
+        //arregloActividadesHoy.sortInPlace({ $0.hora * 60 + $0.minutos  < $1.hora * 60 + $1.minutos })
         print("arreglo sorteado por hora y minutos")
         for i in 0...arregloActividadesHoy.count - 1 {
             print(arregloActividadesHoy[i].nombre)
@@ -181,6 +216,10 @@ class TableViewControllerHoy: UITableViewController {
         diaEnTitulo(dia)
       
     }
+    
+    
+    
+    
     
     
 

@@ -13,7 +13,7 @@ class Actividades: Object {
     
     dynamic var Nombre = ""
     dynamic var Categoria = ""
-    var Frecuencia = ""
+    dynamic var Frecuencia = ""
     dynamic var Hora = 1
     dynamic var Minutos = 1
 
