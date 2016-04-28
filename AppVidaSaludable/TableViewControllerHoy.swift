@@ -250,16 +250,16 @@ class TableViewControllerHoy: UITableViewController {
         switch (arregloActividadesHoy[indexPath.row].categoria)
         {
         case "Hidratación":
-            nombreImagen = "vaso"
+            nombreImagen = "water"
             break
         case "Alimentación":
-            nombreImagen = "manzanaTrans"
+            nombreImagen = "apple"
             break
         case "Actividad Física":
-            nombreImagen = "ejercicio"
+            nombreImagen = "walking"
             break
         case "Actividad Social":
-            nombreImagen = "amigos2"
+            nombreImagen = "talking"
             break
         default:
             break
