@@ -34,18 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondAction.destructive = false
         secondAction.authenticationRequired = false
         
-        let thirdAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        thirdAction.identifier = "Third_Action"
-        thirdAction.title = "Third Action"
-        thirdAction.activationMode = UIUserNotificationActivationMode.Background
-        thirdAction.destructive = true
-        thirdAction.authenticationRequired = false
+        
         
         //categories
         
         let firstCategory : UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
         firstCategory.identifier = "First_Cat"
-        let defaultActions:NSArray = [firstAction, secondAction, thirdAction]
+        let defaultActions:NSArray = [firstAction, secondAction]
         let minimalActions:NSArray = [firstAction, secondAction]
         
         firstCategory.setActions((defaultActions as! [UIUserNotificationAction]), forContext: UIUserNotificationActionContext.Default)
@@ -65,20 +60,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
+        let Act = ActividadRealizada()
+
         if identifier == "First_Action"{
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil)
+            
             //Write en tabla de acts realizadas un 1 en la categoria y 0 en las demás
             print(notification.alertTitle!)
+            switch notification.alertTitle! {
+            case "Alimentación":
+                print("Alimentación")
+                Act.Alimentacion = 1
+                Act.Hidratacion = 0
+                Act.ActividadFisica = 0
+                Act.ActividadSocial = 0
+            case "Hidratación":
+                print("Hidratación")
+                Act.Alimentacion = 0
+                Act.Hidratacion = 1
+                Act.ActividadFisica = 0
+                Act.ActividadSocial = 0
+            case "Actividad Física":
+                print("Actividad Físicaa")
+                Act.Alimentacion = 0
+                Act.Hidratacion = 0
+                Act.ActividadFisica = 1
+                Act.ActividadSocial = 0
+            case "Actividad Social":
+                print("Actividad Social")
+                Act.Alimentacion = 0
+                Act.Hidratacion = 0
+                Act.ActividadFisica = 0
+                Act.ActividadSocial = 1
+
+            default:
+                break
+            }
+            try! uiRealm.write{
+                uiRealm.add(Act)
+            }
+
             
         }else if identifier == "Second_Action"{
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
             //Write en tabla de acts realizadas un 0 en la categoria y 0 en las demás
+            switch notification.alertTitle! {
+            case "Alimentación":
+                print("Alimentación")
+                Act.Alimentacion = 2
+                Act.Hidratacion = 0
+                Act.ActividadFisica = 0
+                Act.ActividadSocial = 0
+            case "Hidratación":
+                print("Hidratación")
+                Act.Alimentacion = 0
+                Act.Hidratacion = 2
+                Act.ActividadFisica = 0
+                Act.ActividadSocial = 0
+            case "Actividad Física":
+                print("Actividad Físicaa")
+                Act.Alimentacion = 0
+                Act.Hidratacion = 0
+                Act.ActividadFisica = 2
+                Act.ActividadSocial = 0
+            case "Actividad Social":
+                print("Actividad Social")
+                Act.Alimentacion = 0
+                Act.Hidratacion = 0
+                Act.ActividadFisica = 0
+                Act.ActividadSocial = 2
+                
+            default:
+                break
+            }
+            try! uiRealm.write{
+                uiRealm.add(Act)
+            }
+
             //Snooze
             
-            notification.fireDate = NSDate().dateByAddingTimeInterval(600)
-            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+//            notification.fireDate = NSDate().dateByAddingTimeInterval(600)
+//            UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
         }
         completionHandler()

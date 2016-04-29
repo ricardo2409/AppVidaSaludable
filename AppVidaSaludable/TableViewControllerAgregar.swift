@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, UIPickerViewDelegate {
+class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
 
     // MARK: - Outlets
@@ -46,6 +46,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
        
         self.pickerViewCategoria.delegate = self
         self.pickerViewCategoria.dataSource = self
+        tfNombre.delegate = self
         lbFrecuencia.text = ""
         categoria = "Alimentación"
         hora = 1
@@ -171,7 +172,11 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         return 4
     }
 
-   
+   // MARK: - Text Field delegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+    }
 
     
     // MARK: - Navigation
