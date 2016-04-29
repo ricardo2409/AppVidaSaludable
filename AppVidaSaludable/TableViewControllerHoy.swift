@@ -21,6 +21,8 @@ class TableViewControllerHoy: UITableViewController {
     var nuevaActividad : Actividad!
     let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
     let min = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+    var control1 = true
+    var control2 = true
 
     
     @IBOutlet weak var navigationbar: UINavigationBar!
@@ -126,6 +128,8 @@ class TableViewControllerHoy: UITableViewController {
             notification.category = "First_Cat"
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertBody = arregloActividadesHoy[i].nombre
+            //poner aqui un switch de categoria y hacer esto v
+            notification.alertTitle = arregloActividadesHoy[i].categoria
             notification.fireDate = date
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
             print("Esta es la notificacion que creé ")
@@ -150,6 +154,7 @@ class TableViewControllerHoy: UITableViewController {
         self.title = "Hoy"
         //getArregloActividades()
         llenaArreglo()
+        creaNotificaciones()
         print("Viewdidloadhoy")
         print(arregloActividades)
         // Uncomment the following line to preserve selection between presentations
@@ -181,9 +186,16 @@ class TableViewControllerHoy: UITableViewController {
         
         var ActividadesHoy:Results<Actividades>?
         var Acts:Results<Actividades>?
-        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@ AND Minutos >= %@", diaDeHoy, hora, min)
+        ActividadesHoy = uiRealm.objects(Actividades)
+
+
+        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@", diaDeHoy)
+        print(ActividadesHoy)
         Acts = ActividadesHoy!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
         let cont = (ActividadesHoy?.count)
+        print(cont)
+        print("Cantidad de activades en hoy")
+        print(ActividadesHoy!.count)
         arregloActividadesHoy = []
 
         if(cont > 0)
@@ -201,28 +213,41 @@ class TableViewControllerHoy: UITableViewController {
         }else{
             print("está vacio")
         }
-        
+        print("Cantidad en arreglo activades  hoy")
+        print(arregloActividadesHoy.count)
         
     }
     
   override func viewDidAppear(animated: Bool) {
         print("Viewdidappear")
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.uno(_:)), name: "actionOnePressed", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.dos(_:)), name: "actionTwoPressed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.si(_:)), name: "actionOnePressed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.no(_:)), name: "actionTwoPressed", object: nil)
         llenaArreglo()
 
         getDiaDeHoy()
-       // getArregloActividades()
-        //getArregloActividadesHoy()
+    
         tableView.reloadData()
-//        sortArregloActividadesHoy()
-        //Crear notificaciones aquí
+
         creaNotificaciones()
         
     }
-    func uno(notification : NSNotification){
-        print("action uno")
+    
+    func si(notification : UILocalNotification){
+        
+        
+        if control1 {
+
+            
+            print("action uno")
+            control1 = false
+            
+            
+            
+            
+        }else{
+            control1 = true
+        }
         
         //Sí
         //Borrar actividad
@@ -230,8 +255,14 @@ class TableViewControllerHoy: UITableViewController {
         
     }
     
-    func dos(notification : NSNotification){
-        print("action dos")
+    func no(notification : UILocalNotification){
+        if control2 {
+            print("action dos")
+
+            
+        }else{
+            control2 = true
+        }
         //No
         //Snooze de 10 min
         //Máximo 3 snoozes

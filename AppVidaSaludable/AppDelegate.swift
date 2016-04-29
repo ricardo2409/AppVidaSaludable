@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let secondAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         secondAction.identifier = "Second_Action"
         secondAction.title = "No"
-        secondAction.activationMode = UIUserNotificationActivationMode.Foreground
+        secondAction.activationMode = UIUserNotificationActivationMode.Background
         secondAction.destructive = false
         secondAction.authenticationRequired = false
         
@@ -68,11 +68,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if identifier == "First_Action"{
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil)
+            //Write en tabla de acts realizadas un 1 en la categoria y 0 en las demás
+            print(notification.alertTitle!)
             
         }else if identifier == "Second_Action"{
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
+            //Write en tabla de acts realizadas un 0 en la categoria y 0 en las demás
+            //Snooze
             
+            notification.fireDate = NSDate().dateByAddingTimeInterval(600)
+            UIApplication.sharedApplication().scheduleLocalNotification(notification)
             
         }
         completionHandler()
@@ -113,8 +119,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         //Empieza en la segunda tab mientras se crea la base de datos y se carga la información desde ahí
-        let tabBarController = self.window?.rootViewController as! UITabBarController
-        tabBarController.selectedIndex = 1
+//        let tabBarController = self.window?.rootViewController as! UITabBarController
+//        tabBarController.selectedIndex = 1
     }
 
     func applicationWillTerminate(application: UIApplication) {
