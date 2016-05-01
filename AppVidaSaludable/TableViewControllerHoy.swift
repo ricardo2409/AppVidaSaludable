@@ -128,7 +128,6 @@ class TableViewControllerHoy: UITableViewController {
             notification.category = "First_Cat"
             notification.soundName = UILocalNotificationDefaultSoundName
             notification.alertBody = arregloActividadesHoy[i].nombre
-            //poner aqui un switch de categoria y hacer esto v
             notification.alertTitle = arregloActividadesHoy[i].categoria
             notification.fireDate = date
             UIApplication.sharedApplication().scheduleLocalNotification(notification)
@@ -180,16 +179,22 @@ class TableViewControllerHoy: UITableViewController {
     
     func llenaArreglo(){
         
+        
+        let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
+        let min = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+
         //Pedir a base de datos las actividades guardadas!
         
         getDiaDeHoy()
         
         var ActividadesHoy:Results<Actividades>?
         var Acts:Results<Actividades>?
-        ActividadesHoy = uiRealm.objects(Actividades)
+//        ActividadesHoy = uiRealm.objects(Actividades)
 
 
-        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@", diaDeHoy)
+//        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@", diaDeHoy)
+        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@ AND Minutos >= %@", diaDeHoy, hora, min)
+
         print(ActividadesHoy)
         Acts = ActividadesHoy!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
         let cont = (ActividadesHoy?.count)
@@ -305,16 +310,16 @@ class TableViewControllerHoy: UITableViewController {
         switch (arregloActividadesHoy[indexPath.row].categoria)
         {
         case "Hidratación":
-            nombreImagen = "water"
+            nombreImagen = "Hidratacion"
             break
         case "Alimentación":
-            nombreImagen = "apple"
+            nombreImagen = "Alimentacion"
             break
         case "Actividad Física":
-            nombreImagen = "walking"
+            nombreImagen = "Actividad Fisica"
             break
         case "Actividad Social":
-            nombreImagen = "talking"
+            nombreImagen = "Actividad Social"
             break
         default:
             break

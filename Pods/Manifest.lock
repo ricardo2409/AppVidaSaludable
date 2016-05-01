@@ -6,16 +6,19 @@ PODS:
   - RealmSwift (0.98.8):
     - Realm (= 0.98.8)
   - SCLAlertView (0.5.4)
+  - SwiftDate (3.0.8)
 
 DEPENDENCIES:
   - AlarmKit
   - RealmSwift
   - SCLAlertView
+  - SwiftDate
 
 SPEC CHECKSUMS:
   AlarmKit: 3040fe53c0d94b04c39aa4ada5e267027b36bda2
   Realm: 0e293bb62999730599efc3048896bbd4f2e43bcd
   RealmSwift: 064262d38113f23ff3508fb20a0a922e696bec01
   SCLAlertView: 081f824b17b7cf41057159535591f4d6fc8acde3
+  SwiftDate: 971f8b9394f664f2226b9c3ab64e801a7291c612
 
 COCOAPODS: 0.39.0
