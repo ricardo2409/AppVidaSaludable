@@ -24,6 +24,7 @@
 		CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */; };
 		CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */; };
 		CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */; };
+		CEA3AB6E1CD3F70B00734E61 /* ActividadRealizada.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */; };
 		CED6F5B11CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerAgregar.swift; sourceTree = "<group>"; };
 		CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerDias.swift; sourceTree = "<group>"; };
 		CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadesCell.swift; sourceTree = "<group>"; };
+		CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadRealizada.swift; sourceTree = "<group>"; };
 		CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewControllerEditarActividad.swift; path = ../TableViewControllerEditarActividad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +102,7 @@
 				CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */,
 				CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */,
 				CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */,
+				CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */,
 				1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */,
 				1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */,
 				1CADCDE31CBD9FEE00092481 /* TableViewControllerActividades.swift */,
@@ -255,6 +258,7 @@
 				1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */,
 				1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */,
 				CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */,
+				CEA3AB6E1CD3F70B00734E61 /* ActividadRealizada.swift in Sources */,
 				1CADCDE41CBD9FEE00092481 /* TableViewControllerActividades.swift in Sources */,
 				CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */,
 				1CC679151CC855EA005B8F6E /* Personas.swift in Sources */,
