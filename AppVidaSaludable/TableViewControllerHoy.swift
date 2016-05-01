@@ -25,25 +25,25 @@ class TableViewControllerHoy: UITableViewController {
     var control2 = true
 
     
-    @IBOutlet weak var navigationbar: UINavigationBar!
+    //@IBOutlet weak var navigationbar: UINavigationBar!
     // MARK: - Funciones
     
     func diaEnTitulo(dia : String){
         switch dia {
         case "Monday":
-            self.navigationbar.topItem?.title = "Lunes"
+            self.title = "Lunes"
         case "Tuesday":
-            self.navigationbar.topItem?.title = "Martes"
+            self.title = "Martes"
         case "Wednesday":
-            self.navigationbar.topItem?.title = "Miércoles"
+            self.title = "Miércoles"
         case "Thursday":
-            self.navigationbar.topItem?.title = "Jueves"
+            self.title = "Jueves"
         case "Friday":
-            self.navigationbar.topItem?.title = "Viernes"
+            self.title = "Viernes"
         case "Saturday":
-            self.navigationbar.topItem?.title = "Sábado"
+            self.title = "Sábado"
         case "Sunday":
-            self.navigationbar.topItem?.title = "Domingo"
+            self.title = "Domingo"
         default:
             break
         }

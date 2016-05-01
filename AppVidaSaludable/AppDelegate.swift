@@ -55,6 +55,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let mySettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
         UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
 
+        // Cambiar colores de barras
+        
+        let navigationBarAppearace = UINavigationBar.appearance()
+        
+        navigationBarAppearace.tintColor = UIColor.whiteColor() // Back buttons and such
+        navigationBarAppearace.barTintColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)  // Bar's background color
+        
+        navigationBarAppearace.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]  // Title's text color
+        
+        
+        let tabBarAppearance = UITabBar.appearance()
+        tabBarAppearance.tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        tabBarAppearance.barTintColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
+
+        
+        let tableViewAppearance = UITableView.appearance()
+        tableViewAppearance.separatorColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
+        tableViewAppearance.tintColor = UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)
+        
+        self.window?.tintColor = UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)
         
         return true
     }

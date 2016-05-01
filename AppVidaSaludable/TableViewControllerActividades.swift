@@ -39,7 +39,11 @@ class TableViewControllerActividades: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         tableView.reloadData()
-        
+        /*
+        navigationController?.navigationBar.barTintColor = UIColor(red: 199/255, green: 237/255, blue: 228/255, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)]
+        navigationController?.navigationBar.tintColor = UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)
+ */
     }
     //Checa si hay una actividad nueva y agrégala al arregloActividades
     override func viewDidAppear(animated: Bool) {

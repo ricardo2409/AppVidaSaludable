@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */; };
 		1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */; };
+		1C25EDE01CD5C89E006FD5DE /* ViewControllerLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */; };
 		1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */; };
 		1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */; };
 		1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */; };
@@ -32,6 +33,7 @@
 		133E2D7781BE4AE5FE701607 /* Pods-AppVidaSaludable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVidaSaludable.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppVidaSaludable/Pods-AppVidaSaludable.release.xcconfig"; sourceTree = "<group>"; };
 		1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAgregar.swift; sourceTree = "<group>"; };
 		1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerConfig.swift; sourceTree = "<group>"; };
+		1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLaunch.swift; sourceTree = "<group>"; };
 		1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInicio.swift; sourceTree = "<group>"; };
 		1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerRoot.swift; sourceTree = "<group>"; };
 		1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerHoy.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */,
 				CE30B7A81CBD907100B7A14E /* Assets.xcassets */,
 				CE30B7AA1CBD907100B7A14E /* LaunchScreen.storyboard */,
+				1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */,
 				CE30B7AD1CBD907100B7A14E /* Info.plist */,
 				1CC679141CC855EA005B8F6E /* Personas.swift */,
 				1CC679161CC8561A005B8F6E /* Actividades.swift */,
@@ -264,6 +267,7 @@
 				1CC679151CC855EA005B8F6E /* Personas.swift in Sources */,
 				1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */,
 				1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */,
+				1C25EDE01CD5C89E006FD5DE /* ViewControllerLaunch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
