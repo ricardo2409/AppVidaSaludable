@@ -51,11 +51,11 @@
             </objects>
             <point key="canvasLocation" x="1518" y="-286"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Más-->
         <scene sceneID="W16-R8-Akm">
             <objects>
                 <navigationController id="5OO-e5-t7A" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="iKK-dS-Ozr"/>
+                    <tabBarItem key="tabBarItem" title="Más" image="more" id="iKK-dS-Ozr"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B04-dN-oyb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1353,5 +1353,6 @@
     <resources>
         <image name="calendar" width="30" height="30"/>
         <image name="list" width="30" height="30"/>
+        <image name="more" width="25" height="25"/>
     </resources>
 </document>

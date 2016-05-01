@@ -66,15 +66,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         let tabBarAppearance = UITabBar.appearance()
-        tabBarAppearance.tintColor = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 1)
+        tabBarAppearance.tintColor = UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)
         tabBarAppearance.barTintColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
-
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor.whiteColor()], forState:.Normal)
+        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)], forState:.Selected)
+        
         
         let tableViewAppearance = UITableView.appearance()
         tableViewAppearance.separatorColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
         tableViewAppearance.tintColor = UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)
         
-        self.window?.tintColor = UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)
         
         return true
     }
