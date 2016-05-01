@@ -88,10 +88,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-AppVidaSaludable/Realm.framework"
   install_framework "Pods-AppVidaSaludable/RealmSwift.framework"
   install_framework "Pods-AppVidaSaludable/SCLAlertView.framework"
+  install_framework "Pods-AppVidaSaludable/SwiftDate.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-AppVidaSaludable/AlarmKit.framework"
   install_framework "Pods-AppVidaSaludable/Realm.framework"
   install_framework "Pods-AppVidaSaludable/RealmSwift.framework"
   install_framework "Pods-AppVidaSaludable/SCLAlertView.framework"
+  install_framework "Pods-AppVidaSaludable/SwiftDate.framework"
 fi

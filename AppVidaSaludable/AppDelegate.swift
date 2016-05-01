@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import SCLAlertView
+import SwiftDate
 
 let uiRealm = try! Realm()
 
@@ -23,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         firstAction.identifier = "First_Action"
         firstAction.title = "Sí"
         firstAction.activationMode = UIUserNotificationActivationMode.Background
-        firstAction.destructive = true
+        firstAction.destructive = false
         firstAction.authenticationRequired = false
         
         
@@ -31,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         secondAction.identifier = "Second_Action"
         secondAction.title = "No"
         secondAction.activationMode = UIUserNotificationActivationMode.Background
-        secondAction.destructive = false
+        secondAction.destructive = true
         secondAction.authenticationRequired = false
         
         
@@ -80,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
         let Act = ActividadRealizada()
 
@@ -91,25 +94,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(notification.alertTitle!)
             switch notification.alertTitle! {
             case "Alimentación":
-                print("Alimentación")
+                print("Alimentación Sí")
                 Act.Alimentacion = 1
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
             case "Hidratación":
-                print("Hidratación")
+                print("Hidratación Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 1
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
             case "Actividad Física":
-                print("Actividad Físicaa")
+                print("Actividad Física Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 1
                 Act.ActividadSocial = 0
             case "Actividad Social":
-                print("Actividad Social")
+                print("Actividad Social Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
@@ -126,28 +129,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else if identifier == "Second_Action"{
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
-            //Write en tabla de acts realizadas un 0 en la categoria y 0 en las demás
+            //Write en tabla de acts realizadas un 2 en la categoria y 0 en las demás
             switch notification.alertTitle! {
             case "Alimentación":
-                print("Alimentación")
+                print("Alimentación No")
                 Act.Alimentacion = 2
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
             case "Hidratación":
-                print("Hidratación")
+                print("Hidratación No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 2
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
             case "Actividad Física":
-                print("Actividad Físicaa")
+                print("Actividad Física No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 2
                 Act.ActividadSocial = 0
             case "Actividad Social":
-                print("Actividad Social")
+                print("Actividad Social No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
@@ -169,23 +172,130 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         completionHandler()
     }
     
+  
+    
+    
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         
-//        var topController : UIViewController = (application.keyWindow?.rootViewController)!
-//        
-//        while ((topController.presentedViewController) != nil) {
-//            
-//            topController = topController.presentedViewController!
-//        }
-//        
-//        let alert = UIAlertController(title: "Alerta", message: notification.alertBody, preferredStyle: UIAlertControllerStyle.Alert)
-//        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: {(action: UIAlertAction!) in}))
-//        
-//        topController.presentViewController(alert, animated: true, completion: nil)
+        let hoy = NSDate()
+        
+      
+        print("fecha")
+        print(hoy)
+        print("notification firedate")
+        print(notification.fireDate!)
+        let Act = ActividadRealizada()
 
         
-    }
+        if (application.applicationState == UIApplicationState.Active ) {
+            print("Entré al if active")
+            if notification.fireDate! >= hoy {
+                print("No entré al if fecha")
 
+
+            }else{
+                print("Entré al if fecha")
+                
+                let alertView = SCLAlertView()
+                alertView.showCircularIcon = true
+                alertView.showCloseButton = false
+                var alertViewIcon: String = ""
+                switch notification.alertTitle! {
+                case "Alimentación":
+                    alertViewIcon = "Alimentacion"
+                case "Hidratación":
+                    alertViewIcon = "Hidratacion"
+                case "Actividad Física":
+                    alertViewIcon = "Actividad Fisica"
+                case "Actividad Social":
+                    alertViewIcon = "Actividad Social"
+                default:
+                    break;
+                }
+               
+                alertView.addButton("Sí"){
+                    print("Sí")
+                    switch notification.alertTitle! {
+                    case "Alimentación":
+                        print("Alimentación Sí")
+                        Act.Alimentacion = 1
+                        Act.Hidratacion = 0
+                        Act.ActividadFisica = 0
+                        Act.ActividadSocial = 0
+                    case "Hidratación":
+                        print("Hidratación Sí")
+                        Act.Alimentacion = 0
+                        Act.Hidratacion = 1
+                        Act.ActividadFisica = 0
+                        Act.ActividadSocial = 0
+                    case "Actividad Física":
+                        print("Actividad Física Sí")
+                        Act.Alimentacion = 0
+                        Act.Hidratacion = 0
+                        Act.ActividadFisica = 1
+                        Act.ActividadSocial = 0
+                    case "Actividad Social":
+                        print("Actividad Social Sí")
+                        Act.Alimentacion = 0
+                        Act.Hidratacion = 0
+                        Act.ActividadFisica = 0
+                        Act.ActividadSocial = 1
+                        
+                    default:
+                        break
+                    }
+                    try! uiRealm.write{
+                        uiRealm.add(Act)
+                    }
+
+                    
+                }
+                alertView.addButton("No") {
+                    print("No")
+                    switch notification.alertTitle! {
+                    case "Alimentación":
+                        print("Alimentación No")
+                        Act.Alimentacion = 2
+                        Act.Hidratacion = 0
+                        Act.ActividadFisica = 0
+                        Act.ActividadSocial = 0
+                    case "Hidratación":
+                        print("Hidratación No")
+                        Act.Alimentacion = 0
+                        Act.Hidratacion = 2
+                        Act.ActividadFisica = 0
+                        Act.ActividadSocial = 0
+                    case "Actividad Física":
+                        print("Actividad Física No")
+                        Act.Alimentacion = 0
+                        Act.Hidratacion = 0
+                        Act.ActividadFisica = 2
+                        Act.ActividadSocial = 0
+                    case "Actividad Social":
+                        print("Actividad Social No")
+                        Act.Alimentacion = 0
+                        Act.Hidratacion = 0
+                        Act.ActividadFisica = 0
+                        Act.ActividadSocial = 2
+                        
+                    default:
+                        break
+                    }
+                    try! uiRealm.write{
+                        uiRealm.add(Act)
+                    }
+
+                }
+                
+                 alertView.showInfo(notification.alertBody!, subTitle: notification.alertTitle!, closeButtonTitle: "", duration: 30, colorStyle: 0x5995ED, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: alertViewIcon))
+//                alertView.showInfo(notification.alertBody!, subTitle: notification.alertTitle!, circleIconImage: alertViewIcon)
+
+            }
+        }else{
+            print("No entré al if")
+        }
+        
+    }
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

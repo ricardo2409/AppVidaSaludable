@@ -133,16 +133,16 @@ class TableViewControllerActividades: UITableViewController {
         switch (arregloActividades[indexPath.row].categoria)
         {
         case "Hidratación":
-            nombreImagen = "water"
+            nombreImagen = "Hidratacion"
             break
         case "Alimentación":
-            nombreImagen = "apple"
+            nombreImagen = "Alimentacion"
             break
         case "Actividad Física":
-            nombreImagen = "walking"
+            nombreImagen = "Actividad Fisica"
             break
         case "Actividad Social":
-            nombreImagen = "talking"
+            nombreImagen = "Actividad Social"
             break
         default:
             break
