@@ -39,6 +39,7 @@ class TableViewControllerActividades: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         tableView.reloadData()
+        
     }
     //Checa si hay una actividad nueva y agrégala al arregloActividades
     override func viewDidAppear(animated: Bool) {
