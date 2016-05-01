@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */; };
 		1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */; };
+		1C25EDE01CD5C89E006FD5DE /* ViewControllerLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */; };
+		1C25EDE21CD65DE7006FD5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */; };
 		1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */; };
 		1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */; };
 		1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */; };
@@ -18,12 +20,12 @@
 		9333908D0F3E6DD425286FAD /* Pods_AppVidaSaludable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3B388CC016575F8A747F6C /* Pods_AppVidaSaludable.framework */; };
 		CE30B7A01CBD907100B7A14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B79F1CBD907100B7A14E /* AppDelegate.swift */; };
 		CE30B7A71CBD907100B7A14E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7A51CBD907100B7A14E /* Main.storyboard */; };
-		CE30B7A91CBD907100B7A14E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7A81CBD907100B7A14E /* Assets.xcassets */; };
 		CE30B7AC1CBD907100B7A14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7AA1CBD907100B7A14E /* LaunchScreen.storyboard */; };
 		CE30B7B41CBDD20700B7A14E /* Actividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B31CBDD20700B7A14E /* Actividad.swift */; };
 		CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */; };
 		CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */; };
 		CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */; };
+		CEA3AB6E1CD3F70B00734E61 /* ActividadRealizada.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */; };
 		CED6F5B11CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +33,8 @@
 		133E2D7781BE4AE5FE701607 /* Pods-AppVidaSaludable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVidaSaludable.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppVidaSaludable/Pods-AppVidaSaludable.release.xcconfig"; sourceTree = "<group>"; };
 		1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAgregar.swift; sourceTree = "<group>"; };
 		1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerConfig.swift; sourceTree = "<group>"; };
+		1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLaunch.swift; sourceTree = "<group>"; };
+		1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInicio.swift; sourceTree = "<group>"; };
 		1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerRoot.swift; sourceTree = "<group>"; };
 		1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerHoy.swift; sourceTree = "<group>"; };
@@ -42,13 +46,13 @@
 		CE30B79C1CBD907100B7A14E /* AppVidaSaludable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppVidaSaludable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE30B79F1CBD907100B7A14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE30B7A61CBD907100B7A14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CE30B7A81CBD907100B7A14E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CE30B7AB1CBD907100B7A14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE30B7AD1CBD907100B7A14E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE30B7B31CBDD20700B7A14E /* Actividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actividad.swift; sourceTree = "<group>"; };
 		CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerAgregar.swift; sourceTree = "<group>"; };
 		CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerDias.swift; sourceTree = "<group>"; };
 		CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadesCell.swift; sourceTree = "<group>"; };
+		CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadRealizada.swift; sourceTree = "<group>"; };
 		CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewControllerEditarActividad.swift; path = ../TableViewControllerEditarActividad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -100,6 +104,7 @@
 				CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */,
 				CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */,
 				CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */,
+				CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */,
 				1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */,
 				1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */,
 				1CADCDE31CBD9FEE00092481 /* TableViewControllerActividades.swift */,
@@ -107,10 +112,11 @@
 				1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */,
 				1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */,
 				1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */,
-				CE30B7A81CBD907100B7A14E /* Assets.xcassets */,
 				CE30B7AA1CBD907100B7A14E /* LaunchScreen.storyboard */,
+				1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */,
 				CE30B7AD1CBD907100B7A14E /* Info.plist */,
 				1CC679141CC855EA005B8F6E /* Personas.swift */,
+				1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */,
 				1CC679161CC8561A005B8F6E /* Actividades.swift */,
 			);
 			path = AppVidaSaludable;
@@ -186,7 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE30B7AC1CBD907100B7A14E /* LaunchScreen.storyboard in Resources */,
-				CE30B7A91CBD907100B7A14E /* Assets.xcassets in Resources */,
+				1C25EDE21CD65DE7006FD5DE /* Assets.xcassets in Resources */,
 				CE30B7A71CBD907100B7A14E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,11 +261,13 @@
 				1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */,
 				1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */,
 				CE30B7B61CBECCD600B7A14E /* TableViewControllerAgregar.swift in Sources */,
+				CEA3AB6E1CD3F70B00734E61 /* ActividadRealizada.swift in Sources */,
 				1CADCDE41CBD9FEE00092481 /* TableViewControllerActividades.swift in Sources */,
 				CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */,
 				1CC679151CC855EA005B8F6E /* Personas.swift in Sources */,
 				1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */,
 				1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */,
+				1C25EDE01CD5C89E006FD5DE /* ViewControllerLaunch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

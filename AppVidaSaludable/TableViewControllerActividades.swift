@@ -39,6 +39,11 @@ class TableViewControllerActividades: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         tableView.reloadData()
+        /*
+        navigationController?.navigationBar.barTintColor = UIColor(red: 199/255, green: 237/255, blue: 228/255, alpha: 1)
+        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)]
+        navigationController?.navigationBar.tintColor = UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)
+ */
     }
     //Checa si hay una actividad nueva y agrégala al arregloActividades
     override func viewDidAppear(animated: Bool) {
@@ -118,7 +123,7 @@ class TableViewControllerActividades: UITableViewController {
         cell.lblNombre.text = arregloActividades[indexPath.row].nombre
         
         if arregloActividades[indexPath.row].minutos < 10{
-            print("menor de 10")
+            
             cell.lblHora.text! = String(arregloActividades[indexPath.row].hora) + ":0" + String(arregloActividades[indexPath.row].minutos)
         }else{
         cell.lblHora.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
@@ -128,16 +133,16 @@ class TableViewControllerActividades: UITableViewController {
         switch (arregloActividades[indexPath.row].categoria)
         {
         case "Hidratación":
-            nombreImagen = "vaso"
+            nombreImagen = "water"
             break
         case "Alimentación":
-            nombreImagen = "manzanaTrans"
+            nombreImagen = "apple"
             break
         case "Actividad Física":
-            nombreImagen = "ejercicio"
+            nombreImagen = "walking"
             break
         case "Actividad Social":
-            nombreImagen = "amigos2"
+            nombreImagen = "talking"
             break
         default:
             break
