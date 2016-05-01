@@ -173,6 +173,12 @@ class TableViewControllerActividades: UITableViewController {
             print(arregloActividades)
             print("Actividad removida:" + arregloActividades[indexPath.row].nombre)
             arregloActividades.removeAtIndex(indexPath.row)
+            
+            try! uiRealm.write {
+                let BorraActividad = uiRealm.objects(Actividades).filter("Nombre == %@", arregloActividades[indexPath.row].nombre)
+                uiRealm.delete(BorraActividad)
+            }
+            
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             print(arregloActividades)
             self.tableView.reloadData()
