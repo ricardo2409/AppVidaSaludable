@@ -58,17 +58,17 @@ class TableViewControllerHoy: UITableViewController {
         case "Monday":
             diaDeHoy = "Lu"
         case "Tuesday":
-            diaDeHoy = " Ma"
+            diaDeHoy = "Ma"
         case "Wednesday":
-            diaDeHoy = " Mi"
+            diaDeHoy = "Mi"
         case "Thursday":
-            diaDeHoy = " Ju"
+            diaDeHoy = "Ju"
         case "Friday":
-            diaDeHoy = " Vi"
+            diaDeHoy = "Vi"
         case "Saturday":
-            diaDeHoy = " Sa"
+            diaDeHoy = "Sa"
         case "Sunday":
-            diaDeHoy = " Do"
+            diaDeHoy = "Do"
         default:
             break
         }
@@ -191,20 +191,18 @@ class TableViewControllerHoy: UITableViewController {
         
         getDiaDeHoy()
         
-        var ActividadesHoy:Results<Actividades>?
+
+        var ActividadesHoyIgual:Results<Actividades>?
         var Acts:Results<Actividades>?
-//        ActividadesHoy = uiRealm.objects(Actividades)
-
-
-//        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@", diaDeHoy)
-        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@ AND Minutos >= %@", diaDeHoy, hora, min)
-
-        print(ActividadesHoy)
-        Acts = ActividadesHoy!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
-        let cont = (ActividadesHoy?.count)
+        print("Estas son todas las actividades: ")
+        print(Acts)
+        ActividadesHoyIgual = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora == %@ AND Minutos > %@ OR Frecuencia CONTAINS %@ AND Hora > %@", diaDeHoy, hora, min, diaDeHoy, hora)
+        print(ActividadesHoyIgual)
+        Acts = ActividadesHoyIgual!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
+        let cont = (Acts?.count)
         print(cont)
         print("Cantidad de activades en hoy")
-        print(ActividadesHoy!.count)
+        print(ActividadesHoyIgual!.count)
         arregloActividadesHoy = []
 
         if(cont > 0)
