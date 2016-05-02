@@ -247,7 +247,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     try! uiRealm.write{
                         uiRealm.add(Act)
                     }
-
+                    UIApplication.sharedApplication().cancelLocalNotification(notification)
+                    //Borra arregloActivadadesHoy[0] (el primero, quien es el que ejecuta la notificacion)
                     
                 }
                 alertView.addButton("No") {

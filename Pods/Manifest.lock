@@ -1,5 +1,6 @@
 PODS:
   - AlarmKit (0.0.1)
+  - DZNEmptyDataSet (1.8)
   - Realm (0.98.8):
     - Realm/Headers (= 0.98.8)
   - Realm/Headers (0.98.8)
@@ -10,12 +11,14 @@ PODS:
 
 DEPENDENCIES:
   - AlarmKit
+  - DZNEmptyDataSet
   - RealmSwift
   - SCLAlertView
   - SwiftDate
 
 SPEC CHECKSUMS:
   AlarmKit: 3040fe53c0d94b04c39aa4ada5e267027b36bda2
+  DZNEmptyDataSet: d2351b2e8daefa40433ef292e246e21f6be31a7b
   Realm: 0e293bb62999730599efc3048896bbd4f2e43bcd
   RealmSwift: 064262d38113f23ff3508fb20a0a922e696bec01
   SCLAlertView: 081f824b17b7cf41057159535591f4d6fc8acde3
