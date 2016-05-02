@@ -175,14 +175,16 @@ class TableViewControllerActividades: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            print(arregloActividades)
-            print("Actividad removida:" + arregloActividades[indexPath.row].nombre)
-            arregloActividades.removeAtIndex(indexPath.row)
             
             try! uiRealm.write {
-                let BorraActividad = uiRealm.objects(Actividades).filter("Nombre == %@", arregloActividades[indexPath.row].nombre)
+                let BorraActividad = uiRealm.objects(Actividades).filter("Nombre == %@", arregloActividades[(indexPath.row)].nombre)
+                print(BorraActividad)
                 uiRealm.delete(BorraActividad)
             }
+            
+            print("Actividad removida:" + arregloActividades[indexPath.row].nombre)
+            arregloActividades.removeAtIndex(indexPath.row)
+
             
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             print(arregloActividades)
@@ -190,6 +192,7 @@ class TableViewControllerActividades: UITableViewController {
             
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+            
         }    
     }
     
