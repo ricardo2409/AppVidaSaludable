@@ -192,7 +192,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if notification.fireDate! >= hoy {
                 print("No entré al if fecha")
 
-
             }else{
                 print("Entré al if fecha")
                 
@@ -247,7 +246,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     try! uiRealm.write{
                         uiRealm.add(Act)
                     }
-
+                    UIApplication.sharedApplication().cancelLocalNotification(notification)
+                    //Borra arregloActivadadesHoy[0] (el primero, quien es el que ejecuta la notificacion)
                     
                 }
                 alertView.addButton("No") {

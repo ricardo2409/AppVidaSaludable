@@ -10,6 +10,7 @@ import UIKit
 import AlarmKit
 import SCLAlertView
 import RealmSwift
+import DZNEmptyDataSet
 
 class TableViewControllerHoy: UITableViewController {
     
@@ -23,8 +24,8 @@ class TableViewControllerHoy: UITableViewController {
     let min = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
     var control1 = true
     var control2 = true
-
     
+
     //@IBOutlet weak var navigationbar: UINavigationBar!
     // MARK: - Funciones
     
@@ -113,8 +114,7 @@ class TableViewControllerHoy: UITableViewController {
         if arregloActividadesHoy.count > 0{
         for i in 0...arregloActividadesHoy.count - 1{
             
-            var dateComp: NSDateComponents = NSDateComponents()
-            
+            let dateComp: NSDateComponents = NSDateComponents()
             dateComp.year = getYear()
             dateComp.month = getMonth()
             dateComp.day = getDay()
@@ -147,10 +147,11 @@ class TableViewControllerHoy: UITableViewController {
     }
     
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hoy"
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
         //getArregloActividades()
         llenaArreglo()
         creaNotificaciones()
@@ -182,7 +183,10 @@ class TableViewControllerHoy: UITableViewController {
         
         let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let min = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
+        print("Hora:" + "\(hora)")
+        print("Minutos:" + "\(min)")
 
+        
         //Pedir a base de datos las actividades guardadas!
         
         getDiaDeHoy()
@@ -241,19 +245,19 @@ class TableViewControllerHoy: UITableViewController {
     func si(notification : UILocalNotification){
         
         
-        if control1 {
-
-            
-            print("action uno")
-            control1 = false
-            
-            
-            
-            
-        }else{
-            control1 = true
-        }
-        
+//        if control1 {
+//
+//            
+//            print("action uno")
+//            control1 = false
+//            
+//            
+//            
+//            
+//        }else{
+//            control1 = true
+//        }
+//        
         //Sí
         //Borrar actividad
         //No me regresa a la app
@@ -261,17 +265,14 @@ class TableViewControllerHoy: UITableViewController {
     }
     
     func no(notification : UILocalNotification){
-        if control2 {
-            print("action dos")
-
-            
-        }else{
-            control2 = true
-        }
-        //No
-        //Snooze de 10 min
-        //Máximo 3 snoozes
-        //No me regresa a la app
+//        if control2 {
+//            print("action dos")
+//
+//            
+//        }else{
+//            control2 = true
+//        }
+        
     }
     
     
@@ -323,58 +324,20 @@ class TableViewControllerHoy: UITableViewController {
             break
         default:
             break
-            
         }
-        
         cell.imageView!.image = UIImage(named: nombreImagen)
-        
         return cell
     }
- 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+}
+//Protocolo de DZNEmptyDataSet
+extension TableViewControllerHoy: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+    
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "Alimentacion")
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "No hay actividades programadas para más tarde")
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

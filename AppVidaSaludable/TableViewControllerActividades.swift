@@ -10,7 +10,7 @@ import UIKit
 import AlarmKit
 import SCLAlertView
 import RealmSwift
-
+import DZNEmptyDataSet
 class TableViewControllerActividades: UITableViewController {
     
     // REUSE IDENTIFIER: "idCelda"
@@ -21,7 +21,6 @@ class TableViewControllerActividades: UITableViewController {
     var control: Bool = false
     var actividadAMandar: Actividad!
     // MARK: - Outlets
-
     @IBOutlet weak var botonAgregar: UIBarButtonItem!
     
     
@@ -29,14 +28,11 @@ class TableViewControllerActividades: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.tableview.allowsSelectionDuringEditing = true
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.emptyDataSetSource = self
         llenaArreglo()
         print("viewDidLoadActividades")
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         tableView.reloadData()
         /*
@@ -45,17 +41,9 @@ class TableViewControllerActividades: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)
  */
     }
-    //Checa si hay una actividad nueva y agrégala al arregloActividades
-    override func viewDidAppear(animated: Bool) {
-
-    }
-    
-    
+ 
     func llenaArreglo(){
-        
         //Pedir a base de datos las actividades guardadas! 
-        
-        
         var Acts:Results<Actividades>?
         Acts = uiRealm.objects(Actividades)
         let cont = (Acts?.count)
@@ -71,11 +59,8 @@ class TableViewControllerActividades: UITableViewController {
                 let Min = Int(Acts![i].Minutos)
                 let actividad = Actividad(nom: Nombre, cat: Categoria, h: Hora, m: Min, frec: [Frecuencia])
                 self.arregloActividades.append(actividad)
-                
             }
         }
-       
-        
     }
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){
             print("Estoy en unwindAgregar")
@@ -86,17 +71,13 @@ class TableViewControllerActividades: UITableViewController {
                 print(nuevaActividad.categoria)
                 print(nuevaActividad.hora)
                 print(nuevaActividad.frecuencia)
-
-        
                 arregloActividades.append(nuevaActividad)
                 self.tableView.reloadData()
             }else{
                 print("es nil")
             }
         }
-        
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -118,10 +99,8 @@ class TableViewControllerActividades: UITableViewController {
         var nombreImagen: String!
         
     let cell = tableView.dequeueReusableCellWithIdentifier("idCelda", forIndexPath: indexPath) as! ActividadesCell
-
         cell.lblDias.text! = ""
         cell.lblNombre.text = arregloActividades[indexPath.row].nombre
-        
         if arregloActividades[indexPath.row].minutos < 10{
             
             cell.lblHora.text! = String(arregloActividades[indexPath.row].hora) + ":0" + String(arregloActividades[indexPath.row].minutos)
@@ -129,8 +108,7 @@ class TableViewControllerActividades: UITableViewController {
         cell.lblHora.text = String(arregloActividades[indexPath.row].hora) + ":" + String(arregloActividades[indexPath.row].minutos)
         }
         
-        
-        switch (arregloActividades[indexPath.row].categoria)
+       switch (arregloActividades[indexPath.row].categoria)
         {
         case "Hidratación":
             nombreImagen = "Hidratacion"
@@ -148,16 +126,11 @@ class TableViewControllerActividades: UITableViewController {
             break
 
         }
-
         cell.imView?.image = UIImage(named: nombreImagen)
-        
-      
-            cell.lblDias.text! = (arregloActividades[indexPath.row].frecuencia).joinWithSeparator("")
-            
-            if cell.lblDias.text! == "Lu Ma Mi Ju Vi Sa Do"{
-                cell.lblDias.text! = "Diario"
-            }
-        
+        cell.lblDias.text! = (arregloActividades[indexPath.row].frecuencia).joinWithSeparator("")
+        if cell.lblDias.text! == "Lu Ma Mi Ju Vi Sa Do"{
+            cell.lblDias.text! = "Diario"
+        }
         return cell
     }
 
@@ -226,6 +199,18 @@ class TableViewControllerActividades: UITableViewController {
             print(self.actividadAMandar.nombre)
         }
     }
+}
+//Protocolo de DZNEmptyDataSet
+extension TableViewControllerActividades: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
-
+    func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        return UIImage(named: "Hidratacion")
+    }
+    
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: "No hay actividades programadas")
+    }
+    func verticalOffsetForEmptyDataSet(scrollView: UIScrollView!) -> CGFloat {
+        return -self.tableView.frame.size.height / 8
+    }
 }

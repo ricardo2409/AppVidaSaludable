@@ -53,6 +53,7 @@
 		CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerDias.swift; sourceTree = "<group>"; };
 		CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadesCell.swift; sourceTree = "<group>"; };
 		CEA3AB6D1CD3F70B00734E61 /* ActividadRealizada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadRealizada.swift; sourceTree = "<group>"; };
+		CEA3AB6F1CD6C70B00734E61 /* AppVidaSaludable-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AppVidaSaludable-Bridging-Header.h"; sourceTree = "<group>"; };
 		CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TableViewControllerEditarActividad.swift; path = ../TableViewControllerEditarActividad.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +119,7 @@
 				1CC679141CC855EA005B8F6E /* Personas.swift */,
 				1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */,
 				1CC679161CC8561A005B8F6E /* Actividades.swift */,
+				CEA3AB6F1CD6C70B00734E61 /* AppVidaSaludable-Bridging-Header.h */,
 			);
 			path = AppVidaSaludable;
 			sourceTree = "<group>";
@@ -386,10 +388,13 @@
 			baseConfigurationReference = BE2A66703227FBED7BCC956C /* Pods-AppVidaSaludable.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AppVidaSaludable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ricardotrevino.AppVidaSaludable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppVidaSaludable/AppVidaSaludable-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -398,10 +403,12 @@
 			baseConfigurationReference = 133E2D7781BE4AE5FE701607 /* Pods-AppVidaSaludable.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = AppVidaSaludable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ricardotrevino.AppVidaSaludable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "AppVidaSaludable/AppVidaSaludable-Bridging-Header.h";
 			};
 			name = Release;
 		};

@@ -8,5 +8,6 @@ target 'AppVidaSaludable' do
     pod 'SCLAlertView'
     pod 'RealmSwift'
     pod 'SwiftDate'
+    pod 'DZNEmptyDataSet'
 end
 
