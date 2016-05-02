@@ -192,7 +192,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             if notification.fireDate! >= hoy {
                 print("No entré al if fecha")
 
-
             }else{
                 print("Entré al if fecha")
                 
