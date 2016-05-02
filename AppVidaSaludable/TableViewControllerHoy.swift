@@ -152,6 +152,9 @@ class TableViewControllerHoy: UITableViewController {
         self.title = "Hoy"
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        
+        print(Realm.Configuration.defaultConfiguration)
+    
         //getArregloActividades()
         llenaArreglo()
         creaNotificaciones()
@@ -227,7 +230,9 @@ class TableViewControllerHoy: UITableViewController {
     
   override func viewDidAppear(animated: Bool) {
         print("Viewdidappear")
-        
+        self.tableView.separatorColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
+
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.si(_:)), name: "actionOnePressed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.no(_:)), name: "actionTwoPressed", object: nil)
         llenaArreglo()
@@ -332,6 +337,7 @@ class TableViewControllerHoy: UITableViewController {
 extension TableViewControllerHoy: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        self.tableView.separatorColor = UIColor.clearColor()
         return UIImage(named: "Alimentacion")
     }
     
