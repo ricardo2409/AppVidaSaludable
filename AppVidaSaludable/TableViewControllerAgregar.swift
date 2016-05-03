@@ -58,7 +58,9 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
         
-        
+        self.pickerViewCategoria.selectRow(500, inComponent: 0, animated: false)
+        //self.pickerViewHora.selectRow(500, inComponent: 0, animated: false)
+        //self.pickerViewHora.selectRow(500, inComponent: 1, animated: false)
         
         print(Realm.Configuration.defaultConfiguration.path!)
         
@@ -131,16 +133,18 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == pickerViewHora {
             return arreglo[component].count
+            //return 100000
         }else{
-            return arregloCategorias.count
+            //return arregloCategorias.count
+            return 100000
         }
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == pickerViewHora {
-        return arreglo[component][row] as? String
+            return arreglo[component][row] as? String
         }else{
-            return arregloCategorias[row] as String
+            return arregloCategorias[row%arregloCategorias.count] as String
         }
     }
   
@@ -154,7 +158,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                 print("minutos es:" + String(self.minutos))
             }
         }else{
-            self.categoria = arregloCategorias[row]
+            self.categoria = arregloCategorias[row%arregloCategorias.count]
         }
     }
     
