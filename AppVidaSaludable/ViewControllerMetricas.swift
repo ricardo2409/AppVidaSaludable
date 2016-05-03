@@ -27,7 +27,7 @@ class ViewControllerMetricas: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize(width: 375.0, height: 2300.0)
+        scrollView.contentSize = CGSize(width: 375.0, height: 2400.0)
         // Do any additional setup after loading the view.
     }
     
@@ -36,28 +36,28 @@ class ViewControllerMetricas: UIViewController {
         self.llenaDatos()
         var total : Double
         // Los convierta a porcentajes
-        if pAlimentacion[0] != 0 && pAlimentacion[1] != 0 {
+        if !(pAlimentacion[0] == 0 && pAlimentacion[1] == 0) {
             total = pAlimentacion[0] + pAlimentacion[1]
             pAlimentacion[0] = pAlimentacion[0] * 100 / total
             pAlimentacion[1] = pAlimentacion[1] * 100 / total
             setChart(concepto, values: pAlimentacion, description: "Alimentación", pieChartView: alimentacion)
         }
         
-        if pHidratacion[0] != 0 && pHidratacion[1] != 0 {
+        if !(pHidratacion[0] == 0 && pHidratacion[1] == 0) {
             total = pHidratacion[0] + pHidratacion[1]
             pHidratacion[0] = pHidratacion[0] * 100 / total
             pHidratacion[1] = pHidratacion[1] * 100 / total
             setChart(concepto, values: pHidratacion, description: "Hidratación", pieChartView: hidratacion)
         }
         
-        if pFisicas[0] != 0 && pFisicas[1] != 0 {
+        if !(pFisicas[0] == 0 && pFisicas[1] == 0) {
             total = pFisicas[0] + pFisicas[1]
             pFisicas[0] = pFisicas[0] * 100 / total
             pFisicas[1] = pFisicas[1] * 100 / total
             setChart(concepto, values: pFisicas, description: "Actividades Físicas", pieChartView: fisicas)
         }
         
-        if pSociales[0] != 0 && pSociales[1] != 0 {
+        if !(pSociales[0] == 0 && pSociales[1] == 0) {
             total = pSociales[0] + pSociales[1]
             pSociales[0] = pSociales[0] * 100 / total
             pSociales[1] = pSociales[1] * 100 / total
@@ -69,6 +69,24 @@ class ViewControllerMetricas: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func reset(sender: AnyObject) {
+        let alerta = UIAlertController(title: "Reset", message: "¿Desea borrar toda la información histórica? No podrá volverla a accesar.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        alerta.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+            var Acts : Results<ActividadRealizada>?
+            Acts = uiRealm.objects(ActividadRealizada)
+            try! uiRealm.write {
+                uiRealm.delete(Acts!)
+            }
+            self.scrollView.setContentOffset(
+            CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
+        }))
+        
+        alerta.addAction(UIAlertAction(title: "Cancelar", style: .Default, handler: nil))
+        
+        presentViewController(alerta, animated: true, completion: nil)
     }
     
     // Función que llena los arreglos con los datos de la base de datos.
