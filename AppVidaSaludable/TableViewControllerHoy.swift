@@ -58,17 +58,17 @@ class TableViewControllerHoy: UITableViewController {
         case "Monday":
             diaDeHoy = "Lu"
         case "Tuesday":
-            diaDeHoy = " Ma"
+            diaDeHoy = "Ma"
         case "Wednesday":
-            diaDeHoy = " Mi"
+            diaDeHoy = "Mi"
         case "Thursday":
-            diaDeHoy = " Ju"
+            diaDeHoy = "Ju"
         case "Friday":
-            diaDeHoy = " Vi"
+            diaDeHoy = "Vi"
         case "Saturday":
-            diaDeHoy = " Sa"
+            diaDeHoy = "Sa"
         case "Sunday":
-            diaDeHoy = " Do"
+            diaDeHoy = "Do"
         default:
             break
         }
@@ -152,6 +152,9 @@ class TableViewControllerHoy: UITableViewController {
         self.title = "Hoy"
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        
+        print(Realm.Configuration.defaultConfiguration)
+    
         //getArregloActividades()
         llenaArreglo()
         creaNotificaciones()
@@ -191,20 +194,18 @@ class TableViewControllerHoy: UITableViewController {
         
         getDiaDeHoy()
         
-        var ActividadesHoy:Results<Actividades>?
+
+        var ActividadesHoyIgual:Results<Actividades>?
         var Acts:Results<Actividades>?
-//        ActividadesHoy = uiRealm.objects(Actividades)
-
-
-//        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@", diaDeHoy)
-        ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora >= %@ AND Minutos >= %@", diaDeHoy, hora, min)
-
-        print(ActividadesHoy)
-        Acts = ActividadesHoy!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
-        let cont = (ActividadesHoy?.count)
+        print("Estas son todas las actividades: ")
+        print(Acts)
+        ActividadesHoyIgual = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora == %@ AND Minutos > %@ OR Frecuencia CONTAINS %@ AND Hora > %@", diaDeHoy, hora, min, diaDeHoy, hora)
+        print(ActividadesHoyIgual)
+        Acts = ActividadesHoyIgual!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
+        let cont = (Acts?.count)
         print(cont)
         print("Cantidad de activades en hoy")
-        print(ActividadesHoy!.count)
+        print(ActividadesHoyIgual!.count)
         arregloActividadesHoy = []
 
         if(cont > 0)
@@ -229,7 +230,9 @@ class TableViewControllerHoy: UITableViewController {
     
   override func viewDidAppear(animated: Bool) {
         print("Viewdidappear")
-        
+        self.tableView.separatorColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
+
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.si(_:)), name: "actionOnePressed", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(TableViewControllerHoy.no(_:)), name: "actionTwoPressed", object: nil)
         llenaArreglo()
@@ -334,6 +337,7 @@ class TableViewControllerHoy: UITableViewController {
 extension TableViewControllerHoy: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        self.tableView.separatorColor = UIColor.clearColor()
         return UIImage(named: "Alimentacion")
     }
     

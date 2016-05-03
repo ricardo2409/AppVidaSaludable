@@ -41,6 +41,11 @@ class TableViewControllerActividades: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)
  */
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.separatorColor = UIColor(red: 89/255, green: 149/255, blue: 237/255, alpha: 1)
+
+    }
  
     func llenaArreglo(){
         //Pedir a base de datos las actividades guardadas! 
@@ -195,6 +200,7 @@ class TableViewControllerActividades: UITableViewController {
 extension TableViewControllerActividades: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+        self.tableView.separatorColor = UIColor.clearColor()
         return UIImage(named: "Hidratacion")
     }
     
