@@ -241,8 +241,8 @@ class TableViewControllerHoy: UITableViewController {
     
         tableView.reloadData()
 
-        creaNotificaciones()
-        
+//        creaNotificaciones()
+    
     }
     
     func si(notification : UILocalNotification){
