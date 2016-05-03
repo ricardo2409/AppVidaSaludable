@@ -136,27 +136,21 @@ class TableViewControllerDias: UITableViewController {
                 break
             case 1:
                 arregloFrecuencias.append("Martes")
-                
                 break
             case 2:
                 arregloFrecuencias.append("Miércoles")
-                
                 break
             case 3:
                 arregloFrecuencias.append("Jueves")
-                
                 break
             case 4:
                 arregloFrecuencias.append("Viernes")
-                
-                break
+                 break
             case 5:
                 arregloFrecuencias.append("Sábado")
-                
                 break
             case 6:
                 arregloFrecuencias.append("Domingo")
-                
                 break
             default:
                 break
