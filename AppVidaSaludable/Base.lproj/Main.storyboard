@@ -1162,38 +1162,75 @@
         <!--Metricas-->
         <scene sceneID="LbF-hH-cuB">
             <objects>
-                <viewController title="Metricas" id="EnP-9O-NT3" sceneMemberID="viewController">
+                <viewController title="Metricas" id="EnP-9O-NT3" customClass="ViewControllerMetricas" customModule="AppVidaSaludable" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="S2P-MT-254"/>
                         <viewControllerLayoutGuide type="bottom" id="PhL-b5-RzA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KQw-Ny-xrg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1TR-cF-iKw">
-                                <rect key="frame" x="0.0" y="64" width="300" height="247"/>
-                                <color key="backgroundColor" red="0.48635124680000003" green="0.60144427469999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lat-jv-1MF">
-                                <rect key="frame" x="308" y="64" width="292" height="247"/>
-                                <color key="backgroundColor" red="0.073691882190000002" green="0.80732280020000002" blue="0.2416661084" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="POQ-Rg-Idm">
-                                <rect key="frame" x="0.0" y="319" width="300" height="232"/>
-                                <color key="backgroundColor" red="0.14495694640000001" green="0.12525850529999999" blue="0.94546252490000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DfZ-cd-QF3">
-                                <rect key="frame" x="308" y="319" width="292" height="232"/>
-                                <color key="backgroundColor" red="1" green="0.33233602579999999" blue="0.161091607" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SQ9-7z-Hog">
+                                <rect key="frame" x="0.0" y="64" width="375" height="1449"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alimentación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPB-ST-Q6v">
+                                        <rect key="frame" x="138" y="8" width="99" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hidratación" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5h7-6R-yup">
+                                        <rect key="frame" x="143" y="370" width="89" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-nb-tSa">
+                                        <rect key="frame" x="37" y="37" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XI7-GK-DWA">
+                                        <rect key="frame" x="37" y="399" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Actividades Físicas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4n-Ly-2KY">
+                                        <rect key="frame" x="114" y="741" width="146" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bqv-0m-HvL">
+                                        <rect key="frame" x="37" y="770" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Actividades Sociales" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7K7-3T-shh">
+                                        <rect key="frame" x="108" y="1100" width="158" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PUK-4c-SfH">
+                                        <rect key="frame" x="37" y="1129" width="300" height="300"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="alimentacion" destination="Mfv-nb-tSa" id="3NJ-N0-mPo"/>
+                        <outlet property="fisicas" destination="Bqv-0m-HvL" id="J9v-vG-VQh"/>
+                        <outlet property="hidratacion" destination="XI7-GK-DWA" id="0th-rM-9V2"/>
+                        <outlet property="scrollView" destination="SQ9-7z-Hog" id="rvq-uv-gTd"/>
+                        <outlet property="sociales" destination="PUK-4c-SfH" id="RVa-sh-DOY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="K78-nZ-PH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1240" y="1846"/>
+            <point key="canvasLocation" x="1239.5" y="1845.5"/>
         </scene>
         <!--Acerca De-->
         <scene sceneID="DCW-e5-XsS">
@@ -1209,7 +1246,8 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="12" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RbF-8p-M2c">
                                 <rect key="frame" x="20" y="98" width="335" height="157"/>
-                                <string key="text">nombreProyecto a sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero-Mayo de 2016, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño.</string>
+                                <string key="text">nombreProyecto a sido desarrollado por estudiantes del Tecnológico de Monterrey durante el semestre Enero-Mayo de 2016, como parte del curso Desarrollo de Aplicaciones para Dispositivos Móviles y asesorados por la maestra Yolanda Martínez Treviño.
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1218,7 +1256,8 @@
                                 <rect key="frame" x="20" y="453" width="335" height="71"/>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">nombreProyecto se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.</string>
+                                        <string key="content">nombreProyecto se distribuye como está de manera gratuita y se prohíbe su distribución y uso con fines de lucro.
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="15" name="HelveticaNeue-Bold"/>
@@ -1242,7 +1281,11 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AFu-dO-hu5">
                                 <rect key="frame" x="66" y="293" width="243" height="82"/>
-                                <string key="text">Desarrolladores:Ricardo Treviño EsparzaFabián Montemayor MoralesDagoberto González Fernández </string>
+                                <string key="text">Desarrolladores:
+Ricardo Treviño Esparza
+Fabián Montemayor Morales
+Dagoberto González Fernández 
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>

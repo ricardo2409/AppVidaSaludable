@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */; };
 		1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */; };
-		1C25EDE01CD5C89E006FD5DE /* ViewControllerLaunch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */; };
 		1C25EDE21CD65DE7006FD5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */; };
+		1C897D651CD7D219000891ED /* ViewControllerMetricas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C897D641CD7D219000891ED /* ViewControllerMetricas.swift */; };
+		1C897D751CD7D2FB000891ED /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C897D6E1CD7D2DD000891ED /* Charts.framework */; };
+		1C897D761CD7D2FB000891ED /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C897D6E1CD7D2DD000891ED /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */; };
 		1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */; };
 		1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */; };
@@ -29,12 +31,65 @@
 		CED6F5B11CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1C897D6D1CD7D2DD000891ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C897D661CD7D2DD000891ED /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5BA8EC401A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+		1C897D6F1CD7D2DD000891ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C897D661CD7D2DD000891ED /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A52C5C371BAC5CA400594CDD;
+			remoteInfo = "Charts-TV";
+		};
+		1C897D711CD7D2DD000891ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C897D661CD7D2DD000891ED /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 65B3F5BF1C7370BE000983D0;
+			remoteInfo = "Charts-OSX";
+		};
+		1C897D731CD7D2DD000891ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C897D661CD7D2DD000891ED /* Charts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 06AEE7A21BDC3F8B009875AE;
+			remoteInfo = ChartsTests;
+		};
+		1C897D771CD7D2FB000891ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1C897D661CD7D2DD000891ED /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 5BA8EC3F1A9D14DC00CE82E1;
+			remoteInfo = "Charts-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1C897D791CD7D2FB000891ED /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1C897D761CD7D2FB000891ED /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		133E2D7781BE4AE5FE701607 /* Pods-AppVidaSaludable.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVidaSaludable.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppVidaSaludable/Pods-AppVidaSaludable.release.xcconfig"; sourceTree = "<group>"; };
 		1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAgregar.swift; sourceTree = "<group>"; };
 		1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerConfig.swift; sourceTree = "<group>"; };
-		1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLaunch.swift; sourceTree = "<group>"; };
 		1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C897D641CD7D219000891ED /* ViewControllerMetricas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMetricas.swift; sourceTree = "<group>"; };
+		1C897D661CD7D2DD000891ED /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInicio.swift; sourceTree = "<group>"; };
 		1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarControllerRoot.swift; sourceTree = "<group>"; };
 		1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerHoy.swift; sourceTree = "<group>"; };
@@ -63,12 +118,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				9333908D0F3E6DD425286FAD /* Pods_AppVidaSaludable.framework in Frameworks */,
+				1C897D751CD7D2FB000891ED /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C897D671CD7D2DD000891ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1C897D6E1CD7D2DD000891ED /* Charts.framework */,
+				1C897D701CD7D2DD000891ED /* Charts.framework */,
+				1C897D721CD7D2DD000891ED /* Charts.framework */,
+				1C897D741CD7D2DD000891ED /* ChartsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		460B8FCEC751ED38678B2656 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,6 +169,7 @@
 				CE30B79F1CBD907100B7A14E /* AppDelegate.swift */,
 				CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */,
 				CE30B7A51CBD907100B7A14E /* Main.storyboard */,
+				1C897D641CD7D219000891ED /* ViewControllerMetricas.swift */,
 				CE30B8001CC3DDDB00B7A14E /* ActividadesCell.swift */,
 				CE30B7B71CBED98D00B7A14E /* TableViewControllerDias.swift */,
 				CE30B7B51CBECCD600B7A14E /* TableViewControllerAgregar.swift */,
@@ -114,12 +182,12 @@
 				1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */,
 				1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */,
 				CE30B7AA1CBD907100B7A14E /* LaunchScreen.storyboard */,
-				1C25EDDF1CD5C89E006FD5DE /* ViewControllerLaunch.swift */,
 				CE30B7AD1CBD907100B7A14E /* Info.plist */,
 				1CC679141CC855EA005B8F6E /* Personas.swift */,
 				1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */,
 				1CC679161CC8561A005B8F6E /* Actividades.swift */,
 				CEA3AB6F1CD6C70B00734E61 /* AppVidaSaludable-Bridging-Header.h */,
+				1C897D661CD7D2DD000891ED /* Charts.xcodeproj */,
 			);
 			path = AppVidaSaludable;
 			sourceTree = "<group>";
@@ -145,10 +213,12 @@
 				CE30B79A1CBD907100B7A14E /* Resources */,
 				51F18D76C7637E994BD07D4B /* Embed Pods Frameworks */,
 				C292C681B31403234BD7F426 /* Copy Pods Resources */,
+				1C897D791CD7D2FB000891ED /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				1C897D781CD7D2FB000891ED /* PBXTargetDependency */,
 			);
 			name = AppVidaSaludable;
 			productName = AppVidaSaludable;
@@ -186,12 +256,49 @@
 			mainGroup = CE30B7931CBD907100B7A14E;
 			productRefGroup = CE30B79D1CBD907100B7A14E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 1C897D671CD7D2DD000891ED /* Products */;
+					ProjectRef = 1C897D661CD7D2DD000891ED /* Charts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				CE30B79B1CBD907100B7A14E /* AppVidaSaludable */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		1C897D6E1CD7D2DD000891ED /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 1C897D6D1CD7D2DD000891ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1C897D701CD7D2DD000891ED /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 1C897D6F1CD7D2DD000891ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1C897D721CD7D2DD000891ED /* Charts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Charts.framework;
+			remoteRef = 1C897D711CD7D2DD000891ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1C897D741CD7D2DD000891ED /* ChartsTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ChartsTests.xctest;
+			remoteRef = 1C897D731CD7D2DD000891ED /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CE30B79A1CBD907100B7A14E /* Resources */ = {
@@ -274,11 +381,19 @@
 				1CC679151CC855EA005B8F6E /* Personas.swift in Sources */,
 				1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */,
 				1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */,
-				1C25EDE01CD5C89E006FD5DE /* ViewControllerLaunch.swift in Sources */,
+				1C897D651CD7D219000891ED /* ViewControllerMetricas.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1C897D781CD7D2FB000891ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Charts-iOS";
+			targetProxy = 1C897D771CD7D2FB000891ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CE30B7A51CBD907100B7A14E /* Main.storyboard */ = {
@@ -389,6 +504,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = AppVidaSaludable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ricardotrevino.AppVidaSaludable;
@@ -404,6 +520,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = AppVidaSaludable/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ricardotrevino.AppVidaSaludable;
