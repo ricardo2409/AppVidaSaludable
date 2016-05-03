@@ -29,6 +29,7 @@ class ViewControllerMetricas: UIViewController {
         super.viewDidLoad()
         scrollView.contentSize = CGSize(width: 375.0, height: 2400.0)
         // Do any additional setup after loading the view.
+        scrollView.setContentOffset(CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -80,8 +81,12 @@ class ViewControllerMetricas: UIViewController {
             try! uiRealm.write {
                 uiRealm.delete(Acts!)
             }
-            self.scrollView.setContentOffset(
-            CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
+            self.scrollView.setContentOffset(CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
+            self.alimentacion.data = nil
+            self.hidratacion.data = nil
+            self.fisicas.data = nil
+            self.sociales.data = nil
+            
         }))
         
         alerta.addAction(UIAlertAction(title: "Cancelar", style: .Default, handler: nil))

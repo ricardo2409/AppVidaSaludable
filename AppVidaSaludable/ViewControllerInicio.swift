@@ -10,7 +10,7 @@ import UIKit
 import RealmSwift
 
 
-class ViewControllerInicio: UIViewController {
+class ViewControllerInicio: UIViewController, UITextFieldDelegate {
 
     // MARK: - Outlets
     
@@ -38,12 +38,24 @@ class ViewControllerInicio: UIViewController {
         tfNomDoctor.layer.borderColor = borderColor.CGColor;
         tfCorreoDoctor.layer.borderColor = borderColor.CGColor;
         tfNomUsuario.layer.borderColor = borderColor.CGColor;
-
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerInicio.quitaTeclado))
+        self.view.addGestureRecognizer(tap)
+        
+        tfNomResponsable.delegate = self
+        tfCorreoResponsable.delegate = self
+        tfNomDoctor.delegate = self
+        tfCorreoDoctor.delegate = self
+        tfNomUsuario.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func quitaTeclado() {
+        self.view.endEditing(true)
     }
     
     @IBAction func infoDada(sender: UIButton) {
@@ -140,6 +152,23 @@ class ViewControllerInicio: UIViewController {
         return emailPredicate.evaluateWithObject(enteredEmail)
     }
 
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == tfNomResponsable {
+            tfCorreoResponsable.becomeFirstResponder()
+        }
+        else if textField == tfCorreoResponsable {
+            tfNomDoctor.becomeFirstResponder()
+        }
+        else if textField == tfNomDoctor {
+            tfCorreoDoctor.becomeFirstResponder()
+        }
+        else if textField == tfCorreoDoctor {
+            tfNomUsuario.becomeFirstResponder()
+        }
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 
