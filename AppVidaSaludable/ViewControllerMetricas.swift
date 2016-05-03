@@ -12,15 +12,12 @@ import Charts
 
 class ViewControllerMetricas: UIViewController {
 
-    
     @IBOutlet weak var alimentacion: PieChartView!
-    
+
     @IBOutlet weak var hidratacion: PieChartView!
-    
     @IBOutlet weak var fisicas: PieChartView!
     
     @IBOutlet weak var sociales: PieChartView!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     var pAlimentacion = [0.0, 0.0]
     var pHidratacion = [0.0, 0.0]
@@ -146,7 +143,7 @@ class ViewControllerMetricas: UIViewController {
         pieChartView.drawSlicesUnderHoleEnabled = false
         pieChartView.holeRadiusPercent = 0.58
         pieChartView.transparentCircleRadiusPercent = 0.61
-        pieChartView.descriptionText = description
+        //pieChartView.descriptionText = description
         
         // Formateador de porciento
         let perFormatter : NSNumberFormatter = NSNumberFormatter()
@@ -165,6 +162,10 @@ class ViewControllerMetricas: UIViewController {
         
         let pieChartDataSet = PieChartDataSet(yVals: dataEntries, label: "")
         let pieChartData = PieChartData(xVals: dataPoints, dataSet: pieChartDataSet)
+        //pieChartDataSet.yValuePosition = .OutsideSlice
+        pieChartDataSet.valueTextColor = UIColor.blackColor()
+        //pieChartDataSet.xValuePosition = .OutsideSlice
+        
         pieChartData.setValueFormatter(perFormatter)
         
         // Colores
@@ -177,7 +178,7 @@ class ViewControllerMetricas: UIViewController {
             colors.append(color)
         }
         else if description == "Hidratación" {
-            var color = UIColor(red: 41/255, green: 128/255, blue: 185/255, alpha: 1)
+            var color = UIColor(red: 41/255, green: 128/255, blue: 185/255, alpha: 0.8)
             colors.append(color)
             color = UIColor(red: 57/255, green: 64/255, blue: 196/255, alpha: 1)
             colors.append(color)
