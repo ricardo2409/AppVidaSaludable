@@ -80,8 +80,10 @@ class ViewControllerMetricas: UIViewController {
             try! uiRealm.write {
                 uiRealm.delete(Acts!)
             }
-            self.scrollView.setContentOffset(
-            CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
+            self.loadView()
+            //self.scrollView.setContentOffset(CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
+            //self.setChart(self.concepto, values: self.pSociales, description: "Actividades Sociales", pieChartView: self.sociales)
+            
         }))
         
         alerta.addAction(UIAlertAction(title: "Cancelar", style: .Default, handler: nil))
