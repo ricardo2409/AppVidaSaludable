@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TableViewControllerEditarActividad: UITableViewController,UIPickerViewDataSource, UIPickerViewDelegate {
     
@@ -14,12 +15,17 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     @IBOutlet weak var pvHora: UIPickerView!
     @IBOutlet weak var lblFrecuencia: UILabel!
     @IBOutlet weak var pvCategoria: UIPickerView!
+    @IBOutlet weak var botonGuardar: UIBarButtonItem!
+    
     var hora = 1
     var minutos = 1
     var categoria = "Alimentación"
+    var frecuencia: [String]!
     var activididadRecibida : Actividad!
     var actividadAMandar : Actividad!
     var arreglo: [[AnyObject]] = []
+    
+    
     var arreglo1 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
     var arreglo2 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23", "24","25", "26", "27", "28", "29", "30", "31","32", "33", "34", "35", "36","37", "38", "39", "40", "41", "42", "43","44", "45", "46", "47", "48","49", "50", "51", "52", "53", "54", "55","56", "57", "58", "59"]
     var arregloCategorias: [String] = ["Alimentación", "Hidratación", "Actividad Física", "Actividad Social"]
@@ -188,14 +194,15 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+       
+        
     }
-    */
 
+        
 }
+    
+
