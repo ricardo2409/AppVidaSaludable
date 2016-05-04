@@ -11,6 +11,7 @@
 		1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */; };
 		1C25EDE21CD65DE7006FD5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */; };
 		1C80EF351CD9918A00C02CAF /* ViewControllerContactaMedico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C80EF341CD9918A00C02CAF /* ViewControllerContactaMedico.swift */; };
+		1C80EF3B1CDABBF800C02CAF /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C80EF3A1CDABBF800C02CAF /* extensions.swift */; };
 		1C897D651CD7D219000891ED /* ViewControllerMetricas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C897D641CD7D219000891ED /* ViewControllerMetricas.swift */; };
 		1C897D751CD7D2FB000891ED /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C897D6E1CD7D2DD000891ED /* Charts.framework */; };
 		1C897D761CD7D2FB000891ED /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1C897D6E1CD7D2DD000891ED /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -91,6 +92,7 @@
 		1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerConfig.swift; sourceTree = "<group>"; };
 		1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C80EF341CD9918A00C02CAF /* ViewControllerContactaMedico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerContactaMedico.swift; sourceTree = "<group>"; };
+		1C80EF3A1CDABBF800C02CAF /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
 		1C897D641CD7D219000891ED /* ViewControllerMetricas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerMetricas.swift; sourceTree = "<group>"; };
 		1C897D661CD7D2DD000891ED /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = Charts/Charts.xcodeproj; sourceTree = SOURCE_ROOT; };
 		1CADCDDD1CBD99ED00092481 /* ViewControllerInicio.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerInicio.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				CE30B79F1CBD907100B7A14E /* AppDelegate.swift */,
 				CED6F5B01CC67E3D00BA6C60 /* TableViewControllerEditarActividad.swift */,
+				1C80EF3A1CDABBF800C02CAF /* extensions.swift */,
 				CE30B7A51CBD907100B7A14E /* Main.storyboard */,
 				1C80EF341CD9918A00C02CAF /* ViewControllerContactaMedico.swift */,
 				CE2803041CD989B700AB39F5 /* TableViewControllerDiasEditar.swift */,
@@ -378,6 +381,7 @@
 				1CC679171CC8561A005B8F6E /* Actividades.swift in Sources */,
 				CE30B8011CC3DDDB00B7A14E /* ActividadesCell.swift in Sources */,
 				CE30B7A01CBD907100B7A14E /* AppDelegate.swift in Sources */,
+				1C80EF3B1CDABBF800C02CAF /* extensions.swift in Sources */,
 				1CADCDE01CBD9B7A00092481 /* TabBarControllerRoot.swift in Sources */,
 				1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */,
 				1CADCDE21CBD9F0F00092481 /* TableViewControllerHoy.swift in Sources */,

@@ -57,9 +57,13 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
         
+        let date = NSDate()
+        // Picks current date
         self.pickerViewCategoria.selectRow(500, inComponent: 0, animated: false)
-        self.pickerViewHora.selectRow(500, inComponent: 0, animated: false)
-        self.pickerViewHora.selectRow(500, inComponent: 1, animated: false)
+        self.pickerViewHora.selectRow((date.hour - 1) + (arregloHoras.count * 10), inComponent: 0, animated: false)
+        self.pickerViewHora.selectRow((date.minute) + (arregloMinutos.count * 10), inComponent: 1, animated: false)
+        self.hora = date.hour
+        self.minutos = date.minute
         
         print(Realm.Configuration.defaultConfiguration.path!)
         
@@ -135,10 +139,10 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == pickerViewHora {
             //return arreglo[component].count
-            return 100000
+            return 1000
         }else{
             //return arregloCategorias.count
-            return 100000
+            return 1000
         }
     }
     

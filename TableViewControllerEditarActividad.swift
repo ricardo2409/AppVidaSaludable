@@ -72,8 +72,8 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         //Une todo lo del arreglo y lo pone en lblFrecuencia.txt
         let stringRepresentation = activididadRecibida.frecuencia.joinWithSeparator("")
         lblFrecuencia.text = stringRepresentation
-        pvHora.selectRow(activididadRecibida.hora - 1, inComponent: 0, animated: true)
-        pvHora.selectRow(activididadRecibida.minutos - 1, inComponent: 1, animated: true)
+        pvHora.selectRow((activididadRecibida.hora - 1) + (arregloHoras.count * 10), inComponent: 0, animated: true)
+        pvHora.selectRow((activididadRecibida.minutos) + (arregloMinutos.count * 10), inComponent: 1, animated: true)
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
@@ -185,9 +185,9 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == pvHora {
-            return 100000
+            return 1000
         }else{
-            return 100000
+            return 1000
         }
     }
     

@@ -387,6 +387,7 @@ class TableViewControllerActividades: UITableViewController {
         }
     }
 }
+
 //Protocolo de DZNEmptyDataSet
 extension TableViewControllerActividades: DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
     
@@ -402,3 +403,4 @@ extension TableViewControllerActividades: DZNEmptyDataSetSource, DZNEmptyDataSet
         return -self.tableView.frame.size.height / 8
     }
 }
+
