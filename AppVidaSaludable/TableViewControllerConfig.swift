@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
+class TableViewControllerConfig: UITableViewController, UITextFieldDelegate {
     
     // MARK: - Outlets
     
@@ -18,19 +18,15 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
     @IBOutlet weak var tfNomMedico: UITextField!
     @IBOutlet weak var tfCorreoMedico: UITextField!
     
-    @IBOutlet weak var pickerViewFallos: UIPickerView!
-    
-    @IBOutlet weak var pickerViewReportes: UIPickerView!
-    
     // MARK: - Variables & Constants
     var nomResponsable : String?
     var correoResponsable : String?
     var nomMedico : String?
     var correoMedico : String?
-    var cantidadFallos : Int!
-    var frecReportes : Int! // Cantidad de días
-    var arrFallos : NSArray = ["1", "2", "3", "4", "5"]
-    var arrReportes : NSArray = ["Semanal", "Quincenal", "Mensual", "Bimestral"]
+    //var cantidadFallos : Int!
+    //var frecReportes : Int! // Cantidad de días
+    //var arrFallos : NSArray = ["1", "2", "3", "4", "5"]
+    //var arrReportes : NSArray = ["Semanal", "Quincenal", "Mensual", "Bimestral"]
     
     var usuario : Results<Personas>?
     
@@ -77,12 +73,6 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         tfCorreoResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         tfNomMedico.addTarget(self, action: #selector(TableViewControllerConfig.cambioNomMedico(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         tfCorreoResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
-        
-        // Pickers
-        self.pickerViewFallos.delegate = self
-        self.pickerViewReportes.dataSource = self
-        self.pickerViewFallos.dataSource = self
-        self.pickerViewReportes.delegate = self
         
     }
 
@@ -210,6 +200,7 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
         return 1
     }
     
+    /*
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == pickerViewReportes {
             return arrReportes.count
@@ -250,7 +241,7 @@ class TableViewControllerConfig: UITableViewController, UIPickerViewDelegate, UI
             self.cantidadFallos = Int(arrFallos[row] as! String)
         }
     }
-    
+    */
     
     // MARK: - Table view data source
     /*
