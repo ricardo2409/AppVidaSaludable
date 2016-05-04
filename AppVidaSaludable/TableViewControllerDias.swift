@@ -13,7 +13,6 @@ class TableViewControllerDias: UITableViewController {
     var arregloDias: [Int] = []
     var arregloFrecuencias: [String] = []
     @IBOutlet weak var botonOk: UIButton!
-    @IBOutlet weak var botonCancelar: UIButton!
     
     override func viewDidLoad() {
         
@@ -117,11 +116,12 @@ class TableViewControllerDias: UITableViewController {
             viewAgregar.frecuencia = self.arregloFrecuencias
             print("Esto es lo que mando en el OK")
             print(arregloDias)
+            viewAgregar.cancel = false
         }else{
             //Boton Cancelar
             let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
             viewAgregar.arregloDias = []
-
+            viewAgregar.cancel = true
         }
         
     }

@@ -35,7 +35,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     var actividadNueva: Actividad!
     
     let Act = Actividades()
-    
+    var cancel = false
     // MARK: - Funciones
     
     override func viewDidLoad() {
@@ -114,10 +114,13 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     }
     
     @IBAction func unwindDias(sender: UIStoryboardSegue){
-        
-        print("Esto es lo que recibo del ok")
-        print(arregloDias)
-        agregaDiasEnLabel()
+        if cancel {
+            print("Estoy en cancel")
+        }else{
+            print("Esto es lo que recibo del ok")
+            print(arregloDias)
+            agregaDiasEnLabel()
+        }
     }
     
 
@@ -195,7 +198,6 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
              
 
                 actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
-                viewAgregar.control = true
                 
                 Act.Nombre = tfNombre.text!
                 Act.Categoria = categoria
@@ -205,7 +207,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
 
                 actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: [Act.Frecuencia])
                 viewAgregar.nuevaActividad = actividadNueva
- 
+                viewAgregar.controlAgregar = true
                 try! uiRealm.write{
                     uiRealm.add(Act)
                 }
@@ -215,7 +217,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                 //Cancelar
               
                 let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
-                viewAgregar.control = false
+                viewAgregar.controlAgregar = false
 
                 
             }

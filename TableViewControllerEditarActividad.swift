@@ -245,6 +245,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
                 
                 viewEditar.nuevaActividadEditar = actividadAMandar
                 viewEditar.indiceDeEditar = self.indice
+                viewEditar.controlEditar = true
                 var EditaAct:Results<Actividades>?
                 print("Esta es la act Recibida y la que voy a comparar en bd")
                 print(activididadRecibida.nombre)
@@ -255,23 +256,13 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
                 uiRealm.add(Act)
                 }
                 
-//                print("Esta es la act que voy a editar")
-//                print(EditaAct![0].Nombre)
-//                print("Esta es la frecuencia")
-//                print(frecuencia)
-//                print("Esta es la frecuencia en string")
-                
-//                try! uiRealm.write {
-//                EditaAct![0].Nombre = tfNombre.text!
-//                EditaAct![0].Categoria = categoria
-//                EditaAct![0].Frecuencia = frecuencia.description
-//                EditaAct![0].Hora = hora
-//                EditaAct![0].Minutos = minutos
-//                }
+
             }else{
                 //Boton cancelar
-//                let viewEditar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+                let viewEditar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
                 print("Cancelar")
+                viewEditar.controlEditar = false
+
         
     }
 

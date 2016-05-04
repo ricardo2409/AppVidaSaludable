@@ -13,7 +13,6 @@ class TableViewControllerDiasEditar: UITableViewController {
     var arregloDias: [Int] = []
     var arregloFrecuencias: [String] = []
     @IBOutlet weak var botonOk: UIButton!
-    @IBOutlet weak var botonCancelar: UIButton!
     
     override func viewDidLoad() {
         

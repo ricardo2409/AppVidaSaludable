@@ -279,37 +279,22 @@
                             <rect key="frame" x="0.0" y="372" width="600" height="178"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwn-yV-bI7">
-                                    <rect key="frame" x="82" y="74" width="61" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="E93-8k-ouS"/>
-                                        <constraint firstAttribute="width" constant="61" id="R9r-h7-H9r"/>
-                                        <constraint firstAttribute="width" constant="61" id="gi7-75-BHL"/>
-                                        <constraint firstAttribute="height" constant="30" id="rvn-nH-Iah"/>
-                                    </constraints>
-                                    <state key="normal" title="Cancelar"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="gi7-75-BHL"/>
-                                            <exclude reference="rvn-nH-Iah"/>
-                                        </mask>
-                                    </variation>
-                                    <connections>
-                                        <segue destination="IEY-WQ-k9y" kind="unwind" unwindAction="unwindDias:" id="Ar9-QG-BK7"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BgJ-IG-F87">
-                                    <rect key="frame" x="490" y="74" width="30" height="30"/>
+                                    <rect key="frame" x="285" y="74" width="30" height="30"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" constant="30" id="6qh-5o-EaQ"/>
                                         <constraint firstAttribute="height" constant="30" id="Fnn-eD-BqV"/>
                                         <constraint firstAttribute="width" constant="30" id="cBC-Sz-gX2"/>
                                         <constraint firstAttribute="height" constant="30" id="fd4-A3-3il"/>
                                         <constraint firstAttribute="width" constant="30" id="nbC-Tq-Zvp"/>
+                                        <constraint firstAttribute="height" constant="30" id="snu-LU-Uwh"/>
                                     </constraints>
                                     <state key="normal" title="Ok"/>
                                     <variation key="default">
                                         <mask key="constraints">
                                             <exclude reference="Fnn-eD-BqV"/>
+                                            <exclude reference="cBC-Sz-gX2"/>
+                                            <exclude reference="fd4-A3-3il"/>
                                             <exclude reference="nbC-Tq-Zvp"/>
                                         </mask>
                                     </variation>
@@ -320,27 +305,19 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="leading" secondItem="Ldb-CB-BTR" secondAttribute="leading" constant="82" id="2ma-4W-vWl"/>
                                 <constraint firstAttribute="trailing" secondItem="BgJ-IG-F87" secondAttribute="trailing" constant="134" id="4BJ-nY-Hdc"/>
+                                <constraint firstItem="BgJ-IG-F87" firstAttribute="centerX" secondItem="Ldb-CB-BTR" secondAttribute="centerX" id="LE3-ZD-yAW"/>
                                 <constraint firstAttribute="bottom" secondItem="BgJ-IG-F87" secondAttribute="bottom" constant="74" id="NPQ-AI-dsq"/>
-                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="leading" secondItem="Ldb-CB-BTR" secondAttribute="leading" constant="82" id="OKA-cJ-P7I"/>
-                                <constraint firstItem="BgJ-IG-F87" firstAttribute="leading" secondItem="Mwn-yV-bI7" secondAttribute="trailing" constant="293" id="TKU-Fj-wa3"/>
-                                <constraint firstAttribute="trailing" secondItem="BgJ-IG-F87" secondAttribute="trailing" constant="80" id="bHq-Cv-wGw"/>
+                                <constraint firstAttribute="bottom" secondItem="BgJ-IG-F87" secondAttribute="bottom" constant="74" id="SUr-5Q-sOG"/>
+                                <constraint firstAttribute="trailing" secondItem="BgJ-IG-F87" secondAttribute="trailing" constant="285" id="bHq-Cv-wGw"/>
                                 <constraint firstAttribute="trailing" secondItem="BgJ-IG-F87" secondAttribute="trailing" constant="134" id="eCC-bf-zwa"/>
-                                <constraint firstAttribute="bottom" secondItem="Mwn-yV-bI7" secondAttribute="bottom" constant="74" id="gy8-j1-93O"/>
                                 <constraint firstAttribute="bottom" secondItem="BgJ-IG-F87" secondAttribute="bottom" constant="74" id="kdc-6k-jux"/>
-                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="leading" secondItem="Ldb-CB-BTR" secondAttribute="leading" constant="82" id="kfj-G5-L5i"/>
-                                <constraint firstAttribute="bottom" secondItem="Mwn-yV-bI7" secondAttribute="bottom" constant="74" id="qWq-aN-1GN"/>
-                                <constraint firstItem="Mwn-yV-bI7" firstAttribute="centerY" secondItem="Ldb-CB-BTR" secondAttribute="centerY" id="rgD-Lb-pGb"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="2ma-4W-vWl"/>
-                                    <exclude reference="gy8-j1-93O"/>
-                                    <exclude reference="kfj-G5-L5i"/>
-                                    <exclude reference="rgD-Lb-pGb"/>
                                     <exclude reference="4BJ-nY-Hdc"/>
-                                    <exclude reference="TKU-Fj-wa3"/>
+                                    <exclude reference="NPQ-AI-dsq"/>
+                                    <exclude reference="bHq-Cv-wGw"/>
                                     <exclude reference="eCC-bf-zwa"/>
                                     <exclude reference="kdc-6k-jux"/>
                                 </mask>
@@ -477,7 +454,6 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="botonCancelar" destination="Mwn-yV-bI7" id="fV0-IR-HMl"/>
                         <outlet property="botonOk" destination="BgJ-IG-F87" id="MLc-hd-OqC"/>
                     </connections>
                 </tableViewController>
@@ -667,13 +643,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xt-de-KnJ">
-                                <rect key="frame" x="172" y="602" width="30" height="30"/>
-                                <state key="normal" title="OK"/>
-                                <connections>
-                                    <action selector="infoDada:" destination="n1r-lX-1zK" eventType="touchUpInside" id="Bmp-4T-c6E"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Correo:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCa-RC-XR5">
                                 <rect key="frame" x="40" y="345" width="58" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -713,6 +682,13 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9xt-de-KnJ">
+                                <rect key="frame" x="172" y="546" width="30" height="30"/>
+                                <state key="normal" title="OK"/>
+                                <connections>
+                                    <action selector="infoDada:" destination="n1r-lX-1zK" eventType="touchUpInside" id="Bmp-4T-c6E"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
@@ -1397,37 +1373,22 @@ Dagoberto González Fernández
                             <rect key="frame" x="0.0" y="372" width="600" height="178"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SKx-BI-fro">
-                                    <rect key="frame" x="82" y="74" width="61" height="30"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="61" id="KXO-WP-d4q"/>
-                                        <constraint firstAttribute="height" constant="30" id="Tme-m4-uLY"/>
-                                        <constraint firstAttribute="width" constant="61" id="ZKe-A5-bwn"/>
-                                        <constraint firstAttribute="height" constant="30" id="z0s-fS-hSW"/>
-                                    </constraints>
-                                    <state key="normal" title="Cancelar"/>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="KXO-WP-d4q"/>
-                                            <exclude reference="Tme-m4-uLY"/>
-                                        </mask>
-                                    </variation>
-                                    <connections>
-                                        <segue destination="Iv7-Ua-fYR" kind="unwind" unwindAction="unwindDiasEditar:" id="WRB-zS-6eu"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-Ab-usD">
-                                    <rect key="frame" x="490" y="74" width="30" height="30"/>
+                                    <rect key="frame" x="285" y="74" width="30" height="30"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="1nf-9Y-fM9"/>
                                         <constraint firstAttribute="height" constant="30" id="B6n-r8-LDn"/>
                                         <constraint firstAttribute="width" constant="30" id="Tr3-fG-fbP"/>
+                                        <constraint firstAttribute="width" constant="30" id="Yit-vq-MFm"/>
                                         <constraint firstAttribute="width" constant="30" id="aN6-Gi-thH"/>
+                                        <constraint firstAttribute="height" constant="30" id="gf2-M8-cwc"/>
                                     </constraints>
                                     <state key="normal" title="Ok"/>
                                     <variation key="default">
                                         <mask key="constraints">
+                                            <exclude reference="1nf-9Y-fM9"/>
                                             <exclude reference="B6n-r8-LDn"/>
+                                            <exclude reference="Tr3-fG-fbP"/>
                                             <exclude reference="aN6-Gi-thH"/>
                                         </mask>
                                     </variation>
@@ -1438,27 +1399,19 @@ Dagoberto González Fernández
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="4aY-Ab-usD" secondAttribute="trailing" constant="80" id="9OB-Au-Rja"/>
-                                <constraint firstItem="SKx-BI-fro" firstAttribute="leading" secondItem="fIN-gQ-Ful" secondAttribute="leading" constant="82" id="O9m-Uh-8Bi"/>
-                                <constraint firstItem="SKx-BI-fro" firstAttribute="leading" secondItem="fIN-gQ-Ful" secondAttribute="leading" constant="82" id="Uuc-QQ-SKU"/>
-                                <constraint firstAttribute="bottom" secondItem="SKx-BI-fro" secondAttribute="bottom" constant="74" id="Yui-DL-UCI"/>
-                                <constraint firstItem="4aY-Ab-usD" firstAttribute="leading" secondItem="SKx-BI-fro" secondAttribute="trailing" constant="293" id="b6H-e2-5BF"/>
+                                <constraint firstAttribute="trailing" secondItem="4aY-Ab-usD" secondAttribute="trailing" constant="285" id="9OB-Au-Rja"/>
+                                <constraint firstAttribute="bottom" secondItem="4aY-Ab-usD" secondAttribute="bottom" constant="74" id="RUq-ck-vbU"/>
                                 <constraint firstAttribute="trailing" secondItem="4aY-Ab-usD" secondAttribute="trailing" constant="134" id="b7D-F9-e8v"/>
-                                <constraint firstAttribute="bottom" secondItem="SKx-BI-fro" secondAttribute="bottom" constant="74" id="elU-4e-IbU"/>
                                 <constraint firstAttribute="bottom" secondItem="4aY-Ab-usD" secondAttribute="bottom" constant="74" id="f3N-in-Hid"/>
-                                <constraint firstItem="SKx-BI-fro" firstAttribute="centerY" secondItem="fIN-gQ-Ful" secondAttribute="centerY" id="gfR-q4-6qF"/>
-                                <constraint firstItem="SKx-BI-fro" firstAttribute="leading" secondItem="fIN-gQ-Ful" secondAttribute="leading" constant="82" id="kql-q8-1HM"/>
+                                <constraint firstItem="4aY-Ab-usD" firstAttribute="centerX" secondItem="fIN-gQ-Ful" secondAttribute="centerX" id="jKu-c6-azd"/>
                                 <constraint firstAttribute="bottom" secondItem="4aY-Ab-usD" secondAttribute="bottom" constant="74" id="l6M-x8-CO8"/>
                                 <constraint firstAttribute="trailing" secondItem="4aY-Ab-usD" secondAttribute="trailing" constant="134" id="xZz-UA-kqR"/>
                             </constraints>
                             <variation key="default">
                                 <mask key="constraints">
-                                    <exclude reference="Uuc-QQ-SKU"/>
-                                    <exclude reference="Yui-DL-UCI"/>
-                                    <exclude reference="gfR-q4-6qF"/>
-                                    <exclude reference="kql-q8-1HM"/>
-                                    <exclude reference="b6H-e2-5BF"/>
+                                    <exclude reference="9OB-Au-Rja"/>
                                     <exclude reference="b7D-F9-e8v"/>
+                                    <exclude reference="f3N-in-Hid"/>
                                     <exclude reference="l6M-x8-CO8"/>
                                     <exclude reference="xZz-UA-kqR"/>
                                 </mask>
@@ -1595,7 +1548,6 @@ Dagoberto González Fernández
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="botonCancelar" destination="SKx-BI-fro" id="iGZ-Yk-c6C"/>
                         <outlet property="botonOk" destination="4aY-Ab-usD" id="yrt-GM-ARG"/>
                     </connections>
                 </tableViewController>

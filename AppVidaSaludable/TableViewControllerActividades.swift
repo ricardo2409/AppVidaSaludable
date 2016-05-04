@@ -19,7 +19,8 @@ class TableViewControllerActividades: UITableViewController {
     var arregloActividades : [Actividad] = []
     var nuevaActividad : Actividad!
     var nuevaActividadEditar : Actividad!
-    var control: Bool = false
+    var controlAgregar: Bool = false
+    var controlEditar: Bool = false
     var actividadAMandar: Actividad!
     var arregloActividadesHoy: [Actividad] = []
     var diaDeHoy : String!
@@ -230,7 +231,7 @@ class TableViewControllerActividades: UITableViewController {
     
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){
             print("Estoy en unwindAgregar")
-        if control{
+        if controlAgregar{
             if nuevaActividad != nil{
                 print("Esto tiene actividadAUsar en el unwindAgregar antes de meterse al arreglo")
                 print(nuevaActividad.nombre)
@@ -246,16 +247,20 @@ class TableViewControllerActividades: UITableViewController {
     }
     
     @IBAction func unwindEditar(sender: UIStoryboardSegue){
-        print("Estoy en unwindEditar y este es indiceEditar")
-        print(indiceDeEditar)
-        if indiceDeEditar != nil{
-            //Borra el que estaba en arregloActividades[indiceDeEditar]
-            llenaArreglo()
-            llenaArregloHoy()
-//            arregloActividadesHoy[indiceDeEditar] = nuevaActividadEditar
-           
-            creaNotificaciones()
-            self.tableView.reloadData()
+        if controlEditar{
+            print("Estoy en unwindEditar y este es indiceEditar")
+            print(indiceDeEditar)
+            if indiceDeEditar != nil{
+                llenaArreglo()
+                llenaArregloHoy()
+                creaNotificaciones()
+                self.tableView.reloadData()
+        }
+        }else{
+            //Control editar=false
+            //Cancel
+            print("Cancel")
+       
         }
     }
     override func didReceiveMemoryWarning() {
