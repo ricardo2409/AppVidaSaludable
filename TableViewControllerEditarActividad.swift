@@ -16,6 +16,9 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     @IBOutlet weak var lblFrecuencia: UILabel!
     @IBOutlet weak var pvCategoria: UIPickerView!
     @IBOutlet weak var botonGuardar: UIBarButtonItem!
+    @IBOutlet weak var botonCancel: UIBarButtonItem!
+    @IBOutlet weak var pickerViewHora: UIPickerView!
+    @IBOutlet weak var pickerViewCategoria: UIPickerView!
     
     var hora = 1
     var minutos = 1
@@ -24,6 +27,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     var activididadRecibida : Actividad!
     var actividadAMandar : Actividad!
     var arreglo: [[AnyObject]] = []
+    var actividadNueva: Actividad!
     
     
     var arreglo1 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
@@ -110,7 +114,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         if pickerView == pvHora {
             return arreglo[component].count
         }else{
-            return arregloCategorias.count
+            return 100000
         }
     }
     
@@ -118,7 +122,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         if pickerView == pvHora {
             return arreglo[component][row] as? String
         }else{
-            return arregloCategorias[row] as String
+            return arregloCategorias[row%arregloCategorias.count] as String
         }
     }
     
@@ -132,7 +136,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
                 print("minutos es:" + String(self.minutos))
             }
         }else{
-            self.categoria = arregloCategorias[row]
+            self.categoria = arregloCategorias[row%arregloCategorias.count]
         }
     }
 
@@ -198,11 +202,38 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-       
+        if segue.identifier != "tableDiasEdit"{
+            if (sender as! UIBarButtonItem == botonGuardar){
+                let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+                
+                
+               //actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
+               //viewAgregar.control = true
+                
+                
+                
+                actividadAMandar = Actividad(nom: tfNombre.text!, cat: categoria, h: hora, m: minutos, frec: [""])
+                viewAgregar.nuevaActividad = actividadAMandar
+                
+                var EditaAct:Results<Actividades>?
+                EditaAct = uiRealm.objects(Actividades).filter("Nombre == %@", activididadRecibida.nombre)
+                
+                
+                
+                try! uiRealm.write {
+                EditaAct![0].Nombre = tfNombre.text!
+                EditaAct![0].Categoria = categoria
+                EditaAct![0].Hora = hora
+                EditaAct![0].Minutos = minutos
+                }
+
         
     }
 
         
 }
     
-
+}
+    
+    
+}

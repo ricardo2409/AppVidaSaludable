@@ -1388,7 +1388,6 @@ Dagoberto González Fernández
                     <connections>
                         <outlet property="botonCancel" destination="Kg6-LJ-0JX" id="G3Z-YR-Y3h"/>
                         <outlet property="botonGuardar" destination="I1L-QV-qx7" id="YNQ-3V-gUI"/>
-                        <outlet property="lbFrecuencia" destination="q7E-RN-sNt" id="0Ks-VF-vo6"/>
                         <outlet property="lblFrecuencia" destination="q7E-RN-sNt" id="eBB-2e-QO0"/>
                         <outlet property="pickerViewCategoria" destination="ahW-f6-bry" id="32V-KF-qZ3"/>
                         <outlet property="pickerViewHora" destination="HF5-Pu-a3h" id="o2R-tv-fUB"/>
@@ -1400,16 +1399,11 @@ Dagoberto González Fernández
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vId-h2-vrQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="z9w-oV-2ow">
                     <connections>
-                        <action selector="quitaTeclado:" destination="dbK-za-PLB" id="ycf-PU-wek"/>
                         <outlet property="delegate" destination="Akw-dS-Fjs" id="Gan-1Q-vOM"/>
                     </connections>
                 </tapGestureRecognizer>
                 <exit id="yDR-vh-Zbm" userLabel="Exit" sceneMemberID="exit"/>
-                <tapGestureRecognizer id="4cM-88-bcV">
-                    <connections>
-                        <action selector="quitaTeclado:" destination="dbK-za-PLB" id="7O7-kE-yQ6"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="4cM-88-bcV"/>
             </objects>
             <point key="canvasLocation" x="2624" y="566"/>
         </scene>
@@ -1483,12 +1477,12 @@ Dagoberto González Fernández
                                 <mask key="constraints">
                                     <exclude reference="Uuc-QQ-SKU"/>
                                     <exclude reference="Yui-DL-UCI"/>
-                                    <exclude reference="kql-q8-1HM"/>
                                     <exclude reference="gfR-q4-6qF"/>
-                                    <exclude reference="b7D-F9-e8v"/>
+                                    <exclude reference="kql-q8-1HM"/>
                                     <exclude reference="b6H-e2-5BF"/>
-                                    <exclude reference="xZz-UA-kqR"/>
+                                    <exclude reference="b7D-F9-e8v"/>
                                     <exclude reference="l6M-x8-CO8"/>
+                                    <exclude reference="xZz-UA-kqR"/>
                                 </mask>
                             </variation>
                         </view>

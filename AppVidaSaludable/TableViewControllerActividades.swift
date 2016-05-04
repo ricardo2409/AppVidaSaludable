@@ -314,6 +314,12 @@ class TableViewControllerActividades: UITableViewController {
         if editingStyle == .Delete {
             // Delete the row from the data source
             print(arregloActividades)
+            
+            try! uiRealm.write {
+                let BorraActividad = uiRealm.objects(Actividades).filter("Nombre == %@", arregloActividades[(indexPath.row)].nombre)
+                uiRealm.delete(BorraActividad)
+            }
+            
             print("Actividad removida:" + arregloActividades[indexPath.row].nombre)
             arregloActividades.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -322,6 +328,7 @@ class TableViewControllerActividades: UITableViewController {
             
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+           
         }    
     }
     
