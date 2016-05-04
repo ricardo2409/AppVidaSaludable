@@ -11,6 +11,7 @@ import RealmSwift
 
 class Actividades: Object {
     
+    
     dynamic var Nombre = ""
     dynamic var Categoria = ""
     dynamic var Frecuencia = ""

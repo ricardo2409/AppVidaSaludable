@@ -37,15 +37,17 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
    
 
     override func viewDidAppear(animated: Bool) {
+       
+    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
         tfNombre.text = activididadRecibida.nombre
         minutos = activididadRecibida.minutos
         hora = activididadRecibida.hora
         categoria = activididadRecibida.categoria
         frecuencia = activididadRecibida.frecuencia
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+        
         arreglo = [arreglo1, arreglo2]
         self.pvHora.delegate = self
         self.pvHora.dataSource = self
@@ -249,7 +251,8 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
                 
                 EditaAct = uiRealm.objects(Actividades).filter("Nombre == %@", activididadRecibida.nombre)
                 try! uiRealm.write {
-                uiRealm.add(Act, update: true)
+                uiRealm.delete(EditaAct!)
+                uiRealm.add(Act)
                 }
                 
 //                print("Esta es la act que voy a editar")
