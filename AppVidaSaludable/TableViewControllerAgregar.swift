@@ -22,8 +22,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     @IBOutlet weak var lbFrecuencia: UILabel!
     // MARK: - Variables
     var arreglo: [[AnyObject]] = []
-    var arreglo1 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
-    var arreglo2 = ["0","15","30","45"]
+    var arregloHoras = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
+    var arregloMinutos = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
     var arregloCategorias: [String] = ["Alimentación", "Hidratación", "Actividad Física", "Actividad Social"]
     var arregloDias: [Int] = []
     var categoria : String!
@@ -39,7 +39,7 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        arreglo = [arreglo1, arreglo2]
+        arreglo = [arregloHoras, arregloMinutos]
         self.pickerViewHora.delegate = self
         self.pickerViewHora.dataSource = self
        
@@ -58,8 +58,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
 
         
         self.pickerViewCategoria.selectRow(500, inComponent: 0, animated: false)
-        //self.pickerViewHora.selectRow(500, inComponent: 0, animated: false)
-        //self.pickerViewHora.selectRow(500, inComponent: 1, animated: false)
+        self.pickerViewHora.selectRow(500, inComponent: 0, animated: false)
+        self.pickerViewHora.selectRow(500, inComponent: 1, animated: false)
         
         print(Realm.Configuration.defaultConfiguration.path!)
         
@@ -134,8 +134,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == pickerViewHora {
-            return arreglo[component].count
-            //return 100000
+            //return arreglo[component].count
+            return 100000
         }else{
             //return arregloCategorias.count
             return 100000
@@ -144,7 +144,13 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == pickerViewHora {
-            return arreglo[component][row] as? String
+            if component == 0 {
+                return arregloHoras[row%arregloHoras.count] as String
+            }
+            else {
+                return arregloMinutos[row%arregloMinutos.count] as String
+            }
+            //return arreglo[component][row] as? String
         }else{
             return arregloCategorias[row%arregloCategorias.count] as String
         }
@@ -153,10 +159,10 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pickerViewHora {
             if component == 0{
-                self.hora = Int(arreglo[component][row] as! String)
+                self.hora = Int(arregloHoras[row%arregloHoras.count])
                 print("hora es:" + String(self.hora))
             }else{
-                self.minutos = Int(arreglo[component][row] as! String)
+                self.minutos = Int(arregloMinutos[row%arregloMinutos.count])
                 print("minutos es:" + String(self.minutos))
             }
         }else{

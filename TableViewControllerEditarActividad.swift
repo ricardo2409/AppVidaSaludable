@@ -30,8 +30,8 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     var indice: Int!
     let Act = Actividades()
 
-    var arreglo1 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
-    var arreglo2 = ["0","15","30","45"]
+    var arregloHoras = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
+    var arregloMinutos = ["00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "50", "51", "52", "53", "54", "55", "56", "57", "58", "59"]
     var arregloCategorias: [String] = ["Alimentación", "Hidratación", "Actividad Física", "Actividad Social"]
     var arregloDias: [Int] = []
    
@@ -48,7 +48,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         categoria = activididadRecibida.categoria
         frecuencia = activididadRecibida.frecuencia
         
-        arreglo = [arreglo1, arreglo2]
+        arreglo = [arregloHoras, arregloCategorias]
         self.pvHora.delegate = self
         self.pvHora.dataSource = self
         
@@ -185,7 +185,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     }
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         if pickerView == pvHora {
-            return arreglo[component].count
+            return 100000
         }else{
             return 100000
         }
@@ -193,7 +193,12 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if pickerView == pvHora {
-            return arreglo[component][row] as? String
+            if component == 0 {
+                return arregloHoras[row%arregloHoras.count] as String
+            }
+            else {
+                return arregloMinutos[row%arregloMinutos.count] as String
+            }
         }else{
             return arregloCategorias[row%arregloCategorias.count] as String
         }
@@ -202,10 +207,10 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         if pickerView == pvHora {
             if component == 0{
-                self.hora = Int(arreglo[component][row] as! String)!
+                self.hora = Int(arregloHoras[row%arregloHoras.count])!
                 print("hora es:" + String(self.hora))
             }else{
-                self.minutos = Int(arreglo[component][row] as! String)!
+                self.minutos = Int(arregloMinutos[row%arregloMinutos.count])!
                 print("minutos es:" + String(self.minutos))
             }
         }else{
