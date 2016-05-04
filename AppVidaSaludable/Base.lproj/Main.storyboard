@@ -556,7 +556,7 @@
                                     <outlet property="lblDias" destination="gLs-R1-g65" id="E0Y-t7-QQs"/>
                                     <outlet property="lblHora" destination="srI-Es-Fqp" id="EL7-uv-8R3"/>
                                     <outlet property="lblNombre" destination="uKK-sp-CBZ" id="UdQ-Z3-5kc"/>
-                                    <segue destination="dbK-za-PLB" kind="show" id="x8c-ev-bHm"/>
+                                    <segue destination="dbK-za-PLB" kind="show" identifier="editarActividad" id="x8c-ev-bHm"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1356,12 +1356,12 @@ Dagoberto González Fernández
                     <navigationItem key="navigationItem" title="Agregar" id="4hU-eV-M79">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Kg6-LJ-0JX">
                             <connections>
-                                <segue destination="yDR-vh-Zbm" kind="unwind" unwindAction="unwindAgregar:" id="gbD-yo-aol"/>
+                                <segue destination="yDR-vh-Zbm" kind="unwind" unwindAction="unwindEditar:" id="2Vu-GM-AYG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Guardar" id="I1L-QV-qx7">
                             <connections>
-                                <segue destination="yDR-vh-Zbm" kind="unwind" unwindAction="unwindAgregar:" id="4zM-an-bmc"/>
+                                <segue destination="yDR-vh-Zbm" kind="unwind" unwindAction="unwindEditar:" id="ILW-zn-Tdu"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1369,8 +1369,6 @@ Dagoberto González Fernández
                         <outlet property="botonCancel" destination="Kg6-LJ-0JX" id="G3Z-YR-Y3h"/>
                         <outlet property="botonGuardar" destination="I1L-QV-qx7" id="YNQ-3V-gUI"/>
                         <outlet property="lblFrecuencia" destination="q7E-RN-sNt" id="eBB-2e-QO0"/>
-                        <outlet property="pickerViewCategoria" destination="ahW-f6-bry" id="32V-KF-qZ3"/>
-                        <outlet property="pickerViewHora" destination="HF5-Pu-a3h" id="o2R-tv-fUB"/>
                         <outlet property="pvCategoria" destination="ahW-f6-bry" id="YUz-Zs-osx"/>
                         <outlet property="pvHora" destination="HF5-Pu-a3h" id="l68-1f-bz4"/>
                         <outlet property="tfNombre" destination="qRE-II-2Zn" id="eZw-rH-zfJ"/>
@@ -1387,10 +1385,10 @@ Dagoberto González Fernández
             </objects>
             <point key="canvasLocation" x="2624" y="566"/>
         </scene>
-        <!--Table View Controller Dias-->
+        <!--Table View Controller Dias Editar-->
         <scene sceneID="Znl-p6-Yxe">
             <objects>
-                <tableViewController id="LWD-AI-pW7" customClass="TableViewControllerDias" customModule="AppVidaSaludable" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LWD-AI-pW7" customClass="TableViewControllerDiasEditar" customModule="AppVidaSaludable" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="r7o-yU-A1H">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1415,7 +1413,7 @@ Dagoberto González Fernández
                                         </mask>
                                     </variation>
                                     <connections>
-                                        <segue destination="Iv7-Ua-fYR" kind="unwind" unwindAction="unwindDias:" id="nhq-fo-aPs"/>
+                                        <segue destination="Iv7-Ua-fYR" kind="unwind" unwindAction="unwindDiasEditar:" id="WRB-zS-6eu"/>
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4aY-Ab-usD">
@@ -1434,7 +1432,7 @@ Dagoberto González Fernández
                                         </mask>
                                     </variation>
                                     <connections>
-                                        <segue destination="Iv7-Ua-fYR" kind="unwind" unwindAction="unwindDias:" id="nQ2-wt-8e7"/>
+                                        <segue destination="Iv7-Ua-fYR" kind="unwind" unwindAction="unwindDiasEditar:" id="hHW-Ew-3fn"/>
                                     </connections>
                                 </button>
                             </subviews>

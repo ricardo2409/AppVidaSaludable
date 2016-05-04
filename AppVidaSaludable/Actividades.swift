@@ -16,6 +16,9 @@ class Actividades: Object {
     dynamic var Frecuencia = ""
     dynamic var Hora = 1
     dynamic var Minutos = 1
+    override class func primaryKey() -> String? {
+        return "Nombre"
+    }
 
 
 }

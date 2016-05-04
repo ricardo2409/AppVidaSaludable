@@ -17,8 +17,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     @IBOutlet weak var pvCategoria: UIPickerView!
     @IBOutlet weak var botonGuardar: UIBarButtonItem!
     @IBOutlet weak var botonCancel: UIBarButtonItem!
-    @IBOutlet weak var pickerViewHora: UIPickerView!
-    @IBOutlet weak var pickerViewCategoria: UIPickerView!
+    
     
     var hora = 1
     var minutos = 1
@@ -28,14 +27,22 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     var actividadAMandar : Actividad!
     var arreglo: [[AnyObject]] = []
     var actividadNueva: Actividad!
-    
-    
+    var indice: Int!
+    let Act = Actividades()
+
     var arreglo1 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23"]
     var arreglo2 = ["1", "2", "3", "4", "5", "6", "7","8", "9", "10", "11", "12","13", "14", "15", "16", "17", "18", "19","20", "21", "22", "23", "24","25", "26", "27", "28", "29", "30", "31","32", "33", "34", "35", "36","37", "38", "39", "40", "41", "42", "43","44", "45", "46", "47", "48","49", "50", "51", "52", "53", "54", "55","56", "57", "58", "59"]
     var arregloCategorias: [String] = ["Alimentación", "Hidratación", "Actividad Física", "Actividad Social"]
     var arregloDias: [Int] = []
    
 
+    override func viewDidAppear(animated: Bool) {
+        tfNombre.text = activididadRecibida.nombre
+        minutos = activididadRecibida.minutos
+        hora = activididadRecibida.hora
+        categoria = activididadRecibida.categoria
+        frecuencia = activididadRecibida.frecuencia
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,9 +54,22 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         self.pvCategoria.dataSource = self
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
+        
+        print(activididadRecibida.nombre)
+        print(activididadRecibida.categoria)
+        print(activididadRecibida.frecuencia)
+        print(activididadRecibida.hora)
+
         tfNombre.text = activididadRecibida.nombre
+        minutos = activididadRecibida.minutos
+        hora = activididadRecibida.hora
+        categoria = activididadRecibida.categoria
+        frecuencia = activididadRecibida.frecuencia
         pvCategoria.selectRow(getRowValue(activididadRecibida.categoria), inComponent: 0, animated: true)
-        lblFrecuencia.text = getDays(activididadRecibida.frecuencia)
+        
+        //Une todo lo del arreglo y lo pone en lblFrecuencia.txt
+        let stringRepresentation = activididadRecibida.frecuencia.joinWithSeparator("")
+        lblFrecuencia.text = stringRepresentation
         pvHora.selectRow(activididadRecibida.hora - 1, inComponent: 0, animated: true)
         pvHora.selectRow(activididadRecibida.minutos - 1, inComponent: 1, animated: true)
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
@@ -60,6 +80,52 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    @IBAction func unwindDiasEditar(sender: UIStoryboardSegue){
+        
+        print("Esto es lo que recibo del ok")
+        print(arregloDias)
+        //Agrega a frecuencia
+        agregaDiasEnLabel()
+    }
+    func agregaDiasEnLabel(){
+        if arregloDias.count == 0{
+            lblFrecuencia.text = ""
+        }else {
+            lblFrecuencia.text = ""
+            for i in 0...arregloDias.count - 1{
+                print(arregloDias[i])
+                switch (arregloDias[i]) {
+                case 0:
+                    lblFrecuencia.text! += "Lu"
+                    break
+                case 1:
+                    lblFrecuencia.text! += " Ma"
+                    break
+                case 2:
+                    lblFrecuencia.text! += " Mi"
+                    break
+                case 3:
+                    lblFrecuencia.text! += " Ju"
+                    break
+                case 4:
+                    lblFrecuencia.text! += " Vi"
+                    break
+                case 5:
+                    lblFrecuencia.text! += " Sa"
+                    break
+                case 6:
+                    lblFrecuencia.text! += " Do"
+                    break
+                default:
+                    break
+                    
+                }
+            }
+        }
+        
+    }
+
     func getRowValue(categoria : String) -> Int{
             switch categoria {
             case "Alimentación":
@@ -76,28 +142,33 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         
         
     }
+    
     func getDays(frecuencia : [String]) -> String{
         var frase = ""
         for i in 0...frecuencia.count - 1  {
+            print("frecuencia count :")
+
+            print(frecuencia.count)
             switch frecuencia[i] {
-            case "Monday":
+            case "Lu":
                 frase += "Lu"
-            case "Tuesday":
+            case "Ma":
                 frase += " Ma"
-            case "Wednesday":
+            case "Mi":
                 frase += " Mi"
-            case "Thursday":
+            case "Ju":
                 frase += " Ju"
-            case "Friday":
+            case "Vi":
                 frase += " Vi"
-            case "Saturday":
+            case "Sa":
                 frase += " Sa"
-            case "Sunday":
+            case "Do":
                 frase += " Do"
             default:
-                break
+                print("No es ninguno de esos")
             }
         }
+        print("Frase tiene: " + frase)
         return frase
     }
     
@@ -153,80 +224,51 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         return 4
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
+ 
     
     // MARK: - Navigation
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier != "tableDiasEdit"{
             if (sender as! UIBarButtonItem == botonGuardar){
-                let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+                let viewEditar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
                 
+                Act.Nombre = tfNombre.text!
+                Act.Categoria = categoria
+                Act.Frecuencia = lblFrecuencia.text!
+                Act.Hora = hora
+                Act.Minutos = minutos
                 
-               //actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
-               //viewAgregar.control = true
+                actividadAMandar = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: [Act.Frecuencia])
                 
-                
-                
-                actividadAMandar = Actividad(nom: tfNombre.text!, cat: categoria, h: hora, m: minutos, frec: [""])
-                viewAgregar.nuevaActividad = actividadAMandar
-                
+                viewEditar.nuevaActividadEditar = actividadAMandar
+                viewEditar.indiceDeEditar = self.indice
                 var EditaAct:Results<Actividades>?
+                print("Esta es la act Recibida y la que voy a comparar en bd")
+                print(activididadRecibida.nombre)
+                
                 EditaAct = uiRealm.objects(Actividades).filter("Nombre == %@", activididadRecibida.nombre)
-                
-                
-                
                 try! uiRealm.write {
-                EditaAct![0].Nombre = tfNombre.text!
-                EditaAct![0].Categoria = categoria
-                EditaAct![0].Hora = hora
-                EditaAct![0].Minutos = minutos
+                uiRealm.add(Act, update: true)
                 }
-
+                
+//                print("Esta es la act que voy a editar")
+//                print(EditaAct![0].Nombre)
+//                print("Esta es la frecuencia")
+//                print(frecuencia)
+//                print("Esta es la frecuencia en string")
+                
+//                try! uiRealm.write {
+//                EditaAct![0].Nombre = tfNombre.text!
+//                EditaAct![0].Categoria = categoria
+//                EditaAct![0].Frecuencia = frecuencia.description
+//                EditaAct![0].Hora = hora
+//                EditaAct![0].Minutos = minutos
+//                }
+            }else{
+                //Boton cancelar
+//                let viewEditar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
+                print("Cancelar")
         
     }
 
