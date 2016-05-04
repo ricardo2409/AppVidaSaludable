@@ -1,14 +1,14 @@
 //
-//  TableViewControllerDias.swift
+//  TableViewControllerDiasEditar.swift
 //  AppVidaSaludable
 //
-//  Created by RicardoTrevino on 4/13/16.
+//  Created by RicardoTrevino on 5/3/16.
 //  Copyright © 2016 RicardoTrevino. All rights reserved.
 //
 
 import UIKit
 
-class TableViewControllerDias: UITableViewController {
+class TableViewControllerDiasEditar: UITableViewController {
 
     var arregloDias: [Int] = []
     var arregloFrecuencias: [String] = []
@@ -21,24 +21,24 @@ class TableViewControllerDias: UITableViewController {
         self.tableView.allowsMultipleSelection = true
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-
-
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 7
@@ -68,13 +68,13 @@ class TableViewControllerDias: UITableViewController {
         }
         return 0
     }
-
- 
     
-
+    
+    
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
@@ -83,7 +83,7 @@ class TableViewControllerDias: UITableViewController {
         //Sort arregloDias para que no importe el orden en el que se seleccionen los días
         
         arregloDias.sortInPlace()
-       for i in 0...arregloDias.count - 1{
+        for i in 0...arregloDias.count - 1{
             switch (arregloDias[i]) {
             case 0:
                 arregloFrecuencias.append("Lunes")
@@ -99,7 +99,7 @@ class TableViewControllerDias: UITableViewController {
                 break
             case 4:
                 arregloFrecuencias.append("Viernes")
-                 break
+                break
             case 5:
                 arregloFrecuencias.append("Sábado")
                 break
@@ -112,19 +112,19 @@ class TableViewControllerDias: UITableViewController {
             }
         }
         if (sender as! UIButton == botonOk){
-            let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
-            viewAgregar.arregloDias = self.arregloDias
-            viewAgregar.frecuencia = self.arregloFrecuencias
+            let viewEditar: TableViewControllerEditarActividad = segue.destinationViewController as! TableViewControllerEditarActividad
+            viewEditar.arregloDias = self.arregloDias
+            viewEditar.frecuencia = self.arregloFrecuencias
             print("Esto es lo que mando en el OK")
             print(arregloDias)
         }else{
             //Boton Cancelar
-            let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
-            viewAgregar.arregloDias = []
-
+            let viewEditar: TableViewControllerEditarActividad = segue.destinationViewController as! TableViewControllerEditarActividad
+            viewEditar.arregloDias = []
+            
         }
         
     }
     
-
+    
 }

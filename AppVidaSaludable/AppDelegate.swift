@@ -79,6 +79,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         tableViewAppearance.tintColor = UIColor(red: 4/255, green: 67/255, blue: 137/255, alpha: 1)
         
         
+        //MARK: Realm Migrations
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            // bump the schema version to 2
+            schemaVersion: 2,
+            migrationBlock: { migration, oldSchemaVersion in
+                migration.enumerate(Actividades.className()) { oldObject, newObject in
+                    // make sure to check the version accordingly
+                    if (oldSchemaVersion < 2) {
+                        // the magic happens here: `id` is the property you specified
+                        // as your primary key on your Model
+                        newObject!["Nombre"] = oldObject!["Nombre"]
+                    }
+                }
+            }
+        )
         return true
     }
     

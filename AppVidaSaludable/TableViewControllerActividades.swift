@@ -18,11 +18,12 @@ class TableViewControllerActividades: UITableViewController {
     
     var arregloActividades : [Actividad] = []
     var nuevaActividad : Actividad!
+    var nuevaActividadEditar : Actividad!
     var control: Bool = false
     var actividadAMandar: Actividad!
     var arregloActividadesHoy: [Actividad] = []
     var diaDeHoy : String!
-
+    var indiceDeEditar: Int!
 
     // MARK: - Outlets
     @IBOutlet weak var botonAgregar: UIBarButtonItem!
@@ -210,7 +211,7 @@ class TableViewControllerActividades: UITableViewController {
         var Acts:Results<Actividades>?
         Acts = uiRealm.objects(Actividades)
         let cont = (Acts?.count)
-        
+        arregloActividades = []
         if(cont > 0)
         {
             for i in 0...cont! - 1
@@ -241,6 +242,20 @@ class TableViewControllerActividades: UITableViewController {
             }else{
                 print("es nil")
             }
+        }
+    }
+    
+    @IBAction func unwindEditar(sender: UIStoryboardSegue){
+        print("Estoy en unwindEditar y este es indiceEditar")
+        print(indiceDeEditar)
+        if indiceDeEditar != nil{
+            //Borra el que estaba en arregloActividades[indiceDeEditar]
+            llenaArreglo()
+            llenaArregloHoy()
+//            arregloActividadesHoy[indiceDeEditar] = nuevaActividadEditar
+           
+            creaNotificaciones()
+            self.tableView.reloadData()
         }
     }
     override func didReceiveMemoryWarning() {
@@ -355,11 +370,15 @@ class TableViewControllerActividades: UITableViewController {
         }else{
             let viewEditar: TableViewControllerEditarActividad = segue.destinationViewController as! TableViewControllerEditarActividad
             let indexpath = tableview.indexPathForSelectedRow
+            print("Este es el indice que mando a editar")
             print(indexpath!.row)
             actividadAMandar = arregloActividades[indexpath!.row]
             viewEditar.activididadRecibida = self.actividadAMandar
+            viewEditar.indice = indexpath?.row
             print("Esto es lo que mandé cuando selecciono la cell")
             print(self.actividadAMandar.nombre)
+            print(self.actividadAMandar.frecuencia)
+
         }
     }
 }
