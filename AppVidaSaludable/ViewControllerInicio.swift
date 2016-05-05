@@ -26,6 +26,9 @@ class ViewControllerInicio: UIViewController, UITextFieldDelegate {
     
     let datosPersonas = Personas()
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    var activeField : UITextField?
+    
     // MARK: - Funciones
 
     override func viewDidLoad() {
@@ -41,6 +44,9 @@ class ViewControllerInicio: UIViewController, UITextFieldDelegate {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(ViewControllerInicio.quitaTeclado))
         self.view.addGestureRecognizer(tap)
+        self.scrollView.contentSize = self.view.frame.size
+        self.registerForKeyboardNotifications()
+        
         
         tfNomResponsable.delegate = self
         tfCorreoResponsable.delegate = self
@@ -54,8 +60,63 @@ class ViewControllerInicio: UIViewController, UITextFieldDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.deregisterFromKeyboardNotifications()
+    }
+    
+    // Funciones para manejar teclado
     func quitaTeclado() {
         self.view.endEditing(true)
+    }
+    
+    func registerForKeyboardNotifications() {
+        //Adding notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewControllerInicio.keyboardWasShown(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewControllerInicio.keyboardWillBeHidden(_:)), name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func deregisterFromKeyboardNotifications() {
+        //Removing notifies on keyboard appearing
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().removeObserver(self, name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
+    func keyboardWasShown(notification: NSNotification) {
+        //Need to calculate keyboard exact size due to Apple suggestions
+        self.scrollView.scrollEnabled = true
+        let info : NSDictionary = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize!.height, 0.0)
+        
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        
+        var aRect : CGRect = self.view.frame
+        aRect.size.height -= keyboardSize!.height
+        if let activeFieldPresent = activeField
+        {
+            if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
+            {
+                
+                self.scrollView.scrollRectToVisible(activeField!.frame, animated: true)
+                
+            }
+        }
+        
+        
+    }
+    
+    
+    func keyboardWillBeHidden(notification: NSNotification) {
+        //Once keyboard disappears, restore original positions
+        let info : NSDictionary = notification.userInfo!
+        let keyboardSize = (info[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+        let contentInsets : UIEdgeInsets = UIEdgeInsetsMake(0.0, 0.0, -keyboardSize!.height, 0.0)
+        self.scrollView.contentInset = contentInsets
+        self.scrollView.scrollIndicatorInsets = contentInsets
+        self.view.endEditing(true)
+        self.scrollView.scrollEnabled = false
+        
     }
     
     @IBAction func infoDada(sender: UIButton) {
@@ -168,6 +229,15 @@ class ViewControllerInicio: UIViewController, UITextFieldDelegate {
         }
         return true
     }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        activeField = textField
+    }
+    
+    func textFieldDidEndEditing(textField: UITextField) {
+        activeField = nil
+    }
+    
     
     /*
     // MARK: - Navigation
