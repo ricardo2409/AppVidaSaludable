@@ -64,6 +64,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         self.setStoryboard()
         
+        
+        
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(15000)
+
         // Override point for customization after application launch.
         let firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         firstAction.identifier = "First_Action"
@@ -100,7 +104,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let types: UIUserNotificationType = UIUserNotificationType.Alert.union(UIUserNotificationType.Badge).union(UIUserNotificationType.Sound)
         let mySettings: UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories as? Set<UIUserNotificationCategory>)
         UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
-
+        
+//        UIApplication.setMinimumBackgroundFetchInterval(100)
         // Cambiar colores de barras
         
         let navigationBarAppearace = UINavigationBar.appearance()
@@ -140,6 +145,113 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
         return true
     }
+    var diaDeHoy : String!
+
+    func getDiaDeHoy(){
+
+        let fecha: NSDate = NSDate()
+        let formato: NSDateFormatter = NSDateFormatter()
+        formato.dateFormat = "EEEE"
+        diaDeHoy = formato.stringFromDate(fecha)
+        switch diaDeHoy {
+        case "Monday":
+            diaDeHoy = "Lu"
+        case "Tuesday":
+            diaDeHoy = "Ma"
+        case "Wednesday":
+            diaDeHoy = "Mi"
+        case "Thursday":
+            diaDeHoy = "Ju"
+        case "Friday":
+            diaDeHoy = "Vi"
+        case "Saturday":
+            diaDeHoy = "Sa"
+        case "Sunday":
+            diaDeHoy = "Do"
+        default:
+            break
+        }
+        print(diaDeHoy)
+    }
+    func getMonth() -> Int{
+        let fecha: NSDate = NSDate()
+        let formato7: NSDateFormatter = NSDateFormatter()
+        formato7.dateFormat = "MM"
+        let month: String = formato7.stringFromDate(fecha)
+        print("este es el mes")
+        print(month)
+        return Int(month)!
+    }
+    func getYear() -> Int{
+        let fecha: NSDate = NSDate()
+        let formato5: NSDateFormatter = NSDateFormatter()
+        formato5.dateFormat = "yyyy"
+        let year: String = formato5.stringFromDate(fecha)
+        print("Este es el año")
+        print(year)
+        return Int(year)!
+    }
+    func getDay() -> Int{
+        let fecha: NSDate = NSDate()
+        let formato6: NSDateFormatter = NSDateFormatter()
+        formato6.dateFormat = "dd"
+        let day: String = formato6.stringFromDate(fecha)
+        print("Este es el dia")
+        print(day)
+        return Int(day)!
+        
+    }
+    func creaNotificaciones(){
+        
+        UIApplication.sharedApplication().cancelAllLocalNotifications()
+        
+        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
+        print("Cantidad de notificaciones:")
+        print(notifyArray!.count)
+        
+        if ActividadesHoy!.count > 0{
+            for i in 0...ActividadesHoy!.count - 1{
+                
+                let dateComp: NSDateComponents = NSDateComponents()
+                dateComp.year = getYear()
+                dateComp.month = getMonth()
+                dateComp.day = getDay()
+                dateComp.hour = ActividadesHoy![i].Hora
+                dateComp.minute = ActividadesHoy![i].Minutos
+                dateComp.timeZone = NSTimeZone.systemTimeZone()
+                
+                let calendar : NSCalendar = NSCalendar(calendarIdentifier: NSCalendarIdentifierGregorian)!
+                let date : NSDate = calendar.dateFromComponents(dateComp)!
+                let notification : UILocalNotification = UILocalNotification()
+                notification.category = "First_Cat"
+                notification.soundName = UILocalNotificationDefaultSoundName
+                notification.alertBody = ActividadesHoy![i].Nombre
+                notification.alertTitle = ActividadesHoy![i].Categoria
+                notification.fireDate = date
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                print("Esta es la notificacion que creé ")
+              
+                
+            }
+        }else{
+            print("Está vacío")
+        }
+        
+        notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
+        print("Cantidad de notificaciones creadas:")
+        print(notifyArray!.count)
+    }
+    var ActividadesHoy:Results<Actividades>?
+
+    func fetchData(){
+        getDiaDeHoy()
+            ActividadesHoy = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@", diaDeHoy)
+    }
+    func application(application: UIApplication, performFetchWithCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        completionHandler(UIBackgroundFetchResult.NewData)
+        fetchData()
+        creaNotificaciones()
+    }
     
     
     func application(application: UIApplication, handleActionWithIdentifier identifier: String?, forLocalNotification notification: UILocalNotification, completionHandler: () -> Void) {
@@ -151,6 +263,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             //Write en tabla de acts realizadas un 1 en la categoria y 0 en las demás
             print(notification.alertTitle!)
+            var ActividadAlerta:Results<Actividades>?
+            
+            ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
+            try! uiRealm.write {
+                ActividadAlerta![0].snoozeCount = 0
+            }
             switch notification.alertTitle! {
             case "Alimentación":
                 print("Alimentación Sí")
@@ -158,25 +276,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
+                break
             case "Hidratación":
                 print("Hidratación Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 1
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
+                break
             case "Actividad Física":
                 print("Actividad Física Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 1
                 Act.ActividadSocial = 0
+                break
             case "Actividad Social":
                 print("Actividad Social Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 1
-
+                break
             default:
                 break
             }
@@ -188,6 +309,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else if identifier == "Second_Action"{
             
             NSNotificationCenter.defaultCenter().postNotificationName("actionTwoPressed", object: nil)
+            var ActividadAlerta:Results<Actividades>?
+            ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
+            
+            if ActividadAlerta![0].snoozeCount < 2 {
+                try! uiRealm.write {
+                    ActividadAlerta![0].snoozeCount += 1
+                }
+                // REPROGRAMA 10min mas
+                notification.fireDate = NSDate().dateByAddingTimeInterval(10)
+                UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            }
+            else {
+                try! uiRealm.write {
+                    ActividadAlerta![0].snoozeCount = 0
+                }
             //Write en tabla de acts realizadas un 2 en la categoria y 0 en las demás
             switch notification.alertTitle! {
             case "Alimentación":
@@ -196,36 +332,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
+                break
             case "Hidratación":
                 print("Hidratación No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 2
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
+                break
             case "Actividad Física":
                 print("Actividad Física No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 2
                 Act.ActividadSocial = 0
+                break
             case "Actividad Social":
                 print("Actividad Social No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 2
-                
+                break
             default:
                 break
             }
+               
+                
             try! uiRealm.write{
                 uiRealm.add(Act)
             }
 
-            //Snooze
-            
-//            notification.fireDate = NSDate().dateByAddingTimeInterval(600)
-//            UIApplication.sharedApplication().scheduleLocalNotification(notification)
+            }
             
         }
         completionHandler()
@@ -272,7 +410,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                
                 alertView.addButton("Sí"){
-                    print("Sí")
+                print("Sí")
+                    var ActividadAlerta:Results<Actividades>?
+                    
+                    ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
+                    try! uiRealm.write {
+                        ActividadAlerta![0].snoozeCount = 0
+                    }
+                    
                     switch notification.alertTitle! {
                     case "Alimentación":
                         print("Alimentación Sí")
@@ -280,25 +425,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         Act.Hidratacion = 0
                         Act.ActividadFisica = 0
                         Act.ActividadSocial = 0
+                        break
                     case "Hidratación":
                         print("Hidratación Sí")
                         Act.Alimentacion = 0
                         Act.Hidratacion = 1
                         Act.ActividadFisica = 0
                         Act.ActividadSocial = 0
+                        break
                     case "Actividad Física":
                         print("Actividad Física Sí")
                         Act.Alimentacion = 0
                         Act.Hidratacion = 0
                         Act.ActividadFisica = 1
                         Act.ActividadSocial = 0
+                        break
                     case "Actividad Social":
                         print("Actividad Social Sí")
                         Act.Alimentacion = 0
                         Act.Hidratacion = 0
                         Act.ActividadFisica = 0
                         Act.ActividadSocial = 1
-                        
+                        break
                     default:
                         break
                     }
@@ -309,45 +457,71 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //Borra arregloActivadadesHoy[0] (el primero, quien es el que ejecuta la notificacion)
                     
                 }
+                
                 alertView.addButton("No") {
                     print("No")
-                    switch notification.alertTitle! {
-                    case "Alimentación":
-                        print("Alimentación No")
-                        Act.Alimentacion = 2
-                        Act.Hidratacion = 0
-                        Act.ActividadFisica = 0
-                        Act.ActividadSocial = 0
-                    case "Hidratación":
-                        print("Hidratación No")
-                        Act.Alimentacion = 0
-                        Act.Hidratacion = 2
-                        Act.ActividadFisica = 0
-                        Act.ActividadSocial = 0
-                    case "Actividad Física":
-                        print("Actividad Física No")
-                        Act.Alimentacion = 0
-                        Act.Hidratacion = 0
-                        Act.ActividadFisica = 2
-                        Act.ActividadSocial = 0
-                    case "Actividad Social":
-                        print("Actividad Social No")
-                        Act.Alimentacion = 0
-                        Act.Hidratacion = 0
-                        Act.ActividadFisica = 0
-                        Act.ActividadSocial = 2
+                    var ActividadAlerta:Results<Actividades>?
+                    ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
+                    
+                    if ActividadAlerta![0].snoozeCount < 2 {
+                        try! uiRealm.write {
+                            ActividadAlerta![0].snoozeCount += 1
+                        }
+                        // REPROGRAMA 10min mas
+                        notification.fireDate = NSDate().dateByAddingTimeInterval(10)
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                    }
+                    else {
+                        try! uiRealm.write {
+                            ActividadAlerta![0].snoozeCount = 0
+                        }
                         
-                    default:
-                        break
+                        switch notification.alertTitle! {
+                        case "Alimentación":
+                            print("Alimentación No")
+                            Act.Alimentacion = 2
+                            Act.Hidratacion = 0
+                            Act.ActividadFisica = 0
+                            Act.ActividadSocial = 0
+                            break
+                        case "Hidratación":
+                            print("Hidratación No")
+                            Act.Alimentacion = 0
+                            Act.Hidratacion = 2
+                            Act.ActividadFisica = 0
+                            Act.ActividadSocial = 0
+                            break
+                        case "Actividad Física":
+                            print("Actividad Física No")
+                            Act.Alimentacion = 0
+                            Act.Hidratacion = 0
+                            Act.ActividadFisica = 2
+                            Act.ActividadSocial = 0
+                            break
+                        case "Actividad Social":
+                            print("Actividad Social No")
+                            Act.Alimentacion = 0
+                            Act.Hidratacion = 0
+                            Act.ActividadFisica = 0
+                            Act.ActividadSocial = 2
+                            break
+                        default:
+                            break
+                        }
                     }
                     try! uiRealm.write{
                         uiRealm.add(Act)
                     }
+                    
+                    
+                    
+                   
+                    
 
                 }
                 
                  alertView.showInfo(notification.alertBody!, subTitle: notification.alertTitle!, closeButtonTitle: "", duration: 30, colorStyle: 0x5995ED, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: alertViewIcon))
-//                alertView.showInfo(notification.alertBody!, subTitle: notification.alertTitle!, circleIconImage: alertViewIcon)
+
 
             }
         }else{

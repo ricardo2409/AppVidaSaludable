@@ -174,6 +174,8 @@ class TableViewControllerActividades: UITableViewController {
                 notification.soundName = UILocalNotificationDefaultSoundName
                 notification.alertBody = arregloActividadesHoy[i].nombre
                 notification.alertTitle = arregloActividadesHoy[i].categoria
+                notification.repeatInterval = NSCalendarUnit.Weekday
+
                 notification.fireDate = date
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
                 print("Esta es la notificacion que creé ")
