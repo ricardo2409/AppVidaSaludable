@@ -15,4 +15,7 @@ class ActividadRealizada: Object {
     dynamic var Hidratacion = 0
     dynamic var ActividadFisica = 0
     dynamic var ActividadSocial = 0
+
+
+
 }
