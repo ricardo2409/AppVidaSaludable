@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SCLAlertView
 
 class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
     
@@ -205,8 +206,6 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
             if (sender as! UIBarButtonItem == botonGuardar){
                 let viewAgregar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
              
-
-                actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
                 
                 Act.Nombre = tfNombre.text!
                 Act.Categoria = categoria
@@ -214,12 +213,57 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                 Act.Hora = hora
                 Act.Minutos = minutos
 
-                actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: [Act.Frecuencia])
-                viewAgregar.nuevaActividad = actividadNueva
-                viewAgregar.controlAgregar = true
-                try! uiRealm.write{
-                    uiRealm.add(Act)
+                
+                if (tfNombre.text! == ""){
+                    
+                    let alertController = UIAlertController(title: "Falta Nombre", message:
+                        "Escribir nombre de actividad", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
                 }
+                
+                
+                if (lbFrecuencia.text! == ""){
+                    let alertController = UIAlertController(title: "Falta frecuencia", message:
+                        "Escoger dias", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+                    
+                else{
+                    actividadNueva = Actividad(nom: self.tfNombre.text!, cat: self.categoria, h: self.hora, m: self.minutos, frec: frecuencia)
+                }
+
+                
+                var ActExiste:Results<Actividades>?
+                ActExiste = uiRealm.objects(Actividades).filter("Nombre == %@", tfNombre.text!)
+                
+                if(ActExiste!.count != 0){
+                if (ActExiste![0].Nombre == tfNombre.text!) {
+
+                    let alertController = UIAlertController(title: "Actividad ya existe", message:
+                        "Cambiar nombre", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+                    }
+                
+
+                } else if(lbFrecuencia.text! != "" && tfNombre.text! != "") {
+                    //add our object to the DB 
+                    try! uiRealm.write{
+                        uiRealm.add(Act)
+                    }
+                    actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: [Act.Frecuencia])
+                    viewAgregar.nuevaActividad = actividadNueva
+                    viewAgregar.controlAgregar = true
+
+                }
+                
+                
 
                 
             }else{
