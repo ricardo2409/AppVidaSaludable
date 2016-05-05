@@ -66,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(86400)
+        UIApplication.sharedApplication().setMinimumBackgroundFetchInterval(15000)
 
         // Override point for customization after application launch.
         let firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
