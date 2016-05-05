@@ -235,6 +235,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
             if (sender as! UIBarButtonItem == botonGuardar){
                 let viewEditar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
                 
+                
                 Act.Nombre = tfNombre.text!
                 Act.Categoria = categoria
                 Act.Frecuencia = lblFrecuencia.text!
@@ -251,9 +252,30 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
                 print(activididadRecibida.nombre)
                 
                 EditaAct = uiRealm.objects(Actividades).filter("Nombre == %@", activididadRecibida.nombre)
-                try! uiRealm.write {
-                uiRealm.delete(EditaAct!)
-                uiRealm.add(Act)
+                
+                if (tfNombre.text! == ""){
+                    
+                    let alertController = UIAlertController(title: "Falta Nombre", message:
+                        "Escribir nombre de actividad", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+                
+                
+                if (lblFrecuencia.text! == ""){
+                    let alertController = UIAlertController(title: "Falta frecuencia", message:
+                        "Escoger dias", preferredStyle: UIAlertControllerStyle.Alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default,handler: nil))
+                    
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                }
+
+                if(tfNombre.text! != "" && lblFrecuencia.text! != ""){
+                    try! uiRealm.write {
+                    uiRealm.delete(EditaAct!)
+                    uiRealm.add(Act)
+                    }
                 }
                 
 
