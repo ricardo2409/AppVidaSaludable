@@ -72,15 +72,15 @@
         <scene sceneID="gzA-tu-cMX">
             <objects>
                 <tableViewController id="2PD-QN-hiy" customClass="TableViewControllerAgregar" customModule="AppVidaSaludable" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="8fj-EX-bvd">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="8fj-EX-bvd">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Datos de Actividad" id="f3M-Wj-eGp">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="QTr-HD-bJE">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="110"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QTr-HD-bJE" id="b7j-fo-9TL">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
@@ -115,7 +115,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="99" id="nmY-jh-XiA">
-                                        <rect key="frame" x="0.0" y="202" width="600" height="99"/>
+                                        <rect key="frame" x="0.0" y="223.5" width="600" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nmY-jh-XiA" id="3TD-c6-Ezc">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="98.5"/>
@@ -149,7 +149,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="101" id="wOo-GZ-buM">
-                                        <rect key="frame" x="0.0" y="301" width="600" height="101"/>
+                                        <rect key="frame" x="0.0" y="322.5" width="600" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wOo-GZ-buM" id="IfC-Qg-GXZ">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="100.5"/>
@@ -187,7 +187,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="b41-Yv-Rmo">
-                                        <rect key="frame" x="0.0" y="402" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="423.5" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b41-Yv-Rmo" id="k0o-tE-fC7">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
@@ -1171,15 +1171,15 @@ Dagoberto González Fernández
         <scene sceneID="IhV-w2-uDO">
             <objects>
                 <tableViewController id="dbK-za-PLB" customClass="TableViewControllerEditarActividad" customModule="AppVidaSaludable" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="JZV-ht-8U9">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="JZV-ht-8U9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
                             <tableViewSection headerTitle="Datos de Actividad" id="olt-GH-aas">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="110" id="5II-G4-cJb">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="110"/>
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5II-G4-cJb" id="C8P-az-LM7">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="109.5"/>
@@ -1214,7 +1214,7 @@ Dagoberto González Fernández
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="99" id="put-vj-AUh">
-                                        <rect key="frame" x="0.0" y="202" width="600" height="99"/>
+                                        <rect key="frame" x="0.0" y="223.5" width="600" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="put-vj-AUh" id="Akw-dS-Fjs">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="98.5"/>
@@ -1248,7 +1248,7 @@ Dagoberto González Fernández
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" rowHeight="101" id="5Am-dM-0VI">
-                                        <rect key="frame" x="0.0" y="301" width="600" height="101"/>
+                                        <rect key="frame" x="0.0" y="322.5" width="600" height="101"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5Am-dM-0VI" id="7Af-5O-BNN">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="100.5"/>
@@ -1286,7 +1286,7 @@ Dagoberto González Fernández
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="100" id="tw3-w3-8IV">
-                                        <rect key="frame" x="0.0" y="402" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="423.5" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tw3-w3-8IV" id="xeR-17-jiV">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="99.5"/>
