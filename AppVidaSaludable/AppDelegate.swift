@@ -18,8 +18,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    // Elige el storyboard a desplegar
+    func setStoryboard() {
+        let storyboard : UIStoryboard = self.grabStoryboard()
+        self.setInitialScreen(storyboard)
+    }
+    
+    // Decide el storyboard a mostrar con base al tamaño de pantalla
+    func grabStoryboard() -> UIStoryboard {
+        let screenHeight : Int = Int(UIScreen.mainScreen().bounds.size.height)
+        //print(screenHeight)
+        
+        var storyboard : UIStoryboard
+        
+        switch screenHeight {
+        case 568:
+            storyboard = UIStoryboard(name: "MainIphone5", bundle: nil)
+            break
+        case 667:
+            storyboard = UIStoryboard(name: "MainIPhone6", bundle: nil)
+            break
+        case 736:
+            storyboard = UIStoryboard(name: "MainIPhone6Plus", bundle: nil)
+            break
+        default:
+            storyboard = UIStoryboard(name: "MainIphone5", bundle: nil)
+        }
+        
+        return storyboard
+    }
+    
+    // Decide la pantalla principal de la aplicación.
+    // Por ejemplo si el usuario ya habia hecho login empieza en cierta pantalla
+    // y si no presenta la de login.
+    func setInitialScreen(storyboard : UIStoryboard) {
+        var initViewController : UIViewController
+        
+        initViewController = storyboard.instantiateViewControllerWithIdentifier("First")
+        
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window?.rootViewController = initViewController
+        self.window?.makeKeyAndVisible()
+    }
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //self.setStoryboard()
+        
         // Override point for customization after application launch.
         let firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()
         firstAction.identifier = "First_Action"

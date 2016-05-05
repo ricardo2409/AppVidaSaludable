@@ -391,7 +391,19 @@ extension TableViewControllerActividades: DZNEmptyDataSetSource, DZNEmptyDataSet
     
     func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
         self.tableView.separatorColor = UIColor.clearColor()
-        return UIImage(named: "Hidratacion")
+        let random = Int(arc4random_uniform(4))
+        switch random {
+        case 0:
+            return UIImage(named: "Alimentacion")
+        case 1:
+            return UIImage(named: "Hidratacion")
+        case 2:
+            return UIImage(named: "Actividad Fisica")
+        case 3:
+            return UIImage(named: "Actividad Social")
+        default:
+            return UIImage(named: "Alimentacion")
+        }
     }
     
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
