@@ -31,7 +31,7 @@ class ViewControllerMetricas: UIViewController {
         let screenHeight : Int = Int(UIScreen.mainScreen().bounds.size.height)
         switch screenHeight {
         case 568:
-            scrollView.contentSize = CGSize(width: 375.0, height: 2170.0)
+            scrollView.contentSize = CGSize(width: 320.0, height: 2170.0)
             break
         case 667:
             scrollView.contentSize = CGSize(width: 375.0, height: 2400.0)

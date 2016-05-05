@@ -66,13 +66,13 @@ class TableViewControllerConfig: UITableViewController, UITextFieldDelegate {
         tfNomMedico.text = nomMedico
         tfNomMedico.delegate = self
         tfCorreoMedico.text = correoMedico
-        tfCorreoResponsable.delegate = self
+        tfCorreoMedico.delegate = self
         
         // Notificación para revisar cambios en los datos
         tfNomResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioNomResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         tfCorreoResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         tfNomMedico.addTarget(self, action: #selector(TableViewControllerConfig.cambioNomMedico(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
-        tfCorreoResponsable.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoResponsable(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
+        tfCorreoMedico.addTarget(self, action: #selector(TableViewControllerConfig.cambioCorreoMedico(_:)), forControlEvents: UIControlEvents.EditingDidEnd)
         
     }
 
