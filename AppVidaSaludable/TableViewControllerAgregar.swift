@@ -242,7 +242,9 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                     }
                 
 
-                } else if(lbFrecuencia.text! != "" && tfNombre.text! != "") {
+                }
+                
+                if(lbFrecuencia.text! != "" && tfNombre.text! != "") {
                     //add our object to the DB 
                     try! uiRealm.write{
                         uiRealm.add(Act)
