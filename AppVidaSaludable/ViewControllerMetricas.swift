@@ -27,7 +27,22 @@ class ViewControllerMetricas: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollView.contentSize = CGSize(width: 375.0, height: 2400.0)
+        
+        let screenHeight : Int = Int(UIScreen.mainScreen().bounds.size.height)
+        switch screenHeight {
+        case 568:
+            scrollView.contentSize = CGSize(width: 375.0, height: 2170.0)
+            break
+        case 667:
+            scrollView.contentSize = CGSize(width: 375.0, height: 2400.0)
+            break
+        case 736:
+            scrollView.contentSize = CGSize(width: 375.0, height: 2600.0)
+            break
+        default:
+            scrollView.contentSize = CGSize(width: 375.0, height: 2170.0)
+        }
+        
         // Do any additional setup after loading the view.
         scrollView.setContentOffset(CGPointMake(0, -self.scrollView.contentInset.top), animated: true)
     }

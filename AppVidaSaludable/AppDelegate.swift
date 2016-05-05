@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         switch screenHeight {
         case 568:
-            storyboard = UIStoryboard(name: "MainIphone5", bundle: nil)
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
             break
         case 667:
             storyboard = UIStoryboard(name: "MainIPhone6", bundle: nil)
@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storyboard = UIStoryboard(name: "MainIPhone6Plus", bundle: nil)
             break
         default:
-            storyboard = UIStoryboard(name: "MainIphone5", bundle: nil)
+            storyboard = UIStoryboard(name: "Main", bundle: nil)
         }
         
         return storyboard
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //self.setStoryboard()
+        self.setStoryboard()
         
         // Override point for customization after application launch.
         let firstAction : UIMutableUserNotificationAction = UIMutableUserNotificationAction()

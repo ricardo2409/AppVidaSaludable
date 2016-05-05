@@ -53,6 +53,8 @@ class ViewControllerInicio: UIViewController, UITextFieldDelegate {
         tfNomDoctor.delegate = self
         tfCorreoDoctor.delegate = self
         tfNomUsuario.delegate = self
+        
+        tfNomResponsable.becomeFirstResponder()
     }
 
     override func didReceiveMemoryWarning() {
