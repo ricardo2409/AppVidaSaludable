@@ -198,12 +198,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func creaNotificaciones(){
         
+        //Borra las notificaciones anteriores
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
-        var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-      
-        
-        if ActividadesHoy!.count > 0{
+       if ActividadesHoy!.count > 0{
             for i in 0...ActividadesHoy!.count - 1{
                 
                 let dateComp: NSDateComponents = NSDateComponents()
@@ -226,11 +224,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               
                 
             }
-        }else{
-            
         }
         
-        notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
       
     }
     var ActividadesHoy:Results<Actividades>?
