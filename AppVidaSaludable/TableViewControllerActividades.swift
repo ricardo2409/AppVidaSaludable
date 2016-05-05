@@ -38,7 +38,6 @@ class TableViewControllerActividades: UITableViewController {
         self.tableView.emptyDataSetDelegate = self
         self.tableView.emptyDataSetSource = self
         llenaArreglo()
-        print("viewDidLoadActividades")
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         tableView.reloadData()
         
@@ -51,8 +50,6 @@ class TableViewControllerActividades: UITableViewController {
         let formato7: NSDateFormatter = NSDateFormatter()
         formato7.dateFormat = "MM"
         let month: String = formato7.stringFromDate(fecha)
-        print("este es el mes")
-        print(month)
         return Int(month)!
     }
     func getYear() -> Int{
@@ -60,8 +57,6 @@ class TableViewControllerActividades: UITableViewController {
         let formato5: NSDateFormatter = NSDateFormatter()
         formato5.dateFormat = "yyyy"
         let year: String = formato5.stringFromDate(fecha)
-        print("Este es el año")
-        print(year)
         return Int(year)!
     }
     func getDay() -> Int{
@@ -69,8 +64,6 @@ class TableViewControllerActividades: UITableViewController {
         let formato6: NSDateFormatter = NSDateFormatter()
         formato6.dateFormat = "dd"
         let day: String = formato6.stringFromDate(fecha)
-        print("Este es el dia")
-        print(day)
         return Int(day)!
         
     }
@@ -99,35 +92,18 @@ class TableViewControllerActividades: UITableViewController {
         default:
             break
         }
-        print(diaDeHoy)
     }
     func llenaArregloHoy(){
-        
-        
         let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
         let min = NSCalendar.currentCalendar().component(.Minute, fromDate: NSDate())
-        print("Hora:" + "\(hora)")
-        print("Minutos:" + "\(min)")
-        
-        
-        //Pedir a base de datos las actividades guardadas!
-        
+       //Pedir a base de datos las actividades guardadas!
         getDiaDeHoy()
-        
-        
         var ActividadesHoyIgual:Results<Actividades>?
         var Acts:Results<Actividades>?
-        print("Estas son todas las actividades: ")
-        print(Acts)
         ActividadesHoyIgual = uiRealm.objects(Actividades).filter("Frecuencia CONTAINS %@ AND Hora == %@ AND Minutos > %@ OR Frecuencia CONTAINS %@ AND Hora > %@", diaDeHoy, hora, min, diaDeHoy, hora)
-        print(ActividadesHoyIgual)
         Acts = ActividadesHoyIgual!.sorted([SortDescriptor(property: "Hora"), "Minutos"])
         let cont = (Acts?.count)
-        print(cont)
-        print("Cantidad de activades en hoy")
-        print(ActividadesHoyIgual!.count)
         arregloActividadesHoy = []
-        
         if(cont > 0)
         {
             for i in 0...cont! - 1
@@ -141,10 +117,8 @@ class TableViewControllerActividades: UITableViewController {
                 self.arregloActividadesHoy.append(actividad)
             }
         }else{
-            print("está vacio")
         }
-        print("Cantidad en arreglo activades  hoy")
-        print(arregloActividadesHoy.count)
+ 
         
     }
     
@@ -153,8 +127,7 @@ class TableViewControllerActividades: UITableViewController {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
         var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-        print("Cantidad de notificaciones:")
-        print(notifyArray!.count)
+        
         
         if arregloActividadesHoy.count > 0{
             for i in 0...arregloActividadesHoy.count - 1{
@@ -178,19 +151,14 @@ class TableViewControllerActividades: UITableViewController {
 
                 notification.fireDate = date
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                print("Esta es la notificacion que creé ")
-                print(arregloActividadesHoy[i].nombre)
-                print(arregloActividadesHoy[i].hora)
-                print(arregloActividadesHoy[i].minutos)
+               
                 
             }
         }else{
-            print("Está vacío")
         }
         
         notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-        print("Cantidad de notificaciones creadas:")
-        print(notifyArray!.count)
+        
     }
 
 
@@ -229,26 +197,18 @@ class TableViewControllerActividades: UITableViewController {
     
     
     @IBAction func unwindAgregar(sender: UIStoryboardSegue){
-            print("Estoy en unwindAgregar")
         if controlAgregar{
             if nuevaActividad != nil{
-                print("Esto tiene actividadAUsar en el unwindAgregar antes de meterse al arreglo")
-                print(nuevaActividad.nombre)
-                print(nuevaActividad.categoria)
-                print(nuevaActividad.hora)
-                print(nuevaActividad.frecuencia)
-                arregloActividades.append(nuevaActividad)
+                               arregloActividades.append(nuevaActividad)
                 self.tableView.reloadData()
             }else{
-                print("es nil")
             }
         }
     }
     
     @IBAction func unwindEditar(sender: UIStoryboardSegue){
         if controlEditar{
-            print("Estoy en unwindEditar y este es indiceEditar")
-            print(indiceDeEditar)
+            
             if indiceDeEditar != nil{
                 llenaArreglo()
                 llenaArregloHoy()
@@ -258,7 +218,6 @@ class TableViewControllerActividades: UITableViewController {
         }else{
             //Control editar=false
             //Cancel
-            print("Cancel")
        
         }
     }
@@ -332,17 +291,14 @@ class TableViewControllerActividades: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            print(arregloActividades)
             
             try! uiRealm.write {
                 let BorraActividad = uiRealm.objects(Actividades).filter("Nombre == %@", arregloActividades[(indexPath.row)].nombre)
                 uiRealm.delete(BorraActividad)
             }
             
-            print("Actividad removida:" + arregloActividades[indexPath.row].nombre)
             arregloActividades.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-            print(arregloActividades)
             self.tableView.reloadData()
             
         } else if editingStyle == .Insert {
@@ -352,10 +308,8 @@ class TableViewControllerActividades: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Estoy en el didSelectRowAtIndexPath")
         actividadAMandar = arregloActividades[indexPath.row]
-        print("esto es actividad a mandar: ")
-        print(actividadAMandar)
+       
         
     }
 
@@ -376,14 +330,10 @@ class TableViewControllerActividades: UITableViewController {
         }else{
             let viewEditar: TableViewControllerEditarActividad = segue.destinationViewController as! TableViewControllerEditarActividad
             let indexpath = tableview.indexPathForSelectedRow
-            print("Este es el indice que mando a editar")
-            print(indexpath!.row)
+          
             actividadAMandar = arregloActividades[indexpath!.row]
             viewEditar.activididadRecibida = self.actividadAMandar
             viewEditar.indice = indexpath?.row
-            print("Esto es lo que mandé cuando selecciono la cell")
-            print(self.actividadAMandar.nombre)
-            print(self.actividadAMandar.frecuencia)
         }
     }
 }

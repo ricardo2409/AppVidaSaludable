@@ -25,7 +25,6 @@
 		1CC679171CC8561A005B8F6E /* Actividades.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CC679161CC8561A005B8F6E /* Actividades.swift */; };
 		9333908D0F3E6DD425286FAD /* Pods_AppVidaSaludable.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3B388CC016575F8A747F6C /* Pods_AppVidaSaludable.framework */; };
 		CE2803051CD989B700AB39F5 /* TableViewControllerDiasEditar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2803041CD989B700AB39F5 /* TableViewControllerDiasEditar.swift */; };
-		CE2803111CDAC49100AB39F5 /* ActividadesSnoozeadas.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE2803101CDAC49100AB39F5 /* ActividadesSnoozeadas.swift */; };
 		CE30B7A01CBD907100B7A14E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE30B79F1CBD907100B7A14E /* AppDelegate.swift */; };
 		CE30B7A71CBD907100B7A14E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7A51CBD907100B7A14E /* Main.storyboard */; };
 		CE30B7AC1CBD907100B7A14E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE30B7AA1CBD907100B7A14E /* LaunchScreen.storyboard */; };
@@ -109,7 +108,6 @@
 		BE2A66703227FBED7BCC956C /* Pods-AppVidaSaludable.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVidaSaludable.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppVidaSaludable/Pods-AppVidaSaludable.debug.xcconfig"; sourceTree = "<group>"; };
 		CD3B388CC016575F8A747F6C /* Pods_AppVidaSaludable.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppVidaSaludable.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE2803041CD989B700AB39F5 /* TableViewControllerDiasEditar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerDiasEditar.swift; sourceTree = "<group>"; };
-		CE2803101CDAC49100AB39F5 /* ActividadesSnoozeadas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActividadesSnoozeadas.swift; sourceTree = "<group>"; };
 		CE30B79C1CBD907100B7A14E /* AppVidaSaludable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppVidaSaludable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE30B79F1CBD907100B7A14E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE30B7A61CBD907100B7A14E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */,
 				1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */,
 				1CADCDE31CBD9FEE00092481 /* TableViewControllerActividades.swift */,
-				CE2803101CDAC49100AB39F5 /* ActividadesSnoozeadas.swift */,
 				CE30B7B31CBDD20700B7A14E /* Actividad.swift */,
 				1CADCDE11CBD9F0F00092481 /* TableViewControllerHoy.swift */,
 				1CADCDDF1CBD9B7A00092481 /* TabBarControllerRoot.swift */,
@@ -402,7 +399,6 @@
 				1CADCDE41CBD9FEE00092481 /* TableViewControllerActividades.swift in Sources */,
 				CE30B7B81CBED98D00B7A14E /* TableViewControllerDias.swift in Sources */,
 				1CC679151CC855EA005B8F6E /* Personas.swift in Sources */,
-				CE2803111CDAC49100AB39F5 /* ActividadesSnoozeadas.swift in Sources */,
 				1CADCDDE1CBD99ED00092481 /* ViewControllerInicio.swift in Sources */,
 				1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */,
 				1C897D651CD7D219000891ED /* ViewControllerMetricas.swift in Sources */,

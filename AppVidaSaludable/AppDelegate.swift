@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Decide el storyboard a mostrar con base al tamaño de pantalla
     func grabStoryboard() -> UIStoryboard {
         let screenHeight : Int = Int(UIScreen.mainScreen().bounds.size.height)
-        //print(screenHeight)
         
         var storyboard : UIStoryboard
         
@@ -171,15 +170,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         default:
             break
         }
-        print(diaDeHoy)
     }
     func getMonth() -> Int{
         let fecha: NSDate = NSDate()
         let formato7: NSDateFormatter = NSDateFormatter()
         formato7.dateFormat = "MM"
         let month: String = formato7.stringFromDate(fecha)
-        print("este es el mes")
-        print(month)
+        
         return Int(month)!
     }
     func getYear() -> Int{
@@ -187,8 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let formato5: NSDateFormatter = NSDateFormatter()
         formato5.dateFormat = "yyyy"
         let year: String = formato5.stringFromDate(fecha)
-        print("Este es el año")
-        print(year)
+        
         return Int(year)!
     }
     func getDay() -> Int{
@@ -196,8 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let formato6: NSDateFormatter = NSDateFormatter()
         formato6.dateFormat = "dd"
         let day: String = formato6.stringFromDate(fecha)
-        print("Este es el dia")
-        print(day)
+       
         return Int(day)!
         
     }
@@ -206,8 +201,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.sharedApplication().cancelAllLocalNotifications()
         
         var notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-        print("Cantidad de notificaciones:")
-        print(notifyArray!.count)
+      
         
         if ActividadesHoy!.count > 0{
             for i in 0...ActividadesHoy!.count - 1{
@@ -229,17 +223,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 notification.alertTitle = ActividadesHoy![i].Categoria
                 notification.fireDate = date
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                print("Esta es la notificacion que creé ")
               
                 
             }
         }else{
-            print("Está vacío")
+            
         }
         
         notifyArray = UIApplication.sharedApplication().scheduledLocalNotifications
-        print("Cantidad de notificaciones creadas:")
-        print(notifyArray!.count)
+      
     }
     var ActividadesHoy:Results<Actividades>?
 
@@ -262,7 +254,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             NSNotificationCenter.defaultCenter().postNotificationName("actionOnePressed", object: nil)
             
             //Write en tabla de acts realizadas un 1 en la categoria y 0 en las demás
-            print(notification.alertTitle!)
             var ActividadAlerta:Results<Actividades>?
             
             ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
@@ -271,28 +262,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             switch notification.alertTitle! {
             case "Alimentación":
-                print("Alimentación Sí")
                 Act.Alimentacion = 1
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
                 break
             case "Hidratación":
-                print("Hidratación Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 1
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
                 break
             case "Actividad Física":
-                print("Actividad Física Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 1
                 Act.ActividadSocial = 0
                 break
             case "Actividad Social":
-                print("Actividad Social Sí")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
@@ -327,28 +314,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //Write en tabla de acts realizadas un 2 en la categoria y 0 en las demás
             switch notification.alertTitle! {
             case "Alimentación":
-                print("Alimentación No")
                 Act.Alimentacion = 2
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
                 break
             case "Hidratación":
-                print("Hidratación No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 2
                 Act.ActividadFisica = 0
                 Act.ActividadSocial = 0
                 break
             case "Actividad Física":
-                print("Actividad Física No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 2
                 Act.ActividadSocial = 0
                 break
             case "Actividad Social":
-                print("Actividad Social No")
                 Act.Alimentacion = 0
                 Act.Hidratacion = 0
                 Act.ActividadFisica = 0
@@ -377,20 +360,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let hoy = NSDate()
         
       
-        print("fecha")
-        print(hoy)
-        print("notification firedate")
-        print(notification.fireDate!)
+      
         let Act = ActividadRealizada()
 
         
         if (application.applicationState == UIApplicationState.Active ) {
-            print("Entré al if active")
             if notification.fireDate! >= hoy {
-                print("No entré al if fecha")
 
             }else{
-                print("Entré al if fecha")
                 
                 let alertView = SCLAlertView()
                 alertView.showCircularIcon = true
@@ -410,7 +387,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                
                 alertView.addButton("Sí"){
-                print("Sí")
                     var ActividadAlerta:Results<Actividades>?
                     
                     ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
@@ -420,28 +396,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     switch notification.alertTitle! {
                     case "Alimentación":
-                        print("Alimentación Sí")
                         Act.Alimentacion = 1
                         Act.Hidratacion = 0
                         Act.ActividadFisica = 0
                         Act.ActividadSocial = 0
                         break
                     case "Hidratación":
-                        print("Hidratación Sí")
                         Act.Alimentacion = 0
                         Act.Hidratacion = 1
                         Act.ActividadFisica = 0
                         Act.ActividadSocial = 0
                         break
                     case "Actividad Física":
-                        print("Actividad Física Sí")
                         Act.Alimentacion = 0
                         Act.Hidratacion = 0
                         Act.ActividadFisica = 1
                         Act.ActividadSocial = 0
                         break
                     case "Actividad Social":
-                        print("Actividad Social Sí")
                         Act.Alimentacion = 0
                         Act.Hidratacion = 0
                         Act.ActividadFisica = 0
@@ -459,7 +431,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 
                 alertView.addButton("No") {
-                    print("No")
                     var ActividadAlerta:Results<Actividades>?
                     ActividadAlerta = uiRealm.objects(Actividades).filter("Nombre == %@",notification.alertBody!)
                     
@@ -478,28 +449,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         
                         switch notification.alertTitle! {
                         case "Alimentación":
-                            print("Alimentación No")
                             Act.Alimentacion = 2
                             Act.Hidratacion = 0
                             Act.ActividadFisica = 0
                             Act.ActividadSocial = 0
                             break
                         case "Hidratación":
-                            print("Hidratación No")
                             Act.Alimentacion = 0
                             Act.Hidratacion = 2
                             Act.ActividadFisica = 0
                             Act.ActividadSocial = 0
                             break
                         case "Actividad Física":
-                            print("Actividad Física No")
                             Act.Alimentacion = 0
                             Act.Hidratacion = 0
                             Act.ActividadFisica = 2
                             Act.ActividadSocial = 0
                             break
                         case "Actividad Social":
-                            print("Actividad Social No")
                             Act.Alimentacion = 0
                             Act.Hidratacion = 0
                             Act.ActividadFisica = 0
@@ -525,7 +492,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             }
         }else{
-            print("No entré al if")
         }
         
     }

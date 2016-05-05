@@ -48,7 +48,6 @@ class TableViewControllerDias: UITableViewController {
         tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = UITableViewCellAccessoryType.Checkmark
         
         arregloDias.append(indexPath.row)
-        print(arregloDias)
     }
     
     override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
@@ -56,7 +55,6 @@ class TableViewControllerDias: UITableViewController {
         
         
         arregloDias.removeAtIndex(buscaValor(arregloDias, valor: indexPath.row))
-        print(arregloDias)
     }
     
     func buscaValor(arreglo : [Int], valor : Int) -> Int{
@@ -118,8 +116,7 @@ class TableViewControllerDias: UITableViewController {
             let viewAgregar: TableViewControllerAgregar = segue.destinationViewController as! TableViewControllerAgregar
             viewAgregar.arregloDias = self.arregloDias
             viewAgregar.frecuencia = self.arregloFrecuencias
-            print("Esto es lo que mando en el OK")
-            print(arregloDias)
+         
             viewAgregar.cancel = false
         }else{
             //Boton Cancelar

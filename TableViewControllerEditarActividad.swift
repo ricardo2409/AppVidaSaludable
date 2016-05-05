@@ -57,10 +57,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         // Uncomment the following line to preserve selection between presentations
         self.clearsSelectionOnViewWillAppear = false
         
-        print(activididadRecibida.nombre)
-        print(activididadRecibida.categoria)
-        print(activididadRecibida.frecuencia)
-        print(activididadRecibida.hora)
+       
 
         tfNombre.text = activididadRecibida.nombre
         minutos = activididadRecibida.minutos
@@ -85,8 +82,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     
     @IBAction func unwindDiasEditar(sender: UIStoryboardSegue){
         
-        print("Esto es lo que recibo del ok")
-        print(arregloDias)
+      
         //Agrega a frecuencia
         agregaDiasEnLabel()
     }
@@ -96,7 +92,6 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         }else {
             lblFrecuencia.text = ""
             for i in 0...arregloDias.count - 1{
-                print(arregloDias[i])
                 switch (arregloDias[i]) {
                 case 0:
                     lblFrecuencia.text! += "Lu"
@@ -148,29 +143,33 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
     func getDays(frecuencia : [String]) -> String{
         var frase = ""
         for i in 0...frecuencia.count - 1  {
-            print("frecuencia count :")
-
-            print(frecuencia.count)
+            
             switch frecuencia[i] {
             case "Lu":
                 frase += "Lu"
+                break
             case "Ma":
                 frase += " Ma"
+                break
             case "Mi":
                 frase += " Mi"
+                break
             case "Ju":
                 frase += " Ju"
+                break
             case "Vi":
                 frase += " Vi"
+                break
             case "Sa":
                 frase += " Sa"
+                break
             case "Do":
                 frase += " Do"
+                break
             default:
-                print("No es ninguno de esos")
+                break
             }
         }
-        print("Frase tiene: " + frase)
         return frase
     }
     
@@ -208,10 +207,8 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
         if pickerView == pvHora {
             if component == 0{
                 self.hora = Int(arregloHoras[row%arregloHoras.count])!
-                print("hora es:" + String(self.hora))
             }else{
                 self.minutos = Int(arregloMinutos[row%arregloMinutos.count])!
-                print("minutos es:" + String(self.minutos))
             }
         }else{
             self.categoria = arregloCategorias[row%arregloCategorias.count]
@@ -253,8 +250,7 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
                 viewEditar.indiceDeEditar = self.indice
                 viewEditar.controlEditar = true
                 var EditaAct:Results<Actividades>?
-                print("Esta es la act Recibida y la que voy a comparar en bd")
-                print(activididadRecibida.nombre)
+               
                 
                 EditaAct = uiRealm.objects(Actividades).filter("Nombre == %@", activididadRecibida.nombre)
                 
@@ -287,7 +283,6 @@ class TableViewControllerEditarActividad: UITableViewController,UIPickerViewData
             }else{
                 //Boton cancelar
                 let viewEditar: TableViewControllerActividades = segue.destinationViewController as! TableViewControllerActividades
-                print("Cancelar")
                 viewEditar.controlEditar = false
 
         

@@ -66,7 +66,6 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         self.hora = date.hour
         self.minutos = date.minute
         
-        print(Realm.Configuration.defaultConfiguration.path!)
         
     }
    
@@ -78,7 +77,6 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         }else {
             lbFrecuencia.text = ""
             for i in 0...arregloDias.count - 1{
-                print(arregloDias[i])
                 switch (arregloDias[i]) {
                 case 0:
                     lbFrecuencia.text! += "Lu"
@@ -119,10 +117,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
     
     @IBAction func unwindDias(sender: UIStoryboardSegue){
         if cancel {
-            print("Estoy en cancel")
         }else{
-            print("Esto es lo que recibo del ok")
-            print(arregloDias)
+            
             agregaDiasEnLabel()
         }
     }
@@ -165,10 +161,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         if pickerView == pickerViewHora {
             if component == 0{
                 self.hora = Int(arregloHoras[row%arregloHoras.count])
-                print("hora es:" + String(self.hora))
             }else{
                 self.minutos = Int(arregloMinutos[row%arregloMinutos.count])
-                print("minutos es:" + String(self.minutos))
             }
         }else{
             self.categoria = arregloCategorias[row%arregloCategorias.count]
