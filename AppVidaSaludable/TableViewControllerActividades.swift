@@ -41,11 +41,8 @@ class TableViewControllerActividades: UITableViewController {
         print("viewDidLoadActividades")
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         tableView.reloadData()
-        /*
-        navigationController?.navigationBar.barTintColor = UIColor(red: 199/255, green: 237/255, blue: 228/255, alpha: 1)
-        navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)]
-        navigationController?.navigationBar.tintColor = UIColor(red: 103/255, green: 42/255, blue: 78/255, alpha: 1)
- */
+        
+        tableview.tableFooterView = UIView()
     }
     
     
@@ -360,7 +357,9 @@ class TableViewControllerActividades: UITableViewController {
         
     }
 
-   
+    /*override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+    }*/
 
     
     // MARK: - Navigation
@@ -383,7 +382,6 @@ class TableViewControllerActividades: UITableViewController {
             print("Esto es lo que mandé cuando selecciono la cell")
             print(self.actividadAMandar.nombre)
             print(self.actividadAMandar.frecuencia)
-
         }
     }
 }
