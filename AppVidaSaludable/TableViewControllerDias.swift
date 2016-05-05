@@ -82,6 +82,9 @@ class TableViewControllerDias: UITableViewController {
         //Sort arregloDias para que no importe el orden en el que se seleccionen los días
         
         arregloDias.sortInPlace()
+        if arregloDias.count == 0{
+            arregloFrecuencias.append("")
+        }else {
        for i in 0...arregloDias.count - 1{
             switch (arregloDias[i]) {
             case 0:
@@ -108,6 +111,7 @@ class TableViewControllerDias: UITableViewController {
             default:
                 break
                 
+                }
             }
         }
         if (sender as! UIButton == botonOk){
