@@ -244,12 +244,22 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                     self.presentViewController(alertController, animated: true, completion: nil)
                     
                     }
+                    
+                    if(lbFrecuencia.text! != "" && ActExiste![0].Nombre != tfNombre.text!) {
+                        //add our object to the DB
+                        try! uiRealm.write{
+                            uiRealm.add(Act)
+                        }
+                        actividadNueva = Actividad(nom: Act.Nombre, cat: Act.Categoria, h: Act.Hora, m: Act.Minutos, frec: [Act.Frecuencia])
+                        viewAgregar.nuevaActividad = actividadNueva
+                        viewAgregar.controlAgregar = true
+                        
+                    }
                 
 
                 }
                 
-                if(lbFrecuencia.text! != "" && tfNombre.text! != "") {
-                    //add our object to the DB 
+                else{
                     try! uiRealm.write{
                         uiRealm.add(Act)
                     }
@@ -257,8 +267,8 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
                     viewAgregar.nuevaActividad = actividadNueva
                     viewAgregar.controlAgregar = true
 
-                }
                 
+                }
                 
 
                 
