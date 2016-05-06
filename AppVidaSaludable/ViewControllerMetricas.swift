@@ -88,7 +88,7 @@ class ViewControllerMetricas: UIViewController {
     }
     
     @IBAction func reset(sender: AnyObject) {
-        let alerta = UIAlertController(title: "Reset", message: "¿Desea borrar toda la información histórica? No podrá volverla a accesar.", preferredStyle: UIAlertControllerStyle.Alert)
+        let alerta = UIAlertController(title: "Resetear", message: "¿Desea borrar toda la información histórica? No podrá volverla a accesar.", preferredStyle: UIAlertControllerStyle.Alert)
         
         alerta.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
             var Acts : Results<ActividadRealizada>?
@@ -181,7 +181,7 @@ class ViewControllerMetricas: UIViewController {
         pieChartView.drawSlicesUnderHoleEnabled = false
         pieChartView.holeRadiusPercent = 0.58
         pieChartView.transparentCircleRadiusPercent = 0.61
-        //pieChartView.descriptionText = description
+        pieChartView.descriptionText = ""
         
         // Formateador de porciento
         let perFormatter : NSNumberFormatter = NSNumberFormatter()
