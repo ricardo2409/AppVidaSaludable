@@ -9,7 +9,6 @@
 import UIKit
 import RealmSwift
 import SCLAlertView
-import SwiftDate
 
 let uiRealm = try! Realm()
 
@@ -421,7 +420,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         uiRealm.add(Act)
                     }
                     UIApplication.sharedApplication().cancelLocalNotification(notification)
-                    //Borra arregloActivadadesHoy[0] (el primero, quien es el que ejecuta la notificacion)
+                
                     
                 }
                 
@@ -482,7 +481,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
                 }
                 
-                 alertView.showInfo(notification.alertBody!, subTitle: notification.alertTitle!, closeButtonTitle: "", duration: 30, colorStyle: 0x5995ED, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: alertViewIcon))
+                
+                alertView.showInfo(notification.alertBody!, subTitle: notification.alertTitle!, closeButtonTitle: "", duration: 30, colorStyle: 0x5995ED, colorTextButton: 0xFFFFFF, circleIconImage: UIImage(named: alertViewIcon))
 
 
             }
