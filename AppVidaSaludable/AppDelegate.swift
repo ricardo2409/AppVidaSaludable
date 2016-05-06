@@ -299,7 +299,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     ActividadAlerta![0].snoozeCount += 1
                 }
                 // REPROGRAMA 10min mas
-                notification.fireDate = NSDate().dateByAddingTimeInterval(10)
+                notification.fireDate = NSDate().dateByAddingTimeInterval(600)
                 UIApplication.sharedApplication().scheduleLocalNotification(notification)
             }
             else {
