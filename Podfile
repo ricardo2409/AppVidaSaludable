@@ -4,10 +4,8 @@ platform :ios, '8.0'
 use_frameworks!
 
 target 'AppVidaSaludable' do
-    pod 'AlarmKit'
     pod 'SCLAlertView'
     pod 'RealmSwift'
-    pod 'SwiftDate'
     pod 'DZNEmptyDataSet'
 end
 
