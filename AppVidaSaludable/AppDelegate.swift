@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwiftDate
 import SCLAlertView
 
 let uiRealm = try! Realm()
@@ -364,8 +365,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }else{
                 
                 let alertView = SCLAlertView()
-                alertView.showCircularIcon = true
-                alertView.showCloseButton = false
+                
+//                alertView.showCircularIcon = true
+//                alertView.showCloseButton = false
                 var alertViewIcon: String = ""
                 switch notification.alertTitle! {
                 case "Alimentación":

@@ -61,10 +61,10 @@ class TableViewControllerAgregar: UITableViewController,UIPickerViewDataSource, 
         let date = NSDate()
         // Picks current date
         self.pickerViewCategoria.selectRow(500, inComponent: 0, animated: false)
-        self.pickerViewHora.selectRow((date.hour - 1) + (arregloHoras.count * 10), inComponent: 0, animated: false)
-        self.pickerViewHora.selectRow((date.minute) + (arregloMinutos.count * 10), inComponent: 1, animated: false)
-        self.hora = date.hour
-        self.minutos = date.minute
+        self.pickerViewHora.selectRow((date.hour() - 1) + (arregloHoras.count * 10), inComponent: 0, animated: false)
+        self.pickerViewHora.selectRow((date.minute()) + (arregloMinutos.count * 10), inComponent: 1, animated: false)
+        self.hora = date.hour()
+        self.minutos = date.minute()
         
         
     }
