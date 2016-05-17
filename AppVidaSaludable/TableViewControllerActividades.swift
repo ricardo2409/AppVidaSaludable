@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlarmKit
 import SCLAlertView
 import RealmSwift
 import DZNEmptyDataSet

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import AlarmKit
 import SCLAlertView
 import RealmSwift
 import DZNEmptyDataSet
@@ -17,7 +16,6 @@ class TableViewControllerHoy: UITableViewController {
     // REUSE IDENTIFIER: "idCelda"
     var arregloActividades: [Actividad] = []
     var arregloActividadesHoy: [Actividad] = []
-    var alarm: AlarmKit.Alarm!
     var diaDeHoy : String!
     var nuevaActividad : Actividad!
     let hora = NSCalendar.currentCalendar().component(.Hour, fromDate: NSDate())
