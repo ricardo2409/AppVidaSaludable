@@ -360,9 +360,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         
         if (application.applicationState == UIApplicationState.Active ) {
-            if notification.fireDate! >= hoy {
+            if !notification.fireDate!.isLessThanDate(hoy) {
 
-            }else{
+            }
+            else{
                 
                 let alertView = SCLAlertView()
                 

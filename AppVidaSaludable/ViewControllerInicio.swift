@@ -95,7 +95,7 @@ class ViewControllerInicio: UIViewController, UITextFieldDelegate {
         
         var aRect : CGRect = self.view.frame
         aRect.size.height -= keyboardSize!.height
-        if let activeFieldPresent = activeField
+        if activeField != nil
         {
             if (!CGRectContainsPoint(aRect, activeField!.frame.origin))
             {
