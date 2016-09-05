@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             storyboard = UIStoryboard(name: "MainIPhone6Plus", bundle: nil)
             break
         default:
-            storyboard = UIStoryboard(name: "Main", bundle: nil)
+            storyboard = UIStoryboard(name: "MainIPhone4", bundle: nil)
         }
         
         return storyboard

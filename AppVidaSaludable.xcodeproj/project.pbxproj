@@ -10,6 +10,7 @@
 		1C24962E1CBDA6A400CCE121 /* ViewControllerAgregar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */; };
 		1C2496321CBDAC1A00CCE121 /* TableViewControllerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */; };
 		1C25EDE21CD65DE7006FD5DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */; };
+		1C61D0691D7D01AF005DD1BB /* MainIPhone4.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C61D0671D7D01AF005DD1BB /* MainIPhone4.storyboard */; };
 		1C7F29FD1CDAE5A60097ACBF /* MainIPhone6.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7F29F91CDAE5A60097ACBF /* MainIPhone6.storyboard */; };
 		1C7F29FE1CDAE5A60097ACBF /* MainIPhone6Plus.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1C7F29FB1CDAE5A60097ACBF /* MainIPhone6Plus.storyboard */; };
 		1C80EF351CD9918A00C02CAF /* ViewControllerContactaMedico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C80EF341CD9918A00C02CAF /* ViewControllerContactaMedico.swift */; };
@@ -93,6 +94,7 @@
 		1C24962D1CBDA6A400CCE121 /* ViewControllerAgregar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerAgregar.swift; sourceTree = "<group>"; };
 		1C2496311CBDAC1A00CCE121 /* TableViewControllerConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerConfig.swift; sourceTree = "<group>"; };
 		1C25EDE11CD65DE7006FD5DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1C61D0681D7D01AF005DD1BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIPhone4.storyboard; sourceTree = "<group>"; };
 		1C7F29FA1CDAE5A60097ACBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIPhone6.storyboard; sourceTree = "<group>"; };
 		1C7F29FC1CDAE5A60097ACBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainIPhone6Plus.storyboard; sourceTree = "<group>"; };
 		1C80EF341CD9918A00C02CAF /* ViewControllerContactaMedico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerContactaMedico.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		CE30B79E1CBD907100B7A14E /* AppVidaSaludable */ = {
 			isa = PBXGroup;
 			children = (
+				1C61D0671D7D01AF005DD1BB /* MainIPhone4.storyboard */,
 				1C7F29F91CDAE5A60097ACBF /* MainIPhone6.storyboard */,
 				1C7F29FB1CDAE5A60097ACBF /* MainIPhone6Plus.storyboard */,
 				CE30B79F1CBD907100B7A14E /* AppDelegate.swift */,
@@ -324,6 +327,7 @@
 				CE30B7AC1CBD907100B7A14E /* LaunchScreen.storyboard in Resources */,
 				1C25EDE21CD65DE7006FD5DE /* Assets.xcassets in Resources */,
 				CE30B7A71CBD907100B7A14E /* Main.storyboard in Resources */,
+				1C61D0691D7D01AF005DD1BB /* MainIPhone4.storyboard in Resources */,
 				1C7F29FD1CDAE5A60097ACBF /* MainIPhone6.storyboard in Resources */,
 				1C7F29FE1CDAE5A60097ACBF /* MainIPhone6Plus.storyboard in Resources */,
 			);
@@ -417,6 +421,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		1C61D0671D7D01AF005DD1BB /* MainIPhone4.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1C61D0681D7D01AF005DD1BB /* Base */,
+			);
+			name = MainIPhone4.storyboard;
+			sourceTree = "<group>";
+		};
 		1C7F29F91CDAE5A60097ACBF /* MainIPhone6.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
